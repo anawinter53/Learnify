@@ -1,0 +1,18 @@
+.landing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 40px 0px;
+}
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 90%;
+  height: 800px;
+  border-radius: 15px;
+  background: red;
+}
