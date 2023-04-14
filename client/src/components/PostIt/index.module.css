@@ -26,12 +26,12 @@
 
 .card-0 {
   transform: rotateZ(15deg) translateX(13px) translateY(30px);
-  background: rgb(255, 255, 0);
+  background: rgb(212, 121, 2);
   z-index: 4;
 }
 
 .card-0 > .card-heading{
-  background: rgb(214, 180, 27);
+  background: rgb(177, 102, 16);
 }
 
 .card-1 {
