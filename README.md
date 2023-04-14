@@ -1,3 +1,6 @@
 ## About
 
-Quiz/flashcards website for project week 3.
+Quiz/flashcards website for project week 3. 
+
+
+## Installation
