@@ -13,6 +13,7 @@
   background: palegreen;
   position: relative;
   border-radius: 15px;
+  transition: 0.25s;
 }
 
 .card-heading {
@@ -62,4 +63,14 @@
 
 .card-3 > .card-heading{
   background: rgb(55, 66, 212);
+}
+
+.card-container:hover > .card:hover {
+  transform: scale(1.15) rotateZ(0);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+
+.card-container:hover > .card:not(:hover) {
+  opacity: 0.5;
 }
