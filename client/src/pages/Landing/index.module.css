@@ -43,4 +43,14 @@
   font-size: 20px;
   color: #d4d4d4;
   cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn:hover {
+  background: #2c1e55;
+  transform: scale(1.03)
+}
+
+.btn:active {
+  transform: scale(0.97)
 }
