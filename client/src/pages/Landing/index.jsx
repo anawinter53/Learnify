@@ -1,5 +1,5 @@
 import styles from "./index.module.css"
-import { PostIt } from "../../components"
+import { PostIt, PostItSummary } from "../../components"
 import { NavLink } from "react-router-dom"
 
 export default function Landing() {
@@ -12,6 +12,10 @@ export default function Landing() {
           <NavLink to="/signup" className={styles["btn"]}>Get Started!</NavLink>
         </div>
       </div>
+      <PostItSummary colour="orange" reverse={false}/>
+      <PostItSummary colour="red" reverse={true}/>
+      <PostItSummary colour="green" reverse={false}/>
+      <PostItSummary colour="blue" reverse={true}/>
     </div>
   )
 }
