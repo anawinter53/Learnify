@@ -55,7 +55,7 @@ nav > div {
   color: var(--font-colour);
 }
 
-.login {
+.login, .signup {
   float: right;
   font-size: 1.2rem;
 }
