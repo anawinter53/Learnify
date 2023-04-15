@@ -1,0 +1,14 @@
+.signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 90%;
+  height: 800px;
+  align-items: center;
+}

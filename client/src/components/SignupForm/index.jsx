@@ -5,7 +5,7 @@ export default function LoginForm() {
   return (
     <div className={styles["form"]}>
       <div className={styles["form-heading"]}>
-        <h1>Login</h1>
+        <h1>Sign up</h1>
       </div>
       <form>
         <div className={styles["input"]}>
@@ -13,14 +13,21 @@ export default function LoginForm() {
           <span>Username</span>
         </div>
         <div className={styles["input"]}>
+          <input type="text" id="email" required />
+          <span>Email</span>
+        </div>
+        <div className={styles["input"]}>
           <input type="password" id="password" required />
           <span>Password</span>
         </div>
         <div className={styles["input"]}>
-          <button className={`${styles["btn"]}`} type="submit">Submit</button>
+          <input type="password" id="conPassword" required />
+          <span>Confirm Password</span>
         </div>
-        <p>Forgot Password</p>
-        <NavLink className={styles["redirect-signup"]} to="/signup">Don't have an account yet? Sign Up</NavLink>
+        <div className={styles["input"]}>
+          <button className={styles["btn"]} type="submit">Submit</button>
+        </div>
+        <NavLink className={styles["redirect-login"]} to="/login">Already have an account? Sign in</NavLink>
       </form>
     </div>
   );
