@@ -1,4 +1,5 @@
 import styles from "./index.module.css"
+import { Outlet } from "react-router-dom"
 
 export default function LandingNav() {
   return (
@@ -12,6 +13,7 @@ export default function LandingNav() {
         </div>
         <div className={`${styles["login"]} ${styles["btn"]}`}>Login</div>
       </nav>
+      <Outlet />
     </>
   )
 }
