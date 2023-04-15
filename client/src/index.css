@@ -2,6 +2,9 @@
 
 * {
   font-family: "Inter", sans-serif;
+  --font-colour: #D7C9DD;
+  --font-colour-dark: #202020;
+  --nav-colour: #3C2970;
 }
 
 html, body, * {

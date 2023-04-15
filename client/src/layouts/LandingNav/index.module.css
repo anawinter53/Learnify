@@ -1,22 +1,33 @@
 nav, .options {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  gap: 40px;
+}
+
+.options {
+  justify-content: center;
 }
 
 nav {
+  position: relative;
   padding: 20px 5%;
   background: #3C2970;
-  color: #d4d4d4;
+  color: var(--font-colour);
+  z-index: 2;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+nav > div {
+  flex: 1 1 0;
 }
 
 .btn {
   cursor: pointer;
   position: relative;
-  color: #d4d4d4;
+  color: var(--font-colour);
   text-decoration: none;
+  margin: 0 20px;
 }
 
 .btn:before {
@@ -41,5 +52,9 @@ nav {
   font-size: 2rem;
   text-decoration: none;
   font-weight: bold;
-  color: #d4d4d4;
+  color: var(--font-colour);
+}
+
+.login {
+  float: right;
 }
