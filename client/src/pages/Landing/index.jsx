@@ -1,5 +1,6 @@
 import styles from "./index.module.css"
 import { PostIt } from "../../components"
+import { NavLink } from "react-router-dom"
 
 export default function Landing() {
   return (
@@ -8,7 +9,7 @@ export default function Landing() {
         <PostIt />
         <div className={styles["info"]}>
           <h1 className={styles["slogan"]}>Join our community of learners today and unlock your full potential.</h1>
-          <button className={styles["btn"]}>Get Started!</button>
+          <NavLink to="/signup" className={styles["btn"]}>Get Started!</NavLink>
         </div>
       </div>
     </div>
