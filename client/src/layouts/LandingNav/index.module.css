@@ -15,6 +15,8 @@ nav {
 .btn {
   cursor: pointer;
   position: relative;
+  color: #d4d4d4;
+  text-decoration: none;
 }
 
 .btn:before {
@@ -33,4 +35,11 @@ nav {
 .btn:hover:before {
   visibility: visible;
   transform: scaleX(1);
+}
+
+.title {
+  font-size: 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #d4d4d4;
 }
