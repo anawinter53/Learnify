@@ -11,7 +11,7 @@ nav, .options {
 nav {
   position: relative;
   padding: 20px 5%;
-  background: #3C2970;
+  background: var(--nav-colour);
   color: var(--font-colour);
   z-index: 2;
   justify-content: space-between;
@@ -57,4 +57,5 @@ nav > div {
 
 .login {
   float: right;
+  font-size: 1.2rem;
 }

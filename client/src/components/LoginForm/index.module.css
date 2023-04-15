@@ -6,7 +6,7 @@
   width: 500px;
   height: max-content;
   padding-bottom: 40px;
-  background: #fafafa;
+  background: #5e37c9;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   gap: 40px;
@@ -35,7 +35,7 @@
   flex-direction: column;
   gap: 40px;
   width: 100%;
-  color: var(--font-colour-dark);
+  color: var(--font-colour);
 }
 
 .form form .input {
@@ -92,5 +92,5 @@
 
 .redirect-signup {
   text-decoration: none;
-  color: var(--font-colour-dark);
+  color: var(--font-colour);
 }
