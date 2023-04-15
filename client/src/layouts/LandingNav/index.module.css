@@ -9,11 +9,12 @@ nav, .options {
 }
 
 nav {
-  position: relative;
+  position: fixed;
+  width: 100%;
   padding: 20px 5%;
   background: var(--nav-colour);
   color: var(--font-colour);
-  z-index: 2;
+  z-index: 99;
   justify-content: space-between;
   gap: 40px;
 }
