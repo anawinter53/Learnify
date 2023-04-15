@@ -82,3 +82,9 @@
 .blue > .card > .card-heading{
   background: rgb(55, 66, 212);
 }
+
+.card:hover {
+  transform: scale(1.15) rotateZ(0);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 10;
+}

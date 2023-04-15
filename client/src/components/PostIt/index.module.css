@@ -71,6 +71,6 @@
   z-index: 10;
 }
 
-.card-container:hover > .card:not(:hover) {
+.card-container:hover > .card:not(:hover){
   opacity: 0.5;
 }

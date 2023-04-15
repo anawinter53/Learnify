@@ -1,18 +1,32 @@
 import styles from "./index.module.css";
 
-export default function PostIt() {
+
+
+
+export default function PostIt({card0, card1, card2, card3}) {
+  const scroll = (card) => {
+    const headerOffset = 80;
+    const elementPosition = card.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  }
+
   return (
     <div className={styles["card-container"]}>
-      <div className={`${styles["card"]} ${styles["card-0"]}`}>
+      <div onClick={() => scroll(card0.current)} className={`${styles["card"]} ${styles["card-0"]}`}>
         <div className={styles["card-heading"]}></div>
       </div>
-      <div className={`${styles["card"]} ${styles["card-1"]}`}>
+      <div onClick={() => scroll(card1.current)} className={`${styles["card"]} ${styles["card-1"]}`}>
         <div className={styles["card-heading"]}></div>
       </div>
-      <div className={`${styles["card"]} ${styles["card-2"]}`}>
+      <div onClick={() => scroll(card2.current)} className={`${styles["card"]} ${styles["card-2"]}`}>
         <div className={styles["card-heading"]}></div>
       </div>
-      <div className={`${styles["card"]} ${styles["card-3"]}`}>
+      <div onClick={() => scroll(card3.current)} className={`${styles["card"]} ${styles["card-3"]}`}>
         <div className={styles["card-heading"]}></div>
       </div>
     </div>

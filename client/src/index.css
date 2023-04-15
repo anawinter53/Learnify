@@ -7,6 +7,10 @@
   --nav-colour: #3C2970;
 }
 
+*, html {
+  scroll-behavior: smooth !important;
+}
+
 html, body, * {
   margin: 0;
   padding: 0;

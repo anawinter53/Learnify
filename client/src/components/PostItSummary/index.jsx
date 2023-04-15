@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./index.module.css"
+import { forwardRef } from "react";
 
-export default function index({colour, reverse}) {
+const index = forwardRef(({colour, reverse}, ref) => {
   return (
-    <div className={`${styles["section"]} ${styles[colour]} ${reverse ? styles["reverse"] : ""}`}>
+    <div ref={ref} className={`${styles["section"]} ${styles[colour]} ${reverse ? styles["reverse"] : ""}`}>
       <div className={styles["card"]}>
         <div className={styles["card-heading"]}></div>
       </div>
@@ -15,4 +16,6 @@ export default function index({colour, reverse}) {
       </p>
     </div>
   );
-}
+});
+
+export default index;
