@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 
 const PostItSummary = forwardRef(({colour, reverse}, ref) => {
   return (
-    <div ref={ref} className={`${styles["section"]} ${styles[colour]} ${reverse ? styles["reverse"] : ""}`}>
+    <div ref={ref} className={`${styles["section"]} ${styles[colour]} ${reverse ? styles["reverse"] : ""}`} role="postItSummary">
       <div className={styles["card"]}>
         <div className={styles["card-heading"]}></div>
       </div>

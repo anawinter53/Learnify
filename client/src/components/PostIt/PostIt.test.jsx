@@ -53,15 +53,22 @@ describe("PostIt Component", () => {
 
   it("Scrolls to the correct position on card click", async () => {
     const cards = screen.getAllByRole("card");
-
+    
+    const headerOffset = 80;
+    const elementPosition = 954;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
     window.scrollTo = vi.fn();
     fireEvent.click(cards[0]);
-
+  
     await new Promise((resolve) => setTimeout(resolve, 1000));
-
+  
     expect(window.scrollTo).toHaveBeenCalledWith({
       top: expect.any(Number),
       behavior: "smooth",
     });
+  
+    expect(elementPosition).toBeGreaterThan(headerOffset);
+    expect(offsetPosition).toBeGreaterThan(window.pageYOffset);
   });
 });
