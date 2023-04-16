@@ -9,10 +9,12 @@ export default function PostIt({card0, card1, card2, card3}) {
     const elementPosition = card.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
+    setTimeout(() => {
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }, 250);
   }
 
   return (

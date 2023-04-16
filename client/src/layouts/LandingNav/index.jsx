@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./index.module.css";
 import { Outlet, NavLink, useLocation } from "react-router-dom";
+import { EmbeddedNav } from "../../components";
 
 export default function LandingNav() {
   const location = useLocation();
@@ -21,33 +22,7 @@ export default function LandingNav() {
 
   return (
     <>
-      <nav
-        ref={navRef}
-        style={{ position: "relative", background: "transparent" }}
-      >
-        <div>
-          <NavLink to="/" className={styles["title"]}>
-            App Name
-          </NavLink>
-        </div>
-        <div>
-          {location.pathname === "/login" ? (
-            <NavLink
-              className={`${styles["signup"]} ${styles["btn"]}`}
-              to="/signup"
-            >
-              Sign up
-            </NavLink>
-          ) : (
-            <NavLink
-              className={`${styles["login"]} ${styles["btn"]}`}
-              to="/login"
-            >
-              Login
-            </NavLink>
-          )}
-        </div>
-      </nav>
+      <EmbeddedNav />
       <nav
         ref={navRef}
         style={{ top: showNav ? "0" : "-100px", transition: "top 0.3s" }}
