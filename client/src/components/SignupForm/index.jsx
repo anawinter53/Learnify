@@ -7,7 +7,7 @@ export default function LoginForm() {
       <div className={styles["form-heading"]}>
         <h1>Sign up</h1>
       </div>
-      <form>
+      <form role='form'>
         <div className={styles["input"]}>
           <input type="text" id="username" required />
           <span>Username</span>
