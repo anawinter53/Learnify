@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./index.module.css"
 import { forwardRef } from "react";
 
-const index = forwardRef(({colour, reverse}, ref) => {
+const PostItSummary = forwardRef(({colour, reverse}, ref) => {
   return (
     <div ref={ref} className={`${styles["section"]} ${styles[colour]} ${reverse ? styles["reverse"] : ""}`}>
       <div className={styles["card"]}>
@@ -18,4 +18,4 @@ const index = forwardRef(({colour, reverse}, ref) => {
   );
 });
 
-export default index;
+export default PostItSummary;

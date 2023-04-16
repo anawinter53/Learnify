@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 import styles from "../../layouts/LandingNav/index.module.css";
 
-export default function index() {
+export default function EmbeddedNav() {
   const location = useLocation()
 
   return (
