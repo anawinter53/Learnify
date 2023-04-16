@@ -22,13 +22,13 @@ export default function PostIt({card0, card1, card2, card3}) {
       <div onClick={() => scroll(card0.current)} className={`${styles["card"]} ${styles["card-0"]}`} role='card'>
         <div className={styles["card-heading"]}></div>
       </div>
-      <div onClick={() => scroll(card1.current)} className={`${styles["card"]} ${styles["card-1"]}`}>
+      <div onClick={() => scroll(card1.current)} className={`${styles["card"]} ${styles["card-1"]}`} role='card'>
         <div className={styles["card-heading"]}></div>
       </div>
-      <div onClick={() => scroll(card2.current)} className={`${styles["card"]} ${styles["card-2"]}`}>
+      <div onClick={() => scroll(card2.current)} className={`${styles["card"]} ${styles["card-2"]}`} role='card'>
         <div className={styles["card-heading"]}></div>
       </div>
-      <div onClick={() => scroll(card3.current)} className={`${styles["card"]} ${styles["card-3"]}`}>
+      <div onClick={() => scroll(card3.current)} className={`${styles["card"]} ${styles["card-3"]}`} role='card'>
         <div className={styles["card-heading"]}></div>
       </div>
     </div>
