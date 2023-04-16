@@ -8,7 +8,7 @@ expect.extend(matchers);
 
 import LoginForm from '.';
 
-describe("LoginForm Component", () => {
+describe("Loginform Component", () => {
     beforeEach(() => {
         render(
             <BrowserRouter>
