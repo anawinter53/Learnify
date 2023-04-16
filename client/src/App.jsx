@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { LandingNav, SideNav } from './layouts'
-import { Landing, Login, Signup, Dashboard } from './pages'
+import { Landing, Login, Signup, Dashboard, Quizzes, Flashcards, Friends } from './pages'
 import { Shapes } from './components'
 
 export default function App() {
@@ -16,6 +16,9 @@ export default function App() {
         </Route>
         <Route path='/dashboard' element={<SideNav />}>
           <Route index element={<Dashboard />}/>
+          <Route path="/dashboard/quizzes" element={<Quizzes />}/>
+          <Route path="/dashboard/flashcards" element={<Flashcards />}/>
+          <Route path="/dashboard/friends" element={<Friends />}/>
         </Route>
       </Routes>
     </>

@@ -10,10 +10,10 @@ export default function SideNav() {
             App Name
           </NavLink>
           <div className={styles["options"]}>
-            <div className={styles["btn"]}>Button 1</div>
-            <div className={styles["btn"]}>Button 2</div>
-            <div className={styles["btn"]}>Button 3</div>
-            <div className={styles["btn"]}>Button 4</div>
+            <NavLink to="/dashboard" className={styles["btn"]}>Dashboard</NavLink>
+            <NavLink to="/dashboard/quizzes" className={styles["btn"]}>Quizzes</NavLink>
+            <NavLink to="/dashboard/flashcards" className={styles["btn"]}>Flashcards</NavLink>
+            <NavLink to="/dashboard/friends" className={styles["btn"]}>Friends</NavLink>
           </div>
         </div>
         <NavLink className={`${styles["logout"]} ${styles["btn"]}`} to="/login">
