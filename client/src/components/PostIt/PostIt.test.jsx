@@ -6,13 +6,13 @@ import { screen, render, cleanup } from '@testing-library/react';
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import LoginForm from '.';
+import PostIt from '.';
 
-describe("LoginForm Component", () => {
+describe("PostIt Component", () => {
     beforeEach(() => {
         render(
             <BrowserRouter>
-                <LoginForm />
+                <PostIt />
             </BrowserRouter>
         )
     })
@@ -21,10 +21,10 @@ describe("LoginForm Component", () => {
         cleanup();
     })
 
-    it("Displays a form", () => {
-        const form = screen.getByRole('form')
+    it("Displays a card", () => {
+        const card = screen.getByRole('card')
 
-        expect(form).toBeInTheDocument();
+        expect(card).toBeInTheDocument();
     })
 
 })
