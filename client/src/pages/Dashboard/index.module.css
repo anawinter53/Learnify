@@ -8,8 +8,29 @@
 }
 
 .container {
-  display:inline-block;
   position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.title {
+  padding-left: 40px;
+  color: var(--font-colour);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 30px;
+}
+
+.quiz-card {
+  background-color: #ccc;
+  border: 1px solid #999;
+  padding: 20px;
+  height: 350px;
 }
