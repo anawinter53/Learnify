@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { LandingNav } from './layouts'
-import { Landing, Login, Signup } from './pages'
+import { LandingNav, SideNav } from './layouts'
+import { Landing, Login, Signup, Dashboard } from './pages'
 import { Shapes } from './components'
 
 export default function App() {
@@ -13,6 +13,9 @@ export default function App() {
           <Route index element={<Landing />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/signup" element={<Signup />}/>
+        </Route>
+        <Route path='/dashboard' element={<SideNav />}>
+          <Route index element={<Dashboard />}/>
         </Route>
       </Routes>
     </>

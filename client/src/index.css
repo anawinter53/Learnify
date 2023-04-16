@@ -22,6 +22,6 @@ body {
 }
 
 html {
-  height: max-content;
+  min-height: 100vh;
   position: relative;
 }

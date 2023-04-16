@@ -6,6 +6,7 @@ export default function EmbeddedNav() {
 
   return (
     <nav
+      className={styles["nav"]}
       style={{ position: "relative", background: "transparent" }}
     >
       <div>

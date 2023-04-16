@@ -1,5 +1,11 @@
+import styles from "./index.module.css";
+
 export default function Dashboard() {
   return (
-    <div>index</div>
+    <div className={styles["dashboard"]}>
+      <div className={styles["container"]}>
+
+      </div>
+    </div>
   )
 }
