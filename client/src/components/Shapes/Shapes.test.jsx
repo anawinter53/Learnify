@@ -21,7 +21,7 @@ describe("Shapes Component", () => {
         cleanup();
     })
 
-    it("Displays a carc", () => {
+    it("Displays a card", () => {
         const card = screen.getByRole('card')
 
         expect(card).toBeInTheDocument();

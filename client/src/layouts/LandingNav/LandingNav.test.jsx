@@ -28,10 +28,14 @@ describe('LandingNav Component', () => {
         expect(nav.childNodes.length).toBe(2)
     })
 
-    // it('Changes location when a navlink is clicked', async () => {
-    //     expect(window.location.href).not.toContain('/login');
-    //     const login = screen.getByText('Login');
-    //     await userEvent.click(login)
-    //     expect(window.location.href).toContain('/login');
+
+
+    // it('Shows nav when scrolling', async () => {
+    //     window.scrollTo = 110
+    // })
+
+
+    // it('Should show sign up button', () => {
+
     // })
 })
