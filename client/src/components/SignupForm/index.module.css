@@ -46,6 +46,7 @@
 .form form .input input:focus ~ span,
 .form form .input input:valid ~ span {
   top: -50px;
+  color: var(--font-colour);
 }
 
 .form form .input input {

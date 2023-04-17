@@ -88,3 +88,44 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   z-index: 10;
 }
+
+@media only screen and (max-width: 600px) {
+  .section {
+    flex-direction: column;
+  }
+
+  .section.reverse {
+    flex-direction: column;
+  }
+
+  .section p {
+    font-size: 1rem;
+    width: 90%;
+  }
+
+  .card {
+    width: 90%;
+    height: 300px;
+    margin: 30px 0;
+  }
+
+  .card-heading {
+    height: 30px;
+  }
+
+  .orange > .card {
+    transform:  rotateZ(0) translateX(0) translateY(0);
+  }
+  
+  .red > .card {
+    transform:  rotateZ(0) translateX(0) translateY(0);
+  }
+
+  .green > .card {
+    transform:  rotateZ(0) translateX(0) translateY(0);
+  }
+
+  .blue > .card {
+    transform:  rotateZ(0) translateX(0) translateY(0);
+  }
+}
