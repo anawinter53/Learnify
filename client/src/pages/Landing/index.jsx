@@ -18,7 +18,7 @@ export default function Landing() {
           <h1 className={styles["slogan"]}>
             Join our community of learners today and unlock your full potential.
           </h1>
-          <NavLink to="/signup" className={styles["btn"]}>
+          <NavLink to="/signup" className={styles["btn"]} role='button'>
             Get Started!
           </NavLink>
         </div>

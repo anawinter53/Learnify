@@ -1,5 +1,7 @@
 export default function Quizzes() {
   return (
-    <div>Quizzes</div>
+    <div>
+      <h1>Quizzes</h1>
+    </div>
   )
 }
