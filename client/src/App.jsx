@@ -10,6 +10,7 @@ import {
   Quizzes,
   Flashcards,
   Friends,
+  Logout,
 } from "./pages";
 import { Shapes } from "./components";
 import { useAuth } from "./context/AuthContext";
@@ -29,6 +30,7 @@ export default function App() {
           <Route index element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/logout" element={<Logout />} />
         </Route>
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<SideNav />}>

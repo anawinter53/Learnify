@@ -1,4 +1,4 @@
-.dashboard {
+.quizzes {
   margin-left: 200px;
   height: 100vh;
   display: flex;
@@ -21,14 +21,10 @@
   color: var(--font-colour);
 }
 
-.content-heading {
-  padding: 20px 0;
-  color: var(--font-colour);
-}
-
-.top7-quizzes, .top7-flashcards {
+.content {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-gap: 30px;
 }
 
