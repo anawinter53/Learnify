@@ -8,13 +8,16 @@ import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers)
 
 import LandingNav from '.'
+import { AuthProvider } from '../../context/AuthContext';
 
 describe('LandingNav Component', () => {
     beforeEach(() => {
         render(
-            <BrowserRouter>
-                <LandingNav />
-            </BrowserRouter>
+            <AuthProvider>
+                <BrowserRouter>
+                    <LandingNav />
+                </BrowserRouter>
+            </AuthProvider>
         )
     })
     
