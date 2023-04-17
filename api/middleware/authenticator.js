@@ -1,6 +1,6 @@
 const Token = require("../models/Token")
 
-const authentictor = async (req, res, next) => {
+const authenticator = async (req, res, next) => {
     try {
         const userToken = req.headers["authorisation"]
         if (!userToken) throw new Error("User not authenticated.")
