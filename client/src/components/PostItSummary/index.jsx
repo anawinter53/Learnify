@@ -8,7 +8,7 @@ const PostItSummary = forwardRef(({colour, reverse}, ref) => {
       <div className={styles["card"]}>
         <div className={styles["card-heading"]}></div>
       </div>
-      <p>
+      <p className={reverse ? styles["reverse"] : ""}>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam sapiente
         dolores corporis repudiandae repellat! Numquam assumenda voluptas
         possimus doloremque ipsa, esse maiores eos consequuntur unde aliquam
