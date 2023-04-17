@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --forceExit --coverage",
+    "coverage": "jest --forceExit --coverage --coverageReporters='text-summary'",
     "setup-db": "node ./config/setup-db.js",
     "dev": "nodemon -L index.js"
   },
@@ -22,6 +23,8 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.22",
+    "supertest": "^6.3.3"
   }
 }

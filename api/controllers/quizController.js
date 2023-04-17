@@ -13,8 +13,10 @@ async function getBySubject(req, res) {
     try {
         const subject = req.params.subject;
         const quiz = await Quiz.getBySubject(subject);
+        console.log("hello")
         res.status(200).json(quiz);
     } catch (err) {
+        console.log("error");
         res.status(404).json({ error: err.message });
     }
 }
