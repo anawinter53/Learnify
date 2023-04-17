@@ -24,7 +24,7 @@ class Flashcard {
     }
 
     static async getById(id) {
-        const response = await db.query("SELECT from flashcard WHERE card_id = $1;", [id]);
+        const response = await db.query("SELECT * FROM flashcard WHERE card_id = $1;", [id]);
         if (response.rows.length != 1) {
             throw new Error("No flashcards available");
         }
