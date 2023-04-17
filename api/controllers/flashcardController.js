@@ -51,4 +51,14 @@ async function getByUserId(req, res) {
     }
 }
 
-module.exports = { index, show, create, destroy, getByUserId}
+async function getBySubject(req, res) {
+    try {
+        const subject = req.params.subject;
+        const flashcards = await Flashcard.getBySubject(subject);
+        res.status(200).json(flashcards);
+    } catch (err) {
+        res.status(404).json({ error: err.message });
+    }
+}
+
+module.exports = { index, show, create, destroy, getByUserId, getBySubject}

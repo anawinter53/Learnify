@@ -1,4 +1,5 @@
 const db = require("../config/postgresdb");
+console.log(db);
 
 class Flashcard {
     constructor({
@@ -12,13 +13,13 @@ class Flashcard {
         this.collection = collection;
         this.question = question;
         this.fact = fact;
-        this.user_id = user_id
+        this.user_id = user_id;
     }
 
     static async getAll() {
-        const response = await db.query("SELECT * FROM flashcard");
+        const response = await db.query("SELECT * FROM flashcard;");
         if (response.rows.length === 0) {
-            throw new error ("No flashcards available");
+            throw new Error ("No flashcards available");
         }
         return response.rows.map((f) => new Flashcard(f));
     }
@@ -26,19 +27,26 @@ class Flashcard {
     static async getById(id) {
         const response = await db.query("SELECT from flashcard WHERE card_id = $1;", [id]);
         if (response.rows.length != 1) {
-            throw new Error("Unable to locate flashcard");
+            throw new Error("No flashcards available");
         }
         return new Flashcard(response.rows[0]);
     }
 
     static async getByUserId(id) {
-        const reponse = await db.query("SELECT * FROM flashcard where user_id = $1;",
+        const response = await db.query("SELECT * FROM flashcard where user_id = $1;",
         [id]
         )
         if (response.rows.length < 1) {
             throw new Error("No flashcards available")
         }
-        return responses.rows.map((a) => new Flashcard(a));
+        return response.rows.map((a) => new Flashcard(a));
+    }
+    static async getBySubject(subject) {
+        const response = await db.query("SELECT * FROM flashcard WHERE collection = $1", [subject]);
+        if (response.rows.length === 0) {
+            throw new Error("No flashcards available for this subject");
+        }
+        return response.rows.map((f) => new Flashcard(f));
     }
 
     static async create(data, user_id) {
