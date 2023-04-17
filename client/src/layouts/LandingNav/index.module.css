@@ -56,7 +56,7 @@
   color: var(--font-colour);
 }
 
-.login, .signup {
+.login, .signup, .logout {
   float: right;
   font-size: 1.2rem;
 }
