@@ -37,7 +37,7 @@ class Quiz {
 
     static async getBySubject(subject) {
         const response = await db.query("SELECT * FROM quiz WHERE quiz = $1", [subject]);
-        if (response.rows.length === 0) {
+        if (response.rows.length == 0) {
             throw new Error("No Quizzes available for this subject");
         }
         return response.rows.map((q) => new Quiz(q));
