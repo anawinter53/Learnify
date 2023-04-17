@@ -6,13 +6,13 @@ import { screen, render, cleanup } from '@testing-library/react';
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import Shapes from '.';
+import Dashboard from '.';
 
-describe("Shapes Component", () => {
+describe("Dashboard Page", () => {
     beforeEach(() => {
         render(
             <BrowserRouter>
-                <Shapes />
+                <Dashboard />
             </BrowserRouter>
         )
     })
@@ -21,10 +21,10 @@ describe("Shapes Component", () => {
         cleanup();
     })
 
-    it("Displays a card", () => {
-        const card = screen.getByRole('card')
-
-        expect(card).toBeInTheDocument();
+    it("Displays a heading", () => {
+        const heading = screen.getByRole('heading')
+        expect(heading).toBeInTheDocument();
+        expect(heading.textContent).toBe("Welcome back User")
     })
 
 })
