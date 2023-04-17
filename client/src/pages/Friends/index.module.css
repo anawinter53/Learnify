@@ -72,7 +72,7 @@
 
 .top3-container {
   width: 100%;
-  height: 500px;
+  height: 1200px;
   display: flex;
   justify-content: space-between;
 }
@@ -105,4 +105,38 @@
 
 .top3:hover {
   transform: scale(1.05) translateY(70%);
+}
+
+.friends-leaderboard {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 50px;
+  gap: 40px;
+}
+
+.friend-score {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  color: var(--font-colour);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

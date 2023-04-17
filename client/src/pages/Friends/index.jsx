@@ -41,6 +41,32 @@ export default function Friends() {
           <div className={styles["top1"]}></div>
           <div className={styles["top3"]}></div>
         </div>
+        <div className={styles["friends-leaderboard"]}>
+          <div className={styles["friend-score"]}>
+            <p>Friend1</p>
+            <p>100</p>
+          </div>
+          <div className={styles["friend-score"]}>
+            <p>Friend1</p>
+            <p>100</p>
+          </div>
+          <div className={styles["friend-score"]}>
+            <p>Friend1</p>
+            <p>100</p>
+          </div>
+          <div className={styles["friend-score"]}>
+            <p>Friend1</p>
+            <p>100</p>
+          </div>
+          <div className={styles["friend-score"]}>
+            <p>Friend1</p>
+            <p>100</p>
+          </div>
+          <div className={styles["friend-score"]}>
+            <p>Friend1</p>
+            <p>100</p>
+          </div>
+        </div>
       </div>
     </div>
   );
