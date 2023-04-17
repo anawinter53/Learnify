@@ -23,7 +23,6 @@ describe("LoginForm Component", () => {
 
     it("Displays a form", () => {
         const form = screen.getByRole('form')
-
         expect(form).toBeInTheDocument();
     })
 

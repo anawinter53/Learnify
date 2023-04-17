@@ -28,9 +28,14 @@ describe('LandingNav Component', () => {
         expect(nav.childNodes.length).toBe(2)
     })
 
-    
+
 
     // it('Shows nav when scrolling', async () => {
     //     window.scrollTo = 110
+    // })
+
+
+    // it('Should show sign up button', () => {
+
     // })
 })
