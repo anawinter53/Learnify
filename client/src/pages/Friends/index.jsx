@@ -4,7 +4,7 @@ export default function Friends() {
   return (
     <div className={styles["friends"]}>
       <div className={styles["container"]}>
-        <h1 className={styles["title"]}>Friends</h1>
+        <h1 className={styles["title"]} role='headingone'>Friends</h1>
         <div className={styles["inner-container"]}>
           <div className={styles["content"]}>
             <div className={styles["quiz-card"]}></div>
