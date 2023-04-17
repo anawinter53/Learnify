@@ -22,9 +22,9 @@ describe("Dashboard Page", () => {
     })
 
     it("Displays a heading", () => {
-        const heading = screen.getByRole('heading')
-        expect(heading).toBeInTheDocument();
-        expect(heading.textContent).toBe("Welcome back User")
+        const heading = screen.getAllByRole('heading')
+        expect(heading[0]).toBeInTheDocument();
+        expect(heading[0].textContent).toBe("Welcome back User")
     })
 
 })
