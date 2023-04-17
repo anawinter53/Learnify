@@ -8,13 +8,16 @@ import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers)
 
 import EmbeddedNav from '.'
+import { AuthProvider } from '../../context/AuthContext';
 
 describe('EmbeddedNav Component', () => {
     beforeEach(() => {
         render(
-            <BrowserRouter>
-                <EmbeddedNav />
-            </BrowserRouter>
+            <AuthProvider>
+                <BrowserRouter>
+                    <EmbeddedNav />
+                </BrowserRouter>
+            </AuthProvider>
         )
     })
     
