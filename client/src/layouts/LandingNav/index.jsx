@@ -24,6 +24,7 @@ export default function LandingNav() {
     <>
       <EmbeddedNav />
       <nav
+        role='nav'
         className={styles["nav"]}
         ref={navRef}
         style={{ top: showNav ? "0" : "-100px", transition: "top 0.3s" }}
