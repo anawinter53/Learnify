@@ -1,0 +1,90 @@
+.section {
+  height: 500px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.section.reverse {
+  flex-direction: row-reverse;
+}
+
+.section p {
+  width: 70%;
+  text-align: center;
+  font-size: 2.3rem;
+  padding: 0 40px;
+  color: var(--font-colour);
+}
+
+.card {
+  width: 400px;
+  height: 400px;
+  background: palegreen;
+  position: relative;
+  border-radius: 15px;
+  transition: 0.25s;
+}
+
+.card-heading {
+  width: 100%;
+  position: absolute;
+  height: 40px;
+  top: 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+/* orange card */
+
+.orange > .card {
+  transform: rotateZ(-15deg) translateX(13px) translateY(15px);
+  background: #d47902;
+}
+
+.orange > .card > .card-heading{
+  background: #b16610;
+}
+
+/* red card */
+
+.red > .card {
+  transform: rotateZ(6deg) translateX(-20px) translateY(-5px);
+  background: rgb(243, 85, 85);
+}
+
+.red > .card > .card-heading{
+  background: rgb(170, 58, 58);
+}
+
+/* green card */
+
+.green > .card {
+  transform: rotateZ(-7deg) translateX(-20px) translateY(40px);
+  background: rgb(84, 223, 79);
+  z-index: 4;
+}
+
+.green > .card > .card-heading{
+  background: rgb(54, 167, 51);
+}
+
+/* blue card */
+
+.blue > .card {
+  transform: rotateZ(20deg) translateX(-20px) translateY(20px);
+  background: rgb(72, 84, 255);
+  z-index: 4;
+}
+
+.blue > .card > .card-heading{
+  background: rgb(55, 66, 212);
+}
+
+.card:hover {
+  transform: scale(1.15) rotateZ(0);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 10;
+}

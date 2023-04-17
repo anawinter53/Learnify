@@ -1,4 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap");
+
 * {
-  padding: 0;
+  font-family: "Inter", sans-serif;
+  --font-colour: #D7C9DD;
+  --font-colour-dark: #202020;
+  --nav-colour: #3C2970;
+}
+
+*, html {
+  scroll-behavior: smooth !important;
+}
+
+html, body, * {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #653AAA;
+}
+
+html {
+  min-height: 100vh;
+  position: relative;
 }
