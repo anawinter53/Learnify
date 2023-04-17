@@ -21,10 +21,14 @@
   color: var(--font-colour);
 }
 
-.content {
+.content-heading {
+  padding: 20px 0;
+  color: var(--font-colour);
+}
+
+.top7-quizzes, .top7-flashcards {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   grid-gap: 30px;
 }
 
