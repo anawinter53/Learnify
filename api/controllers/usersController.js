@@ -43,4 +43,26 @@ const logout = async (req, res) => {
     }
 }
 
-module.exports = {register, login, logout}
+const getUsername = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        if (!userId) throw new Error("Invali ID")
+        const result = await User.getUsername(parseInt(userId))
+        res.status(200).send(result)
+    } catch(err) {
+        res.status(400).json({error: err.message})
+    }
+}
+
+const getUsernameFromToken = async (req, res) => {
+    try{
+        const tokenId = req.params.id;
+        const token = await Token.getOneById(tokenId);
+        if (!token) throw new Error("Invalid token.")
+        res.status(200).json(token)
+    } catch(err) {
+        res.status(403).json({error: err.message})
+    }
+}
+
+module.exports = {register, login, logout, getUsername, getUsernameFromToken}

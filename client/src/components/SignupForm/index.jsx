@@ -1,27 +1,58 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
+import { useState } from "react";
 
 export default function LoginForm() {
+
+  const navigate = useNavigate()
+
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [conPassword, setConPassword] = useState("")
+
+  const signup = async (e) => {
+    e.preventDefault()
+
+    const data = { username, email, password };
+
+    if (password !== conPassword) return;
+
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
+
+    const res = await fetch(`http://localhost:8080/users/register`, options);
+    
+    if (res.ok) {
+      navigate("/login")
+    } else {
+      console.log("Something failed, very sad! :(");
+    }
+  }
+
   return (
     <div className={styles["form"]}>
       <div className={styles["form-heading"]}>
         <h1>Sign up</h1>
       </div>
-      <form role='form'>
+      <form role='form' onSubmit={signup}>
         <div className={styles["input"]}>
-          <input type="text" id="username" required />
+          <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
           <span>Username</span>
         </div>
         <div className={styles["input"]}>
-          <input type="text" id="email" required />
+          <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           <span>Email</span>
         </div>
         <div className={styles["input"]}>
-          <input type="password" id="password" required />
+          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
           <span>Password</span>
         </div>
         <div className={styles["input"]}>
-          <input type="password" id="conPassword" required />
+          <input type="password" id="conPassword" value={conPassword} onChange={(e) => setConPassword(e.target.value)} required />
           <span>Confirm Password</span>
         </div>
         <div className={styles["input"]}>
