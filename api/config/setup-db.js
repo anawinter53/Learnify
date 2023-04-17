@@ -1,7 +1,7 @@
 require("dotenv").config();
 const fs = require('fs');
 
-const {db} = require("./postgresdb.js");
+const db = require("./postgresdb.js");
 
 const sql = fs.readFileSync('./config/setup.sql').toString();
 
