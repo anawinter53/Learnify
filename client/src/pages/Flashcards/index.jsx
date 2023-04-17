@@ -1,5 +1,7 @@
 export default function Flashcards() {
   return (
-    <div>Flashcards</div>
+    <div>
+      <h1>Flashcards</h1>
+    </div>
   )
 }
