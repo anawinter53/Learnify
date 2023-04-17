@@ -8,7 +8,7 @@ expect.extend(matchers);
 
 import Dashboard from '.';
 
-describe("Dashboard Component", () => {
+describe("Dashboard Page", () => {
     beforeEach(() => {
         render(
             <BrowserRouter>

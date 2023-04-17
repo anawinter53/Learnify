@@ -8,7 +8,7 @@ expect.extend(matchers);
 
 import Friends from '.';
 
-describe("Friends Component", () => {
+describe("Friends Page", () => {
     beforeEach(() => {
         render(
             <BrowserRouter>
