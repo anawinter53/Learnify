@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import styles from "./index.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 export default function LoginForm() {
 
@@ -9,6 +10,7 @@ export default function LoginForm() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { setAuth } = useAuth()
 
   const login = async (e) => {
     e.preventDefault()
@@ -23,11 +25,11 @@ export default function LoginForm() {
 
     const res = await fetch(`http://localhost:8080/users/login`, options);
 
-    const { token } = await res.json();
-
+    const { token, authenticated } = await res.json();
     
     if (res.ok) {
-      console.log(token)
+      localStorage.setItem("token", token)
+      setAuth(authenticated)
       navigate("/dashboard")
     } else {
       console.log("Something failed, very sad! :(");
