@@ -1,5 +1,5 @@
 import styles from "./index.module.css";
-import { Categories } from "../../components";
+import { Categories, FilterLevels } from "../../components";
 
 export default function Quizzes() {
   return (
@@ -7,7 +7,10 @@ export default function Quizzes() {
       <div className={styles["container"]}>
         <h1 className={styles["title"]}>Quizzes</h1>
         <div className={styles["content"]}>
-          <Categories />
+          <FilterLevels />
+          <div className={styles["categories"]}>
+            <Categories />
+          </div>
         </div>
       </div>
     </div>
