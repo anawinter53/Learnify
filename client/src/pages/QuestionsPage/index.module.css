@@ -1,0 +1,26 @@
+.quizzes {
+    margin-left: 200px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+  }
+  
+  .container {
+    position: relative;
+    margin-left: 200px;
+  }
+  
+  .title {
+    padding-left: 40px;
+    color: var(--font-colour);
+  }
+  
+  .content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+  
