@@ -2,6 +2,7 @@ import styles from "./index.module.css";
 import { PostIt, PostItSummary } from "../../components";
 import { NavLink } from "react-router-dom";
 import { useRef } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Landing() {
 
@@ -9,6 +10,8 @@ export default function Landing() {
   const card1Ref = useRef(null)
   const card2Ref = useRef(null)
   const card3Ref = useRef(null)
+
+  const { auth } = useAuth()
 
   return (
     <div className={styles["landing"]}>
@@ -18,9 +21,8 @@ export default function Landing() {
           <h1 className={styles["slogan"]}>
             Join our community of learners today and unlock your full potential.
           </h1>
-          <NavLink to="/signup" className={styles["btn"]} role='button'>
-            Get Started!
-          </NavLink>
+          {!auth ? <NavLink to="/signup" className={styles["btn"]} role='button'>Get Started!</NavLink> : <NavLink to="/dashboard" className={styles["btn"]} role='button'>Continue to Dashboard!</NavLink>}
+          
         </div>
         <div className={styles["post-it-summary"]}>  
           <PostItSummary ref={card0Ref} colour="orange" reverse={false} />

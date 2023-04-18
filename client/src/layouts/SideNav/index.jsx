@@ -21,7 +21,6 @@ export default function SideNav() {
           Sign out
         </NavLink>
       </nav>
-
       <Outlet />
     </>
   );

@@ -9,6 +9,7 @@ import {
   Dashboard,
   Quizzes,
   Flashcards,
+  FlashcardsList,
   Friends,
   Logout,
   QuestionsPage
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="/dashboard/quizzes" element={<Quizzes />} />
             <Route path="/dashboard/quizzes/:subject" element={<QuestionsPage />} />
             <Route path="/dashboard/flashcards" element={<Flashcards />} />
+            <Route path="/dashboard/flashcards/:category" element={<FlashcardsList />} />
             <Route path="/dashboard/friends" element={<Friends />} />
           </Route>
         </Route>
