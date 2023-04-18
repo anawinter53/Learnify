@@ -1,5 +1,4 @@
 const db = require("../config/postgresdb");
-console.log(db);
 
 class Flashcard {
     constructor({
