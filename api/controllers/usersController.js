@@ -46,7 +46,7 @@ const logout = async (req, res) => {
 const getUsername = async (req, res) => {
     try {
         const userId = req.params.id;
-        if (!userId) throw new Error("Invali ID")
+        if (!userId) throw new Error("Invalid ID")
         const result = await User.getUsername(parseInt(userId))
         res.status(200).send(result)
     } catch(err) {
