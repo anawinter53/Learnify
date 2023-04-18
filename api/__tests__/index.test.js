@@ -1,15 +1,17 @@
 const api = require('../api');
 const supertest = require('supertest-session');
-const {createTestDBEnv, destroyTestDBEnv} = require('./DBtable');
+const db = require('../config/postgresdb');
 
 const request = supertest(api);
 
-describe('Flashcard routes - /flashcards', () => {
-  // create temp tables
-  beforeEach(async () => await createTestDBEnv())
+const destroyTestDBEnv = async () => {
+  await db.query('DROP TABLE IF EXISTS pg_temp.users');
+  await db.query('DROP TABLE IF EXISTS pg_temp.quiz');
+  await db.query('DROP TABLE IF EXISTS pg_temp.flashcard');
+};
 
-  // drop temporary tables
-  afterEach(async () => await destroyTestDBEnv())
+
+describe('Flashcard routes - /flashcards', () => {
 
   it('GET /flashcards/Geography - Should respond with object of flashcards from Geography category', async () => {
     const response = await request.get('/flashcards/Geography');
