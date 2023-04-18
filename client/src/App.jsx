@@ -9,6 +9,7 @@ import {
   Dashboard,
   Quizzes,
   Flashcards,
+  FlashcardsList,
   Friends,
   Logout,
 } from "./pages";
@@ -37,6 +38,7 @@ export default function App() {
             <Route index element={<Dashboard />} />
             <Route path="/dashboard/quizzes" element={<Quizzes />} />
             <Route path="/dashboard/flashcards" element={<Flashcards />} />
+            <Route path="/dashboard/flashcards/:category" element={<FlashcardsList />} />
             <Route path="/dashboard/friends" element={<Friends />} />
           </Route>
         </Route>
