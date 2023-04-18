@@ -4,8 +4,17 @@ import { useParams } from "react-router-dom"
 
 export default function FlashcardsList() {
 
-  const [flashcards, setFlashcards] = useState([])
   const { category } = useParams()
+  const [flashcards, setFlashcards] = useState([])
+  const [flippedCards, setFlippedCards] = useState([]);
+
+  function handleFlip(cardId) {
+    if (flippedCards.includes(cardId)) {
+      setFlippedCards(flippedCards.filter(id => id !== cardId));
+    } else {
+      setFlippedCards([...flippedCards, cardId]);
+    }
+  }
 
   const getData = async () => {
     const response = await fetch(`http://localhost:8080/flashcards/${category}`)
@@ -27,9 +36,14 @@ export default function FlashcardsList() {
         <div className={styles["content"]}>
           {flashcards.map((f) => {
             return (
-              <div key={f.card_id} className={styles["flashcard-card"]}>
-                <h2 className={styles["flashcard-title"]}>{f.collection}</h2>
-                <h2 className={styles["flashcard-question"]}>{f.question}</h2>
+              <div key={f.card_id} onClick={() => handleFlip(f.card_id)} className={styles["flashcard-card"]} style={{transform: flippedCards.includes(f.card_id) ? 'rotateY(180deg)' : 'none'}}>
+                <div className={styles["front"]}>
+                  <h2 className={styles["flashcard-title"]}>{f.collection}</h2>
+                  <h2 className={styles["flashcard-question"]}>{f.question}</h2>
+                </div>
+                <div className={styles["back"]}>
+                  <h2 className={styles["flashcard-answer"]}>{f.fact}</h2>
+                </div>
               </div>
             )
           })}
