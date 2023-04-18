@@ -7,13 +7,14 @@ import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
 import SignupForm, { signup } from '.';
+import { AuthProvider, setAuth } from '../../context/AuthContext';
 
 describe("SignupForm Component", () => {
     beforeEach(() => {
         render(
-            <BrowserRouter>
-                <SignupForm />
-            </BrowserRouter>
+                <BrowserRouter>
+                    <SignupForm />
+                </BrowserRouter>
         )
     })
     

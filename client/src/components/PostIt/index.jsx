@@ -1,8 +1,6 @@
 import styles from "./index.module.css";
 
 
-
-
 export default function PostIt({card0, card1, card2, card3}) {
   const scroll = (card) => {
     const headerOffset = 80;

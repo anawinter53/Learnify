@@ -31,4 +31,8 @@ describe("Quiz Question Component", () => {
     //     expect(heading).toBeInTheDocument();
     // })
 
+    // select button from dom
+    // simulate click on button with userevent (await)
+    // check the h2 has changed
+
 })
