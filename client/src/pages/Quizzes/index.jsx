@@ -18,10 +18,38 @@ export default function Quizzes() {
   }, [])
 
   return (
-    <div>
-      <h1>Quizzes</h1>
+    <div className={styles["quizzes"]}>
+      <div className={styles["container"]}>
+        <h1 className={styles["title"]}>Quizzes</h1>
       <QuizQuestion question={question}/>
       <button onClick={getQuestion}>New Question</button>
+        <div className={styles["content"]}>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+          <div className={styles["quiz-card"]}></div>
+        </div>
+      </div>
     </div>
   )
 }

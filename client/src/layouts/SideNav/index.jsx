@@ -17,7 +17,7 @@ export default function SideNav() {
             <NavLink to="/dashboard/friends" className={styles["btn"]}>Friends</NavLink>
           </div>
         </div>
-        <NavLink className={`${styles["logout"]} ${styles["btn"]}`} to="/login">
+        <NavLink className={`${styles["logout"]} ${styles["btn"]}`} to="/logout">
           Sign out
         </NavLink>
       </nav>

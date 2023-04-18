@@ -2,10 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./index.module.css";
 import { Outlet, NavLink, useLocation } from "react-router-dom";
 import { EmbeddedNav } from "../../components";
+import { useAuth } from "../../context/AuthContext";
 
 export default function LandingNav() {
   const location = useLocation();
   const [showNav, setShowNav] = useState(false);
+  const { auth } = useAuth()
   const navRef = useRef();
   
   const toggleVisible = () => {
@@ -35,13 +37,14 @@ export default function LandingNav() {
           </NavLink>
         </div>
         <div className={styles["options"]}>
-          <div className={styles["btn"]}>Button 1</div>
-          <div className={styles["btn"]}>Button 2</div>
-          <div className={styles["btn"]}>Button 3</div>
-          <div className={styles["btn"]}>Button 4</div>
+          <NavLink to="/dashboard" className={styles["btn"]}>Dashboard</NavLink>
+          <NavLink to="/dashboard/quizzes" className={styles["btn"]}>Quizzes</NavLink>
+          <NavLink to="/dashboard/flashcards" className={styles["btn"]}>Flashcards</NavLink>
+          <NavLink to="/dashboard/friends" className={styles["btn"]}>Friends</NavLink>
         </div>
         <div>
-          {location.pathname === "/login" ? (
+        {!auth ? (
+          location.pathname === "/login" ? (
             <NavLink
               className={`${styles["signup"]} ${styles["btn"]}`}
               to="/signup"
@@ -55,10 +58,14 @@ export default function LandingNav() {
             >
               Login
             </NavLink>
-          )}
+          )
+        ) : (
+          <NavLink className={`${styles["logout"]} ${styles["btn"]}`} to="/logout">
+            Sign out
+          </NavLink>
+        )}
         </div>
       </nav>
-
       <Outlet />
     </>
   );
