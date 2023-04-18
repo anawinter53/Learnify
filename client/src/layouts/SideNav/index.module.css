@@ -17,6 +17,8 @@
   padding: 20px 40px;
   border-radius: 5px;
   transition: 0.25s;
+  width: 80%;
+  text-align: center;
 }
 
 .side-nav {

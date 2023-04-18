@@ -1,4 +1,5 @@
-import styles from "./index.module.css"
+import styles from "./index.module.css";
+import { Categories } from "../../components";
 
 export default function Quizzes() {
   return (
@@ -6,32 +7,9 @@ export default function Quizzes() {
       <div className={styles["container"]}>
         <h1 className={styles["title"]}>Quizzes</h1>
         <div className={styles["content"]}>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
-          <div className={styles["quiz-card"]}></div>
+          <Categories />
         </div>
       </div>
     </div>
-  )
+  );
 }
