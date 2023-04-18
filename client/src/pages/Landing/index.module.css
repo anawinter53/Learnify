@@ -32,7 +32,7 @@
   width: 70%;
   text-align: center;
   color: #d4d4d4;
-} 
+}
 
 .btn {
   padding: 20px 30px;
@@ -48,9 +48,23 @@
 
 .btn:hover {
   background: #2c1e55;
-  transform: scale(1.03)
+  transform: scale(1.03);
 }
 
 .btn:active {
-  transform: scale(0.97)
+  transform: scale(0.97);
+}
+
+.post-it-summary {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .landing {
+    justify-content: space-between;
+  }
 }
