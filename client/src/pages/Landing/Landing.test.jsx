@@ -8,13 +8,16 @@ import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
 import Landing from '.';
+import { AuthProvider } from '../../context/AuthContext';
 
 describe("Landing page", () => {
     beforeEach(() => {
         render(
-            <BrowserRouter>
-                <Landing />
-            </BrowserRouter>
+            <AuthProvider>
+                <BrowserRouter>
+                    <Landing />
+                </BrowserRouter>
+            </AuthProvider>
         )
     })
     

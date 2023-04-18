@@ -42,7 +42,7 @@ export default function LoginForm() {
         <h1>Login</h1>
       </div>
       <form role='form' onSubmit={login}>
-        <div className={styles["input"]}>
+        <div className={styles["input"]} role='username'>
           <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
           <span>Username</span>
         </div>
