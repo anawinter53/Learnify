@@ -13,7 +13,7 @@ import { AuthProvider } from '../../context/AuthContext';
 describe('EmbeddedNav Component', () => {
     beforeEach(() => {
         render(
-            <AuthProvider>
+            <AuthProvider value={{ auth: true, setAuth }}>
                 <BrowserRouter>
                     <EmbeddedNav />
                 </BrowserRouter>
