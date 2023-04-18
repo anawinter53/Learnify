@@ -26,6 +26,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-gap: 30px;
+  padding-bottom: 20px;
 }
 
 .flashcard-card {
@@ -35,8 +36,22 @@
   height: 300px;
   border-radius: 15px;
   transition: 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  cursor: pointer;
 }
 
-.quiz-card:hover {
+.flashcard-question {
+  text-align: center;
+}
+
+.flashcard-title, .flashcard-question {
+  color: var(--font-colour-dark);
+}
+
+.flashcard-card:hover {
   transform: scale(1.05);
 }
