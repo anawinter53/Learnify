@@ -24,10 +24,10 @@ export default function Quizzes() {
     
   }, [])
 
-  function updateQuestion() {
-    setCount(count + 1)
-    setQuestion(questions[count])
-  }
+  // function updateQuestion() {
+  //   setCount(count + 1)
+  //   setQuestion(questions[count])
+  // }
 
 
 
@@ -35,8 +35,8 @@ export default function Quizzes() {
     return (
       <div className={styles["container"]}>
           <h1 className={styles["title"]}>Quizzes</h1>
-        <QuizQuestion question={question}/>
-        <button onClick={updateQuestion}>Next Question</button>
+        <QuizQuestion questions={questions}/>
+        {/* <button onClick={updateQuestion}>Next Question</button> */}
       </div>
     )
   }

@@ -1,19 +1,27 @@
 import styles from './index.module.css'
 import React, { useEffect, useState } from 'react'
 
-export default function QuizQuestion({question}) {
+export default function QuizQuestion({questions}) {
     const [answers, setAnswers] = useState([])
+    const [question, setQuestion] = useState([])
+    const [count, setCount] = useState(0)
 
-    const getAnswers = () => {
-        setAnswers([question.answer, question.fake_answer1, question.fake_answer2, question.fake_answer3].sort(() => Math.random() - 0.5));
+
+    const updateQuestion = () => {
+        setQuestion(questions[count])
+        setAnswers([questions[count].answer, questions[count].fake_answer1, questions[count].fake_answer2, questions[count].fake_answer3].sort(() => Math.random() - 0.5));
+        setCount(count + 1)
     }
 
     useEffect(() => {
-        getAnswers()
-    }, [question])
+        updateQuestion()
+        console.log(question)
+    }, [])
 
     const handleCheck = (e) => {
         console.log(e.target.className)
+        console.log(count)
+        updateQuestion()
     }
 
     return(
