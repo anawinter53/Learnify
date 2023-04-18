@@ -1,15 +1,7 @@
 const api = require('../api');
 const supertest = require('supertest-session');
-const db = require('../config/postgresdb');
 
 const request = supertest(api);
-
-const destroyTestDBEnv = async () => {
-  await db.query('DROP TABLE IF EXISTS pg_temp.users');
-  await db.query('DROP TABLE IF EXISTS pg_temp.quiz');
-  await db.query('DROP TABLE IF EXISTS pg_temp.flashcard');
-};
-
 
 describe('Flashcard routes - /flashcards', () => {
 
