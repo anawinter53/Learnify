@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { screen, render, cleanup } from '@testing-library/react';
+import { screen, render, cleanup, waitFor } from '@testing-library/react';
 
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
@@ -22,7 +22,7 @@ describe("Quiz Question Component", () => {
     })
 
     it("Displays a heading", () => {
-        const heading = screen.getByRole('heading')
+        const heading = waitFor(() => screen.getByRole('heading'))
         expect(heading).toBeInTheDocument();
     })
 
