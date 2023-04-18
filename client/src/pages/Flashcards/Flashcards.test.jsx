@@ -22,7 +22,7 @@ describe("Flashcards Page", () => {
     })
 
     it("Displays a heading", () => {
-        const heading = screen.getByRole('heading')
+        const heading = screen.getByRole('headingone')
         expect(heading).toBeInTheDocument();
         expect(heading.textContent).toBe("Flashcards")
     })
