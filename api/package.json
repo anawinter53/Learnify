@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "jest --forceExit --coverage",
+    "coverage": "jest --forceExit --coverage --coverageReporters='text-summary'",
     "setup-db": "node ./config/setup-db.js",
-    "dev": "nodemon -L index.js",
-    "test": "jest . --forceExit --watchAll",
-    "coverage": "jest --forceExit --coverage"
+    "dev": "nodemon -L index.js"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +19,8 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "live-server": "^1.2.2",
-    "pg": "^8.10.0"
+    "pg": "^8.10.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "jest": "^29.5.0",

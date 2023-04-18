@@ -28,10 +28,33 @@ describe('LandingNav Component', () => {
         expect(nav.childNodes.length).toBe(2)
     })
 
-    // it('Changes location when a navlink is clicked', async () => {
-    //     expect(window.location.href).not.toContain('/login');
-    //     const login = screen.getByText('Login');
-    //     await userEvent.click(login)
-    //     expect(window.location.href).toContain('/login');
+    // it("Scrolls to the correct position on card click", async () => {
+    //     const cards = screen.getAllByRole("card");
+        
+    //     const headerOffset = 80;
+    //     const elementPosition = 954;
+    //     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
+    //     window.scrollTo = vi.fn();
+    //     fireEvent.click(cards[0]);
+      
+    //     await new Promise((resolve) => setTimeout(resolve, 1000));
+      
+    //     expect(window.scrollTo).toHaveBeenCalledWith({
+    //       top: expect.any(Number),
+    //       behavior: "smooth",
+    //     });
+      
+    //     expect(elementPosition).toBeGreaterThan(headerOffset);
+    //     expect(offsetPosition).toBeGreaterThan(window.pageYOffset);
+    //   });
+
+    // it('Shows nav when scrolling', async () => {
+    //     window.scrollTo = 110
+    // })
+
+
+    // it('Should show sign up button', () => {
+
     // })
 })

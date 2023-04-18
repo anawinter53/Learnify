@@ -1,7 +1,8 @@
 DROP TABLE IF EXISTS quiz;
 DROP TABLE IF EXISTS flashcard;
 DROP TABLE IF EXISTS score;
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS token;
+DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users (
   user_id INT GENERATED ALWAYS AS IDENTITY,
@@ -51,4 +52,11 @@ CREATE TABLE score (
   FOREIGN KEY (username) REFERENCES users("username")
 );
 
-INSERT INTO score (username, score, score_out_of) VALUES ('admin', 0, 0), ('users', 0, 0);
+CREATE TABLE token (
+  token_id INT GENERATED ALWAYS AS IDENTITY,
+  user_id INT NOT NULL,
+  token CHAR(36) UNIQUE NOT NULL,
+  PRIMARY KEY (token_id),
+  FOREIGN KEY (user_id) REFERENCES users("user_id")
+)
+

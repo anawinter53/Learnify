@@ -7,13 +7,16 @@ import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
 import LoginForm from '.';
+import { AuthProvider } from '../../context/AuthContext';
 
 describe("LoginForm Component", () => {
     beforeEach(() => {
         render(
-            <BrowserRouter>
-                <LoginForm />
-            </BrowserRouter>
+            <AuthProvider>
+                <BrowserRouter>
+                    <LoginForm />
+                </BrowserRouter>
+            </AuthProvider>
         )
     })
     
@@ -23,7 +26,6 @@ describe("LoginForm Component", () => {
 
     it("Displays a form", () => {
         const form = screen.getByRole('form')
-
         expect(form).toBeInTheDocument();
     })
 
