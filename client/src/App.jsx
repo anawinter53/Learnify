@@ -11,6 +11,7 @@ import {
   Flashcards,
   Friends,
   Logout,
+  QuestionsPage
 } from "./pages";
 import { Shapes } from "./components";
 import { useAuth } from "./context/AuthContext";
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/dashboard" element={<SideNav />}>
             <Route index element={<Dashboard />} />
             <Route path="/dashboard/quizzes" element={<Quizzes />} />
+            <Route path="/dashboard/quizzes/:subject" element={<QuestionsPage />} />
             <Route path="/dashboard/flashcards" element={<Flashcards />} />
             <Route path="/dashboard/friends" element={<Friends />} />
           </Route>
