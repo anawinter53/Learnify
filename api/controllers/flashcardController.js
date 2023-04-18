@@ -1,4 +1,4 @@
-const Flashcard = require("../models/flashcardModel.js");
+const Flashcard = require("../models/Flashcard.js");
 
 async function index (req, res) {
     try {
