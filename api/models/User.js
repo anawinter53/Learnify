@@ -31,17 +31,18 @@ class User {
         if (response.rows.length != 1) {
             throw new Error("Unable to locate user.")
         }
-        return new User(response.rows[0])
+        return response.rows[0].username;
     }
 
     static async checkIfAdmin(id) {
-        const response =await db.query("SELECT isAdmin FROM users WHERE user_id = $1;", [id])
+        const response = await db.query("SELECT isadmin FROM users WHERE user_id = $1;", [id])
         if (response.rows.length != 1) {
             throw new Error("Unable to locate user.")
         }
-
-        return response.rows[0].isAdmin;
+    
+        return response.rows[0].isadmin;
     }
+    
 
     static async create(data) {
         const { username, email, password } = data;
