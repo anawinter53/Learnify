@@ -12,6 +12,7 @@ import { CategoryProvider, useCategory, category, setCategory } from "../../cont
 
 describe("Categories Component", () => {
     beforeEach(() => {
+        // const { category } = useCategory();
 
         render(
             <CategoryProvider value={{ category, setCategory }}>
