@@ -7,18 +7,16 @@ import userEvent from '@testing-library/user-event'
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import Questions from '.';
-import { AuthProvider } from '../../context/AuthContext';
-
+import Quizzes from '.';
 
 
 describe("Questions page", () => {
     const { subject } = useParams()
-    
+
     beforeEach(() => {
         render(
-                <BrowserRouter>
-                    <Questions subject={subject}/>
+                <BrowserRouter subject='subject'>
+                    <Quizzes/>
                 </BrowserRouter>
         )
     })

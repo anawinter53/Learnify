@@ -13,7 +13,7 @@ import { AuthProvider, setAuth } from '../../context/AuthContext';
 describe('EmbeddedNav Component', () => {
     beforeEach(() => {
         render(
-            <AuthProvider value={{ auth: true, setAuth }}>
+            <AuthProvider auth='true'>
                 <BrowserRouter>
                     <EmbeddedNav />
                 </BrowserRouter>
@@ -53,7 +53,7 @@ describe('EmbeddedNav Component', () => {
 
 
 
-    
+
     // it('Logs you out when logout is clicked', async() => {
     //     expect(window.location.href).not.toContain('/login');
 

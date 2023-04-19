@@ -15,7 +15,7 @@ describe("Categories Component", () => {
         // const { category } = useCategory();
 
         render(
-            <CategoryProvider value={{ category, setCategory }}>
+            <CategoryProvider category='category'>
                 <BrowserRouter>
                     <Categories />
                 </BrowserRouter>
@@ -32,4 +32,9 @@ describe("Categories Component", () => {
         waitFor(() => expect(heading).toBeInTheDocument())
     })
 
+    it('Returns 9 cards', async () => {
+        const cards = screen.findAllByRole('card')
+        waitFor(() => expect(cards[0]).toBeInTheDocument())
+        waitFor(() => expect(cards).toHaveLength(9))
+    })
 })

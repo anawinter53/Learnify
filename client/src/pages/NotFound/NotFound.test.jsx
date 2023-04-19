@@ -23,10 +23,10 @@ describe("NotFound page", () => {
         cleanup();
     })
 
-    it("Displays a heading", () => {
+    it("Displays a heading", async() => {
         const heading = screen.getByRole('heading')
-        expect(heading).toBeInTheDocument();
-        // waitFor(() => expect(heading.textContent).toBe("404: Page not found"))
+        waitFor(() => expect(heading).toBeInTheDocument());
+        waitFor(() => expect(heading.textContent).toBe("404: Page not found"))
     })
 
 })

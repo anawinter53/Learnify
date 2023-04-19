@@ -60,7 +60,7 @@ describe("Quiz Question Component", () => {
         render(
             <CategoryContext.CategoryProvider category="category">
                 <BrowserRouter>
-                    <QuizQuestion questions={questions}/>
+                    <QuizQuestion questions='questions'/>
                 </BrowserRouter>
             </CategoryContext.CategoryProvider>
                 
