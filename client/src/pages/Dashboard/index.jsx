@@ -56,15 +56,14 @@ export default function Dashboard() {
                     }}
                   >
                     
+                    <button className={styles["favoriteBtn"]}onClick={(e) => handleFavorites(e, f.card_id)}>★</button>
                     <div className={styles["front"]}>
                       <h2 className={styles["flashcard-question"]}>
                         {f.question}
                       </h2>
-                      <button className={styles["favoriteBtn"]} onClick={() => handleFavorites(f.card_id)}>Favorite</button>
                     </div>
                     <div className={styles["back"]}>
                       <h2 className={styles["flashcard-answer"]}>{f.fact}</h2>
-                      <button className={styles["favoriteBtn"]} onClick={() => handleFavorites(f.card_id)}>Favorite</button>
                     </div>
                   </div>
                 );
