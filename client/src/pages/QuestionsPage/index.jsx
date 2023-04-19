@@ -3,7 +3,7 @@ import { QuizQuestion } from "../../components";
 import styles from "./index.module.css"
 import { useParams } from "react-router-dom";
 
-export default function Quizzes() {
+export default function QuestionsPage() {
   const [loading, setLoading] = useState(true)
   const [questions, setQuestions] = useState([])
   const { subject } = useParams()

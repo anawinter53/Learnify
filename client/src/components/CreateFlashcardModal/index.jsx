@@ -69,7 +69,7 @@ export default function CreateFlashcardModal({ showModal, setShowModal, getData 
       className={styles["overlay"]}
       style={{ display: showModal ? "flex" : "none" }}
     >
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} role='form'>
         <div className={styles["create-flashcard"]} style={{ transform: isFlipped ? "rotateY(180deg)" : "none" }} onClick={handleFlip}>
           <div className={styles["front"]}>
             <select value={subject} onChange={handleSubjectChange} onClick={handleInputClick} name="subjects">

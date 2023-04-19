@@ -10,7 +10,7 @@ export default function FilterLevels({level, setLevel}) {
 
   return (
     <div className={styles["filter"]}>
-      <div className={styles["container"]}>
+      <div className={styles["container"]} role='container'>
         <p>Select level to revise:</p>
         <div className={styles["level-radio-container"]}>
           {/* <select

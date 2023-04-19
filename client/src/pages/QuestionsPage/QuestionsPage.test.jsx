@@ -7,7 +7,7 @@ import userEvent from '@testing-library/user-event'
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import Quizzes from '.';
+import QuestionsPage from '.';
 
 
 describe("Questions page", () => {
@@ -16,7 +16,7 @@ describe("Questions page", () => {
     beforeEach(() => {
         render(
                 <BrowserRouter subject='subject'>
-                    <Quizzes/>
+                    <QuestionsPage/>
                 </BrowserRouter>
         )
     })
@@ -28,7 +28,7 @@ describe("Questions page", () => {
     it("Displays a heading", async () => {
         const heading =  screen.getByRole('heading')
         waitFor(() => expect(heading).toBeInTheDocument());
-        waitFor(() => expect(heading.textContent).toBe("404: Page not found"))
+        waitFor(() => expect(heading.textContent).toBe("Quizzes"))
     })
 
 })
