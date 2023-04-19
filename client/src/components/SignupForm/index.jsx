@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
 import { useState } from "react";
 
-export default function LoginForm() {
+export default function SignupForm() {
 
   const navigate = useNavigate()
 
@@ -56,7 +56,7 @@ export default function LoginForm() {
           <span>Confirm Password</span>
         </div>
         <div className={styles["input"]}>
-          <button className={styles["btn"]} type="submit">Submit</button>
+          <button className={styles["btn"]} type="submit" role='submit'>Submit</button>
         </div>
         <NavLink className={styles["redirect-login"]} to="/login">Already have an account? Sign in</NavLink>
       </form>
