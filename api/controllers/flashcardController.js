@@ -95,6 +95,29 @@ async function getBySubject(req, res) {
     }
   }
 
+  async function deleteFavorite(req, res) {
+    try {
+      const userId = req.params.userId;
+      const cardId = req.params.cardId;
+      const user = await User.getOneById(userId);
+      const flashcard = await Flashcard.getById(cardId);
+  
+      if (!flashcard) {
+        return res.status(404).json({ error: 'Flashcard not found' });
+      }
+  
+      const success = await flashcard.deleteFavorite(userId, cardId);
+      if (success) {
+        res.status(200).json({ message: 'Flashcard removed from favorites' });
+      } else {
+        res.status(500).json({ error: 'Failed to remove flashcard from favorites' });
+      }
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  }
+  
+
   async function getFavoritesByUserId(req, res) {
     try {
       const id = parseInt(req.params.id);
@@ -114,4 +137,4 @@ async function getBySubject(req, res) {
   
   
 
-module.exports = { index, show, create, destroy, getByUserId, getBySubject, addFavorite, getFavoritesByUserId}
+module.exports = { index, show, create, destroy, getByUserId, getBySubject, addFavorite, getFavoritesByUserId, deleteFavorite}

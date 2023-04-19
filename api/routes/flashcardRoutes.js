@@ -13,6 +13,8 @@ flashcardRouter.post("/", flashCardController.create);
 flashcardRouter.delete("/:id", flashCardController.destroy);
 flashcardRouter.post("/favorite/user/:userId/card/:cardId", flashCardController.addFavorite);
 flashcardRouter.get("/favorite/user/:id", flashCardController.getFavoritesByUserId);
+flashcardRouter.delete("/favorite/user/:userId/card/:cardId", flashCardController.deleteFavorite);
+
 
 
 module.exports = flashcardRouter;
