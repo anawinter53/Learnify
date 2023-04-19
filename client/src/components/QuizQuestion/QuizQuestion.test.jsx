@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { BrowserRouter } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { screen, render, cleanup, waitFor } from '@testing-library/react';
@@ -7,7 +7,8 @@ import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
 import QuizQuestion from '.';
-import { CategoryProvider, useCategory } from '../../context/CategoryContext';
+import { CategoryProvider, useCategory, CategoryContext } from '../../context/CategoryContext';
+
 
 describe("Quiz Question Component", () => {
     beforeEach(() => {
@@ -57,7 +58,7 @@ describe("Quiz Question Component", () => {
           }, [])
 
         render(
-            <CategoryProvider>
+            <CategoryProvider CategoryContext={CategoryContext} category={category}>
                 <BrowserRouter>
                     <QuizQuestion questions={questions}/>
                 </BrowserRouter>
@@ -70,7 +71,7 @@ describe("Quiz Question Component", () => {
     })
 
     it("Displays a heading", () => {
-        const heading = waitFor(() => screen.getByRole('heading'))
+        const heading = waitFor(() => screen.findByRole('heading'))
         expect(heading).toBeInTheDocument();
     })
 
