@@ -90,3 +90,32 @@
   grid-gap: 30px;
   padding-bottom: 20px;
 }
+
+.options {
+  display: flex;
+  justify-content: right;
+  height: 80px;
+  gap: 40px;
+}
+
+.btn {
+  border-radius: 15px;
+  border: none;
+  background: var(--nav-colour);
+  font-size: 20px;
+  color: #d4d4d4;
+  cursor: pointer;
+  transition: 0.25s;
+  text-decoration: none;
+  width: 150px;
+  height: 50px;
+}
+
+.btn:hover {
+  background: #2c1e55;
+  transform: scale(1.03);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import styles from "./index.module.css"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 export default function FlashcardsList() {
 
   const { category } = useParams()
   const [flashcards, setFlashcards] = useState([])
   const [flippedCards, setFlippedCards] = useState([]);
+  const navigate = useNavigate()
 
   function handleFlip(cardId) {
     if (flippedCards.includes(cardId)) {
