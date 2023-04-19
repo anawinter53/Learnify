@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
 import { useState } from "react";
 
-export default function LoginForm() {
+export default function SignupForm() {
 
   const navigate = useNavigate()
 

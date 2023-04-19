@@ -64,6 +64,7 @@
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  padding: 30px;
 }
 
 .front {
@@ -89,4 +90,45 @@
   grid-template-rows: repeat(3, 1fr);
   grid-gap: 30px;
   padding-bottom: 20px;
+}
+
+.options, .create-back {
+  display: flex;
+  justify-content: right;
+  justify-content: space-between;
+  height: 80px;
+  gap: 20px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  border: none;
+  background: var(--nav-colour);
+  font-size: 20px;
+  color: #d4d4d4;
+  cursor: pointer;
+  transition: 0.25s;
+  text-decoration: none;
+  width: 150px;
+  height: 50px;
+}
+
+.btn:hover {
+  background: #2c1e55;
+  transform: scale(1.03);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: red;
+  z-index: 999;
 }
