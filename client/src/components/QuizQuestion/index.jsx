@@ -19,11 +19,10 @@ export default function QuizQuestion({questions, updateScore}) {
         setToggle(false)
         for (const o of optionsRef.current.children) {
             o.style.background = "white"
+            o.removeAttribute("disabled")
         }
         } else {
             setToggle(true)
-            const id = localStorage.getItem("user_id")
-            updateScore(id, score, questions.length)
         }
         
     }
@@ -35,26 +34,34 @@ export default function QuizQuestion({questions, updateScore}) {
     const handleCheck = (e) => {
         const options = optionsRef.current.children
         for (const o of options) {
-            console.log(o.className)
             if (o.className.includes("incorrect")) {
                 o.style.background = "red"
             } else {
                 o.style.background = "green"
             }
+            o.setAttribute("disabled", true)
         }
-        console.log(e.target.textContent)
         
         if (e.target.textContent == question.answer) {
             setScore(score + 1)
-            console.log("score increased")
         }
         
-        console.log(options)
         const timer = setTimeout(() => {
             updateQuestion()
         }, 2000)
         
     }
+
+    const handleSubmit = () => {
+        if (toggle) {
+            const id = localStorage.getItem("user_id")
+            updateScore(id, score, questions.length)
+        }
+    }
+
+    useEffect(() => {
+        handleSubmit()
+    }, [toggle])
 
     return(
         <div>

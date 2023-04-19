@@ -83,10 +83,8 @@ const show = async (req, res) => {
 const update = async (req, res) => {
     try {
         const id = parseInt(req.params.id)
-        console.log(id)
         const data = req.body
         const user = await User.getOneById(id)
-        console.log(user)
         const result = await user.update(data)
         res.status(200).json(result)
     } catch(err) {
