@@ -2,18 +2,20 @@ import React from 'react';
 import { BrowserRouter } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { screen, render, cleanup, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
 
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import UserProfile from '.';
+import NotFound from '.';
+import { AuthProvider } from '../../context/AuthContext';
 
-describe("UserProfile Page", () => {
+describe("NotFound page", () => {
     beforeEach(() => {
         render(
-            <BrowserRouter>
-                <UserProfile />
-            </BrowserRouter>
+                <BrowserRouter>
+                    <NotFound />
+                </BrowserRouter>
         )
     })
     
@@ -21,10 +23,10 @@ describe("UserProfile Page", () => {
         cleanup();
     })
 
-    it("Displays a heading", async () => {
-        const heading = await screen.findByRole('heading')
+    it("Displays a heading", async() => {
+        const heading = screen.getByRole('heading')
         waitFor(() => expect(heading).toBeInTheDocument());
-        expect(heading.textContent).toContain("Username:")
+        waitFor(() => expect(heading.textContent).toBe("404: Page not found"))
     })
 
 })

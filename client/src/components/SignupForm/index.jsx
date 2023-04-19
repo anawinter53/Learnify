@@ -56,7 +56,7 @@ export default function SignupForm() {
           <span>Confirm Password</span>
         </div>
         <div className={styles["input"]}>
-          <button className={styles["btn"]} type="submit">Submit</button>
+          <button className={styles["btn"]} type="submit" role='submit'>Submit</button>
         </div>
         <NavLink className={styles["redirect-login"]} to="/login">Already have an account? Sign in</NavLink>
       </form>

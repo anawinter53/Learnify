@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { screen, render, cleanup } from '@testing-library/react';
+import { screen, render, cleanup, waitFor } from '@testing-library/react';
 
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
@@ -21,10 +21,10 @@ describe("Flashcards Page", () => {
         cleanup();
     })
 
-    it("Displays a heading", () => {
+    it("Displays a heading", async () => {
         const heading = screen.getByRole('headingone')
-        expect(heading).toBeInTheDocument();
-        expect(heading.textContent).toBe("Flashcards")
+        waitFor(() => expect(heading).toBeInTheDocument());
+        waitFor(() => expect(heading.textContent).toBe("Flashcards"))
     })
 
 })

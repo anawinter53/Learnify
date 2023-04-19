@@ -1,19 +1,23 @@
 import React from 'react';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useParams } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { screen, render, cleanup, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
 
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import UserProfile from '.';
+import Quizzes from '.';
 
-describe("UserProfile Page", () => {
+
+describe("Questions page", () => {
+    const { subject } = useParams()
+
     beforeEach(() => {
         render(
-            <BrowserRouter>
-                <UserProfile />
-            </BrowserRouter>
+                <BrowserRouter subject='subject'>
+                    <Quizzes/>
+                </BrowserRouter>
         )
     })
     
@@ -22,9 +26,9 @@ describe("UserProfile Page", () => {
     })
 
     it("Displays a heading", async () => {
-        const heading = await screen.findByRole('heading')
+        const heading =  screen.getByRole('heading')
         waitFor(() => expect(heading).toBeInTheDocument());
-        expect(heading.textContent).toContain("Username:")
+        waitFor(() => expect(heading.textContent).toBe("404: Page not found"))
     })
 
 })
