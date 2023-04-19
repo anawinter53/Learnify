@@ -17,6 +17,8 @@ export default function FlashcardsList() {
     "#368DDD"
   ]
 
+
+
   function handleFlip(cardId) {
     if (flippedCards.includes(cardId)) {
       setFlippedCards(flippedCards.filter((id) => id !== cardId));
@@ -31,7 +33,6 @@ export default function FlashcardsList() {
     );
 
     const data = await response.json();
-    console.log(data);
 
     setFlashcards(data);
   };
@@ -44,6 +45,21 @@ export default function FlashcardsList() {
     e.stopPropagation();
     setShowModal(!showModal);
   };
+
+  const handleFavorites = async (cardId) => {
+    const userId = localStorage.getItem("user_id")
+  
+      const response = await fetch(`http://localhost:8080/flashcards/favorite/user/${userId}/card/${cardId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ cardId })
+  });
+  const data = await response.json();
+  console.log("Hello");
+  return data;
+    }
 
   return (
     <>
@@ -91,7 +107,9 @@ export default function FlashcardsList() {
                         ? "rotateY(180deg)"
                         : "none"
                     }}
+                    
                   >
+                    <button className={styles["favoriteBtn"]} onClick={() => handleFavorites(f.card_id)}>Favorite</button>
                     <div className={styles["front"]}>
                       <h2 className={styles["flashcard-title"]}>
                         {f.collection}
