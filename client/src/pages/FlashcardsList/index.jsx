@@ -36,6 +36,10 @@ export default function FlashcardsList() {
         <h1 className={styles["title"]}>{`${category} Flashcards`}</h1>
         <div className={styles["content"]}>
           <div className={styles["cards"]}>
+            <div className={styles["options"]}>
+              <button className={`${styles["flashcard-create"]} ${styles["btn"]}`}>Create</button>
+              <button onClick={() => navigate(-1)} className={`${styles["flashcard-create"]} ${styles["btn"]}`}>Back</button>
+            </div>
             {flashcards.map((f) => {
               return (
                 <div key={f.card_id} onClick={() => handleFlip(f.card_id)} className={styles["flashcard-card"]} style={{transform: flippedCards.includes(f.card_id) ? 'rotateY(180deg)' : 'none'}}>
