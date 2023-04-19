@@ -29,8 +29,7 @@ export default function UserProfile() {
     <div className={styles.userProfile}>
       <h1 className={styles.username}>Username: {user?.username}</h1>
       <p className={styles.email}>Email: {user?.email}</p>
-      <p className={styles.highscore}>High Score: {user?.highscore}</p>
-      <p className={styles.highscore}>Points: {user?.score}</p>
+      <p className={styles.highscore}> Total XP: {user?.score}</p>
       <p className={styles.highscore}>Percentage: {user?.score_out_of == 0 ? 0 : Math.round((user?.score/user?.score_out_of) * 100)} %</p>
     </div>
   );
