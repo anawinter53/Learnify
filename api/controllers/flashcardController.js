@@ -1,4 +1,5 @@
 const Flashcard = require("../models/Flashcard.js");
+const User = require('../models/User.js')
 
 async function index (req, res) {
     try {
@@ -74,6 +75,43 @@ async function getBySubject(req, res) {
       res.status(404).json({ error: err.message });
     }
   }
+
+  
+  async function addFavorite(req, res) {
+    try {
+      const userId = req.params.userId;
+      const cardId = req.params.cardId;
+      const user = await User.getOneById(userId);
+      const flashcard = await Flashcard.getById(cardId);
+  
+      if (!flashcard) {
+        return res.status(404).json({ error: 'Flashcard not found' });
+      }
+  
+      await flashcard.addFavorite(userId, cardId);
+      res.status(200).json({ message: 'Flashcard added to favorites' });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  }
+
+  async function getFavoritesByUserId(req, res) {
+    try {
+      const id = parseInt(req.params.id);
+
+      const favorites = await Flashcard.getFavoritesByUser(id);
+    
+      if (favorites.length === 0) {
+        return res.status(404).json({ error: 'No favorites found for this user' });
+      }
+    
+      res.status(200).json(favorites);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  }
+  
+  
   
 
-module.exports = { index, show, create, destroy, getByUserId, getBySubject}
+module.exports = { index, show, create, destroy, getByUserId, getBySubject, addFavorite, getFavoritesByUserId}

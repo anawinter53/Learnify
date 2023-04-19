@@ -63,6 +63,30 @@ class Flashcard {
         [this.card_id]);
         return null;
     }
+
+    static async getFavoritesByUser(id) {
+        const query = `
+          SELECT flashcard.*
+          FROM flashcard
+          INNER JOIN favorites ON favorites.card_id = flashcard.card_id
+          WHERE favorites.user_id = $1;
+        `;
+        const response = await db.query(query, [id]);
+        if (response.rows.length === 0) {
+          throw new Error("No favorite flashcards found for this user");
+        }
+        return response.rows.map((f) => new Flashcard(f));
+      }
+      async addFavorite(userId, cardId) {
+        try {
+          const query = 'INSERT INTO favorites (user_id, card_id) VALUES ($1, $2)';
+          await db.query(query, [userId, cardId]);
+          return true;
+        } catch (err) {
+          console.error(err);
+          return false;
+        }      
+    }
 }
 
 module.exports = Flashcard;

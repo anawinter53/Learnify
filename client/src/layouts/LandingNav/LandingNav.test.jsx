@@ -8,12 +8,12 @@ import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers)
 
 import LandingNav from '.'
-import { AuthProvider } from '../../context/AuthContext';
+import { AuthProvider, setAuth } from '../../context/AuthContext';
 
 describe('LandingNav Component', () => {
     beforeEach(() => {
         render(
-            <AuthProvider>
+            <AuthProvider value={{ auth: true, setAuth }}>
                 <BrowserRouter>
                     <LandingNav />
                 </BrowserRouter>
@@ -30,6 +30,10 @@ describe('LandingNav Component', () => {
         expect(nav).toBeInTheDocument();
         expect(nav.childNodes.length).toBe(2)
     })
+
+    // it('Should show sign up button', () => {
+
+    // })
 
     // it("Scrolls to the correct position on card click", async () => {
     //     const cards = screen.getAllByRole("card");
@@ -57,7 +61,5 @@ describe('LandingNav Component', () => {
     // })
 
 
-    // it('Should show sign up button', () => {
-
-    // })
+    
 })

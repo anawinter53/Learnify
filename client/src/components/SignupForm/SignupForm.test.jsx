@@ -1,19 +1,30 @@
 import React from 'react';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { screen, render, cleanup } from '@testing-library/react';
+import { screen, render, cleanup, waitFor } from '@testing-library/react';
+import UserEvent from '@testing-library/user-event'
 
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import SignupForm, { signup } from '.';
+import SignupForm from '.';
+import { AuthProvider, setAuth } from '../../context/AuthContext';
+
+const mockedUsedNavigate = vi.fn();
+const mockedUsedLocation = vi.fn();
+vi.mock('react-router-dom', async () => ({
+    ...(await vi.importActual('react-router-dom')),
+    useLocation: () => mockedUsedLocation,
+    useNavigate: () => mockedUsedNavigate,
+}));
+
 
 describe("SignupForm Component", () => {
     beforeEach(() => {
         render(
-            <BrowserRouter>
-                <SignupForm />
-            </BrowserRouter>
+                <BrowserRouter >
+                    <SignupForm />
+                </BrowserRouter>
         )
     })
     
@@ -21,33 +32,74 @@ describe("SignupForm Component", () => {
         cleanup();
     })
 
-    it("Displays a form", () => {
+    it("Displays a form and heading", () => {
         const form = screen.getByRole('form')
-
         expect(form).toBeInTheDocument();
+        const heading = screen.getByRole('heading')
+        expect(heading).toBeInTheDocument();
     })
 
+    // Does our component NOT submit when required fields are empty?
 
-    it('Signs you up when signup is clicked', async () => {
-        expect(window.location.href).not.toContain('/login');
+    it('Triggers invalid when required fields are empty', async () => {
+        const onSubmit = vi.fn()
+        const onInvalid = vi.fn()
 
-        const data = {
-            username: 'test',
-            email: 'test@test.com',
-            password: 'test'
-        }
+        render(
+            <BrowserRouter>
+            <SignupForm onInvalid={onInvalid} onSubmit={onSubmit} />
+            </BrowserRouter>
+        )
 
-        await signup(data)
+        const submitButton = screen.getAllByText('Submit')
 
-        expect(window.location.href).toContain('/login')
+        await waitFor(() => UserEvent.click(submitButton[0]))
+
+        expect(onInvalid).toHaveBeenCalledTimes(1)
+        expect(onSubmit).toHaveBeenCalledTimes(0)
     })
 
+    // it('triggers invalid when required fields are empty', async () => {
+    //     const onSubmit = jest.fn()
+    //     const onInvalid = jest.fn()
+    
+    //     render(<OurForm onInvalid={onInvalid} onSubmit={onSubmit} />)
+    
+    //     const submitButton = screen.getByText('Submit')
+    
+    //     await waitFor(() => user.click(submitButton))
+    
+    //     expect(onInvalid).toHaveBeenCalledTimes(1)
+    //     expect(onSubmit).toHaveBeenCalledTimes(0)
+    //   })
 
-    // it('Logs you out when logout is clicked', async() => {
+    
+
+
+    // Does our component submit when required fields are populated?
+    // Does our component submit, passing our (submit) handler the expected data?
+
+    // it('Signs you up when signup is clicked', async () => {
     //     expect(window.location.href).not.toContain('/login');
+    //     const signup = screen.getByRole('submit')
 
+    //     const data = {
+    //         username: 'test',
+    //         email: 'test@test.com',
+    //         password: 'test'
+    //     }
 
+    //     await signup(data)
+
+    //     expect(window.location.href).toContain('/login')
     // })
+
+
+    // select button from dom
+    // simulate click on button with userevent (await)
+    // check the h2 has changed
+
+    
 
     // ATTEMPT 0
     // This is the preferred way according to https://v1.test-utils.vuejs.org/api/wrapper/setvalue.html but still does not work

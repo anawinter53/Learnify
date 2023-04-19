@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { screen, render, cleanup, waitFor } from '@testing-library/react';
+import { screen, render, cleanup } from '@testing-library/react';
 
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import UserProfile from '.';
+import FlashcardsList from '.';
 
-describe("UserProfile Page", () => {
+describe("Flashcards List Page", () => {
     beforeEach(() => {
         render(
             <BrowserRouter>
-                <UserProfile />
+                <FlashcardsList />
             </BrowserRouter>
         )
     })
@@ -21,10 +21,10 @@ describe("UserProfile Page", () => {
         cleanup();
     })
 
-    it("Displays a heading", async () => {
-        const heading = await screen.findByRole('heading')
-        waitFor(() => expect(heading).toBeInTheDocument());
-        expect(heading.textContent).toContain("Username:")
+    it("Displays a heading", () => {
+        const heading = screen.getByRole('heading')
+        expect(heading).toBeInTheDocument();
+        expect(heading.textContent).toContain("Flashcards")
     })
 
 })
