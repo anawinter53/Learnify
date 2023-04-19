@@ -54,12 +54,13 @@ class User {
     }
 
     async destroy() {
-        const response = await db.query("DELETE FROM users WHERE username = $1;", [this.username])
+        const response = await db.query("DELETE FROM users WHERE user_id = $1;", [this.id]);
         if (response.rows.length != 1) {
-            throw new Error("Unable to locate user")
+            throw new Error("Unable to locate user");
         }
-        return response
+        return response;
     }
+    
 
     async update(data) {
         const { score, score_out_of } = data
