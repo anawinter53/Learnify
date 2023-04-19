@@ -24,8 +24,8 @@ const login = async (req, res) => {
             user["password"]
         );
         if (!authenticated) throw new Error("Incorrect credentials.")
-        const token =await Token.create(user.id)
-        res.status(200).json({ authenticated: true, token: token.token, isAdmin: user.isAdmin})
+        const token = await Token.create(user.id)
+        res.status(200).json({ authenticated: true, token: token.token, isAdmin: user.isAdmin, user_id: user.id})
     } catch(err) {
         res.status(403).json({ error: err.message})
     }
@@ -54,16 +54,31 @@ const getUsername = async (req, res) => {
     }
 }
 
-const getUsernameFromToken = async (req, res) => {
+const getUserFromToken = async (req, res) => {
     try{
         const tokenId = req.params.id;
         const token = await Token.getOneById(tokenId);
+        const user = await User.getOneByToken(tokenId);
         if (!token) throw new Error("Invalid token.")
-        res.status(200).json(token)
+        res.status(200).json(user)
     } catch(err) {
         res.status(403).json({error: err.message})
     }
 }
+const show = async (req, res) => {
+    try {
+        const UserId = req.params.id;
+        const user = await User.getOneById(UserId);
+
+        if (!user)  {
+            return res.status(404).json({ error: 'User not found' });
+          }
+          return res.json(user);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ error: 'Server error' });
+          }
+    }
 
 const update = async (req, res) => {
     try {
@@ -79,4 +94,4 @@ const update = async (req, res) => {
     }
 }
 
-module.exports = {register, login, logout, getUsername, getUsernameFromToken, update}
+module.exports = {register, login, logout, getUsername, getUsernameFromToken, show, update}
