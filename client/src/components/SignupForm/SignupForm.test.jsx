@@ -20,8 +20,6 @@ vi.mock('react-router-dom', async () => ({
 
 describe("SignupForm Component", () => {
     beforeEach(() => {
-        
-
         render(
                 <BrowserRouter >
                     <SignupForm />
@@ -46,7 +44,11 @@ describe("SignupForm Component", () => {
         const onSubmit = vi.fn()
         const onInvalid = vi.fn()
 
-        render(<SignupForm onInvalid={onInvalid} onSubmit={onSubmit} />)
+        render(
+            <BrowserRouter>
+            <SignupForm onInvalid={onInvalid} onSubmit={onSubmit} />
+            </BrowserRouter>
+        )
 
         const submitButton = screen.getByText('Submit')
 
