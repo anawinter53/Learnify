@@ -7,15 +7,9 @@ export default function FlashcardsList() {
   const { category } = useParams();
   const [flashcards, setFlashcards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
-  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-
-  const colours = [
-    "#D47902",
-    "#F26E6E",
-    "#4CB731",
-    "#368DDD"
-  ]
+  const [hasColours, setHasColours] = useState(false)
+  const navigate = useNavigate();
 
 
 
@@ -35,6 +29,9 @@ export default function FlashcardsList() {
     const data = await response.json();
 
     setFlashcards(data);
+
+    setHasColours(false)
+
   };
 
   useEffect(() => {
@@ -66,6 +63,7 @@ export default function FlashcardsList() {
       <CreateFlashcardModal
         showModal={showModal}
         setShowModal={setShowModal}
+        getData={getData}
       />
       <div className={styles["flashcards"]}>
         <div className={styles["container"]}>
@@ -111,9 +109,6 @@ export default function FlashcardsList() {
                   >
                     <button className={styles["favoriteBtn"]} onClick={() => handleFavorites(f.card_id)}>Favorite</button>
                     <div className={styles["front"]}>
-                      <h2 className={styles["flashcard-title"]}>
-                        {f.collection}
-                      </h2>
                       <h2 className={styles["flashcard-question"]}>
                         {f.question}
                       </h2>
