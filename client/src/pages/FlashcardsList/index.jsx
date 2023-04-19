@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import styles from "./index.module.css"
 import { NavLink, useNavigate, useParams } from "react-router-dom"
+import { CreateFlashcardModel } from "../../components"
 
 export default function FlashcardsList() {
 
@@ -32,6 +33,7 @@ export default function FlashcardsList() {
 
   return (
     <>
+      <CreateFlashcardModel />
       <div className={styles["flashcards"]}>
         <div className={styles["container"]}>
           <h1 className={styles["title"]}>{`${category} Flashcards`}</h1>
@@ -62,9 +64,6 @@ export default function FlashcardsList() {
             </div>
           </div>
         </div>
-      </div>
-      <div className={styles["background"]}>
-
       </div>
     </>
   )
