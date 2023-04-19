@@ -9,11 +9,11 @@
 }
 
 .correct {
-    border: 3px solid green;
+    border: 3px solid black;
 }
 
 .incorrect {
-    border: 3px solid red;
+    border: 3px solid black;
 }
 
 .options-container {
@@ -31,5 +31,5 @@ button {
   }
 
 .answered {
-    background-color: blue;
+    color: blue;
 }

@@ -12,7 +12,7 @@ export default function Quizzes() {
 
   async function getQuestions() {
     const category = subject[0].toUpperCase() + subject.substring(1)
-    const response = await fetch(`http://localhost:8080/quiz/${category}`)
+    const response = await fetch(`http://localhost:8080/quiz/${category}%20GCSE`)
     const data = await response.json()
  
     setQuestions(data)
@@ -24,11 +24,17 @@ export default function Quizzes() {
     
   }, [])
 
-  // function updateQuestion() {
-  //   setCount(count + 1)
-  //   setQuestion(questions[count])
-  // }
-
+  async function updateScore(token, score, score_out_of) {
+    const options = {
+      method: "PATCH",
+      headers: { 'Content-Type': 'application/json' },    
+      body: JSON.stringify({
+        score: score,
+        score_out_of: score_out_of
+      })
+    }
+    
+  }
 
 
   function displayQuestion() {
@@ -36,7 +42,6 @@ export default function Quizzes() {
       <div className={styles["container"]}>
           <h1 className={styles["title"]}>Quizzes</h1>
         <QuizQuestion questions={questions}/>
-        {/* <button onClick={updateQuestion}>Next Question</button> */}
       </div>
     )
   }

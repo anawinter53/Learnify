@@ -6,11 +6,12 @@ export default function QuizQuestion({questions}) {
     const [question, setQuestion] = useState([])
     const [count, setCount] = useState(0)
     const [toggle, setToggle] = useState(false)
+    const [score, setScore] = useState(0)
     const optionsRef = useRef()
 
 
 
-    const updateQuestion = () => {
+    const updateQuestion = async () => {
         if (count < questions.length) {
             setQuestion(questions[count])
         setAnswers([questions[count].answer, questions[count].fake_answer1, questions[count].fake_answer2, questions[count].fake_answer3].sort(() => Math.random() - 0.5));
@@ -21,6 +22,7 @@ export default function QuizQuestion({questions}) {
         }
         } else {
             alert("Quiz finished")
+            const response = await fetch(`127.0.0.1:8080/users/${id}`)
         }
         
     }
@@ -34,11 +36,17 @@ export default function QuizQuestion({questions}) {
         const options = optionsRef.current.children
         for (const o of options) {
             console.log(o.className)
-            if (o.className == "_correct_1inp1_21 undefined") {
-                o.style.background = "green"
-            } else {
+            if (o.className.includes("incorrect")) {
                 o.style.background = "red"
+            } else {
+                o.style.background = "green"
             }
+        }
+        console.log(e.target.textContent)
+        
+        if (e.target.textContent == question.answer) {
+            setScore(score + 1)
+            console.log("score increased")
         }
         
         console.log(options)
@@ -50,6 +58,7 @@ export default function QuizQuestion({questions}) {
 
     return(
         <div className={styles["container"]}>
+            <p>Score: {score}</p>
             <h2>{question.question}</h2>
             <div className={styles['options-container']} ref={optionsRef}>{answers.map((answer) => 
                 <button className={`${styles[answer === question.answer ? 'correct' : 'incorrect']} ${styles[toggle ? 'answered' : '']}`}  onClick={handleCheck}>{answer}</button>
