@@ -21,14 +21,6 @@
   color: var(--font-colour);
 }
 
-.content {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-gap: 30px;
-  padding-bottom: 20px;
-}
-
 .flashcard-card {
   background-color: #ccc;
   border: 1px solid #999;
@@ -50,12 +42,16 @@
   text-align: center;
 }
 
-.flashcard-title, .flashcard-question {
+.flashcard-title, .flashcard-question, .flashcard-answer {
   color: var(--font-colour-dark);
 }
 
 .flashcard-card:hover {
   transform: scale(1.05);
+}
+
+.flashcard-answer {
+  font-size: 2rem
 }
 
 .front, .back {
@@ -85,4 +81,12 @@
 
 .flashcard-card.is-flipped .back {
   transform: rotateY(0deg);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 30px;
+  padding-bottom: 20px;
 }
