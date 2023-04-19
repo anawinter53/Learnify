@@ -1,7 +1,7 @@
 const User = require('../../models/User');
 const bcrypt = require('bcrypt');
 const Token = require('../../models/Token');
-const {login, logout, register, getUsernameFromToken, getUsername} = require('../usersController')
+const {login, logout, register, getUserFromToken, getUsername} = require('../usersController')
 
 describe('register', () => {
     beforeEach(() => {
@@ -46,7 +46,7 @@ describe('register', () => {
       jest.resetAllMocks();
     });
   
-    it('should return a token and authenticated: true with a 200 status code if the credentials are correct', async () => {
+    it('should return a token, user_id and authenticated: true with a 200 status code if the credentials are correct', async () => {
       const user = {
         id: 1,
         username: 'user1',
@@ -63,8 +63,9 @@ describe('register', () => {
       await login(req, res);
   
       expect(res.status).toHaveBeenCalledWith(200);
-      expect(res.json).toHaveBeenCalledWith({ authenticated: true, token: token.token, isAdmin: user.isAdmin });
+      expect(res.json).toHaveBeenCalledWith({ authenticated: true, token: token.token, user_id: user.id, isAdmin: user.isAdmin });
     });
+
   
     it('should return a 403 status code with an error message if the credentials are incorrect', async () => {
       const user = {
@@ -189,7 +190,7 @@ describe('register', () => {
     });
   });
 
-  describe('getUsernameFromToken', () => {
+  describe('getUserFromToken', () => {
     it('should return the token with a 200 status code', async () => {
       const tokenId = 1;
       const token = { id: tokenId, token: 'abc123' };
@@ -198,7 +199,7 @@ describe('register', () => {
       const req = { params: { id: tokenId } };
       const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
   
-      await getUsernameFromToken(req, res);
+      await getUserFromToken(req, res);
   
       expect(Token.getOneById).toHaveBeenCalledWith(tokenId);
       expect(res.status).toHaveBeenCalledWith(200);
@@ -212,7 +213,7 @@ describe('register', () => {
       const req = { params: { id: tokenId } };
       const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
   
-      await getUsernameFromToken(req, res);
+      await getUserFromToken(req, res);
   
       expect(Token.getOneById).toHaveBeenCalledWith(tokenId);
       expect(res.status).toHaveBeenCalledWith(403);
