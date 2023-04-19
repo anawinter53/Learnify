@@ -58,11 +58,12 @@ describe("Quiz Question Component", () => {
         //   }, [])
 
         render(
-            <CategoryProvider CategoryContext={CategoryContext} category={category}>
+            <CategoryContext.CategoryProvider category="category">
                 <BrowserRouter>
                     <QuizQuestion questions={questions}/>
                 </BrowserRouter>
-            </CategoryProvider>
+            </CategoryContext.CategoryProvider>
+                
         )
     })
     
