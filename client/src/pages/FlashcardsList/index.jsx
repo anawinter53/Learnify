@@ -3,7 +3,6 @@ import styles from "./index.module.css"
 import { useParams } from "react-router-dom"
 
 export default function FlashcardsList() {
-
   const [flashcards, setFlashcards] = useState([])
   const { category } = useParams()
 
