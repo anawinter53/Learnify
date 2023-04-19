@@ -7,7 +7,6 @@ export default function Flashcards() {
       <div className={styles["container"]}>
         <h1 className={styles["title"]} role='headingone'>Flashcards</h1>
         <div className={styles["content"]}>
-          <FilterLevels />
           <div className={styles["categories"]}>
             <Categories />
           </div>
