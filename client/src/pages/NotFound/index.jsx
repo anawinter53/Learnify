@@ -6,7 +6,7 @@ import styles from './index.module.css';
 const NotFound = () => {
     return (
       <main className={styles.main}>
-        <h1>404: Page not found</h1>
+        <h1 className={styles.h1}>404: Page not found</h1>
         <Link to="/" className={styles.link}>Return Home</Link>
       </main>
     );
