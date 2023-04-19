@@ -27,20 +27,12 @@
   transform-origin: center;
 }
 
-.flashcard-question {
-  text-align: center;
-}
-
 .flashcard-title, .flashcard-question, .flashcard-answer {
   color: var(--font-colour-dark);
 }
 
 .flashcard-card:hover {
   transform: scale(1.05);
-}
-
-.flashcard-answer {
-  font-size: 2rem
 }
 
 .front, .back {
@@ -71,4 +63,54 @@
 
 .flashcard-card.is-flipped .back {
   transform: rotateY(0deg);
+}
+
+.front > select, .flashcard-question, .flashcard-answer, .cancel, .submit  {
+  width: 100%;
+  font-size: 20px;
+  padding: 15px;
+  font-family: 'Open Sans', sans-serif;
+  border: none;
+  outline: none;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.flashcard-question, .flashcard-answer {
+  text-align: center;
+}
+
+.front > select:focus, .flashcard-question:focus, .flashcard-answer:focus {
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.front > select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.cancel, .submit {
+  width: 150px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.cancel:hover {
+  background: #F26E6E;
+}
+
+.submit:hover {
+  background: #4CB731;
+}
+
+.options {
+  width: 80%;
+  position: absolute;
+  bottom: 25px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
