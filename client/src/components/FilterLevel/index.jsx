@@ -10,7 +10,7 @@ export default function FilterLevels() {
 
   return (
     <div className={styles["filter"]}>
-      <div className={styles["container"]}>
+      <div className={styles["container"]} role='container'>
         <div className={styles["level-dropdown-container"]}>
           <select
             value={level}

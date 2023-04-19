@@ -23,5 +23,8 @@ describe("Filter Level Component", () => {
         cleanup();
     })
 
-    
+    it('Has a container', () => {
+        const container = screen.getByRole('container')
+        expect(container).toBeInTheDocument()
+    })
 })

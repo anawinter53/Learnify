@@ -1,18 +1,29 @@
 import React from 'react';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useNavigate } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { screen, render, cleanup } from '@testing-library/react';
+import { screen, render, cleanup, waitFor } from '@testing-library/react';
 
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import SignupForm, { signup } from '.';
+import SignupForm from '.';
 import { AuthProvider, setAuth } from '../../context/AuthContext';
+
+const mockedUsedNavigate = vi.fn();
+const mockedUsedLocation = vi.fn();
+vi.mock('react-router-dom', async () => ({
+    ...(await vi.importActual('react-router-dom')),
+    useLocation: () => mockedUsedLocation,
+    useNavigate: () => mockedUsedNavigate,
+}));
+
 
 describe("SignupForm Component", () => {
     beforeEach(() => {
+        
+
         render(
-                <BrowserRouter>
+                <BrowserRouter >
                     <SignupForm />
                 </BrowserRouter>
         )
@@ -31,6 +42,20 @@ describe("SignupForm Component", () => {
 
     // Does our component NOT submit when required fields are empty?
 
+    it('Triggers invalid when required fields are empty', async () => {
+        const onSubmit = vi.fn()
+        const onInvalid = vi.fn()
+
+        render(<SignupForm onInvalid={onInvalid} onSubmit={onSubmit} />)
+
+        const submitButton = screen.getByText('Submit')
+
+        await waitFor(() => userEvent.click(submitButton))
+
+        expect(onInvalid).toHaveBeenCalledTimes(1)
+        expect(onSubmit).toHaveBeenCalledTimes(0)
+    })
+
     // it('triggers invalid when required fields are empty', async () => {
     //     const onSubmit = jest.fn()
     //     const onInvalid = jest.fn()
@@ -45,12 +70,7 @@ describe("SignupForm Component", () => {
     //     expect(onSubmit).toHaveBeenCalledTimes(0)
     //   })
 
-    // it('Triggers invalid when required fields are empty', async () => {
-    //     const onSubmit = vi.fn()
-    //     const onInvalid = vi.fn()
-
-    //     render(<SignupForm />)
-    // })
+    
 
 
     // Does our component submit when required fields are populated?
