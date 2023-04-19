@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import styles from './index.module.css'
 import React, { useEffect, useState, useRef } from 'react'
 
@@ -8,6 +9,7 @@ export default function QuizQuestion({questions, updateScore}) {
     const [toggle, setToggle] = useState(false)
     const [score, setScore] = useState(0)
     const optionsRef = useRef()
+    const navigate = useNavigate()
 
     const getColours = () => {
       const colours = {
@@ -89,7 +91,12 @@ export default function QuizQuestion({questions, updateScore}) {
     }, [toggle])
 
     return(
-      <>
+      <div className={styles["parent"]}>
+        <div className={styles["options"]}>
+          <div>
+            <button onClick={() => navigate(-1)} className={`${styles["flashcard-back"]} ${styles["btn"]}`}>Back</button>
+          </div>
+        </div>
         <div className={styles['content']}>  
           <div className={styles['question-info']}>  
             <p className={styles['score']}>Score: {score}</p>
@@ -113,7 +120,7 @@ export default function QuizQuestion({questions, updateScore}) {
           <h2>Quiz Complete!</h2>
           <p>You scored {score} / {questions.length}</p>
         </div>
-      </>
+      </div>
 
     )
 }
