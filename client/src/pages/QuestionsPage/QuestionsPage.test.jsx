@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useParams } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { screen, render, cleanup, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
@@ -10,11 +10,15 @@ expect.extend(matchers);
 import Questions from '.';
 import { AuthProvider } from '../../context/AuthContext';
 
+
+
 describe("Questions page", () => {
+    const { subject } = useParams()
+    
     beforeEach(() => {
         render(
                 <BrowserRouter>
-                    <Questions />
+                    <Questions subject={subject}/>
                 </BrowserRouter>
         )
     })
