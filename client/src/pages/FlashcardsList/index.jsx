@@ -10,6 +10,13 @@ export default function FlashcardsList() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
 
+  const colours = [
+    "#D47902",
+    "#F26E6E",
+    "#4CB731",
+    "#368DDD"
+  ]
+
   function handleFlip(cardId) {
     if (flippedCards.includes(cardId)) {
       setFlippedCards(flippedCards.filter((id) => id !== cardId));
@@ -82,7 +89,7 @@ export default function FlashcardsList() {
                     style={{
                       transform: flippedCards.includes(f.card_id)
                         ? "rotateY(180deg)"
-                        : "none",
+                        : "none"
                     }}
                   >
                     <div className={styles["front"]}>
