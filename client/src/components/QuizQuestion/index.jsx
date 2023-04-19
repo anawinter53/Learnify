@@ -69,8 +69,8 @@ export default function QuizQuestion({questions, updateScore}) {
                 <p className={styles['score']}>Score: {score}</p>
                 <h2>Question {count} :</h2>
                 <h3>{question.question}</h3>
-                <div className={styles['options-container']} ref={optionsRef}>{answers.map((answer) => 
-                    <button className={`${styles[answer === question.answer ? 'correct' : 'incorrect']}`}  onClick={handleCheck}>{answer}</button>
+                <div className={styles['options-container']} ref={optionsRef}>{answers.map((answer, i) => 
+                    <button className={`${styles[answer === question.answer ? 'correct' : 'incorrect']}`} key={i} onClick={handleCheck}>{answer}</button>
                 )}</div>
             </div>
             <div className={`${styles[toggle ? 'quiz-complete' : 'quiz-incomplete']}`}>
