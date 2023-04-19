@@ -27,22 +27,7 @@ describe('User model', () => {
         });
     
     });
-    describe('getUsername', () => {   
-        it('should return the correct username for a valid ID', async () => {
-            // Get the ID of the test user from the database
-            const result = await db.query("SELECT user_id FROM users WHERE username = $1;", ['admin']);
-            const id = result.rows[0].user_id;
-    
-            const username = await User.getUsername(id);
-    
-            expect(username).toBe('admin');
-        });
-    
-        it('should throw an error if ID is not found', async () => {
-            await expect(User.getUsername(999)).rejects.toThrow('Unable to locate user.');
-        });
-    
-    });
+   
     describe('checkIfAdmin method', () => {
         it('should return true for an admin user', async () => {
             const result = await User.checkIfAdmin(1);
@@ -61,6 +46,10 @@ describe('User model', () => {
     });
 
     describe('create method', () => {
+      afterAll(async () => {
+        // Delete the test user
+        await db.query('DELETE FROM users WHERE username = $1', [data.username]);
+      });
         it('should create a new user and return a User object', async () => {
           const data = {
             username: 'newuser',

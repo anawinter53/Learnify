@@ -2,7 +2,7 @@ const db = require("../config/postgresdb");
 
 class Quiz {
     constructor({
-        question_id,
+        quiz_id,
         subject,
         question,
         answer,
@@ -10,7 +10,7 @@ class Quiz {
         fake_answer2,
         fake_answer3
     }) {
-        this.question_id = question_id;
+        this.quiz_id = quiz_id;
         this.subject = subject;
         this.question = question;
         this.answer = answer;
@@ -28,7 +28,7 @@ class Quiz {
     }
 
     static async getById(id) {
-        const response = await db.query("SELECT * FROM quiz WHERE question_id = $1", [id]);
+        const response = await db.query("SELECT * FROM quiz WHERE quiz_id = $1", [id]);
         if (response.rows.length != 1) {
             throw new Error("No Quizzes available");
         }

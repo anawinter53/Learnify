@@ -10,9 +10,11 @@ import {
   Quizzes,
   Flashcards,
   FlashcardsList,
+  FlashcardsActivity,
   UserProfile,
   Logout,
-  QuestionsPage
+  QuestionsPage,
+  NotFound
 } from "./pages";
 import { Shapes } from "./components";
 import { useAuth } from "./context/AuthContext";
@@ -86,7 +88,9 @@ export default function App() {
             <Route path="/dashboard/quizzes/:subject" element={<QuestionsPage />} />
             <Route path="/dashboard/flashcards" element={<Flashcards />} />
             <Route path="/dashboard/flashcards/:category" element={<FlashcardsList />} />
+            <Route path="/dashboard/flashcards/:category/activity" element={<FlashcardsActivity />} />
             <Route path="/dashboard/userprofile" element={<UserProfile />} />
+            <Route path="*" element={<NotFound/>} />
           </Route>
         </Route>
       </Routes>

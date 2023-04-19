@@ -11,35 +11,37 @@ describe('Quiz model', () => {
         });
     });
     describe('getById method', () => {
-        it('should return the quiz with specified ID', async () => {
-            const mockResponse = {
-                rows: [{
-                  question_id: 1,
-                  quiz: 'History',
-                  question: 'Who was the first president of the United States?',
-                  answer: 'George Washington',
-                  fake_answer1: 'Thomas Jefferson',
-                  fake_answer2: 'John Adams',
-                  fake_answer3: 'Abraham Lincoln'
-                }]
-              };
-
-              db.query = jest.fn().mockResolvedValue(mockResponse);
-
-              const quiz = await Quiz.getById(1);
-
-              expect(db.query).toHaveBeenCalledWith('SELECT * FROM quiz WHERE question_id = $1', [1]);
-
-              expect(quiz).toEqual({
-                question_id: 1,
-                quiz: 'History',
-                question: 'Who was the first president of the United States?',
-                answer: 'George Washington',
-                fake_answer1: 'Thomas Jefferson',
-                fake_answer2: 'John Adams',
-                fake_answer3: 'Abraham Lincoln'
-              });
-            });
+      it('should return the quiz with specified ID', async () => {
+        const mockResponse = {
+          rows: [{
+            quiz_id: 3,
+            subject: 'History GCSE',
+            question: 'Who was the first president of the United States?',
+            answer: 'George Washington',
+            fake_answer1: 'Thomas Jefferson',
+            fake_answer2: 'John Adams',
+            fake_answer3: 'Abraham Lincoln'
+          }]
+        };
+    
+        db.query = jest.fn().mockResolvedValue(mockResponse);
+    
+        const quiz = await Quiz.getById(3);
+    
+        expect(db.query).toHaveBeenCalledWith('SELECT * FROM quiz WHERE quiz_id = $1', [3]);
+    
+        expect(quiz).toEqual({
+          quiz_id: 3,
+          subject: 'History GCSE',
+          question: 'Who was the first president of the United States?',
+          answer: 'George Washington',
+          fake_answer1: 'Thomas Jefferson',
+          fake_answer2: 'John Adams',
+          fake_answer3: 'Abraham Lincoln'
+        });
+      });
+    
+    
 
             it('should throw an error if no quiz is found', async () => {
                 // Create a mock response from the database with no rows
@@ -50,13 +52,13 @@ describe('Quiz model', () => {
                 db.query = jest.fn().mockResolvedValue(mockResponse);
 
                 try {
-                    await Quiz.getById(1);
+                    await Quiz.getById(3);
                   } catch (error) {
                     // Expect an error to be thrown with the correct message
                     expect(error.message).toBe('No Quizzes available');
                   }
 
-                  expect(db.query).toHaveBeenCalledWith('SELECT * FROM quiz WHERE question_id = $1', [1]);
+                  expect(db.query).toHaveBeenCalledWith('SELECT * FROM quiz WHERE quiz_id = $1', [3]);
 
         })
     })

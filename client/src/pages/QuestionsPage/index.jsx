@@ -6,8 +6,6 @@ import { useParams } from "react-router-dom";
 export default function Quizzes() {
   const [loading, setLoading] = useState(true)
   const [questions, setQuestions] = useState([])
-  const [question, setQuestion] = useState([])
-  const [count, setCount] = useState(0)
   const { subject } = useParams()
 
   async function getQuestions() {
@@ -15,7 +13,7 @@ export default function Quizzes() {
     const response = await fetch(`http://localhost:8080/quiz/${category}%20GCSE`)
     const data = await response.json()
  
-    setQuestions(data)
+    setQuestions(data.sort(() => Math.random() - 0.5).splice(0, 10))
     setLoading(false)
   }
 
@@ -24,7 +22,7 @@ export default function Quizzes() {
     
   }, [])
 
-  async function updateScore(token, score, score_out_of) {
+  async function updateScore(id, score, score_out_of) {
     const options = {
       method: "PATCH",
       headers: { 'Content-Type': 'application/json' },    
@@ -33,7 +31,8 @@ export default function Quizzes() {
         score_out_of: score_out_of
       })
     }
-    
+    const response = await fetch(`http://localhost:8080/users/${id}`, options)
+    await response.json()
   }
 
 
@@ -41,7 +40,7 @@ export default function Quizzes() {
     return (
       <div className={styles["container"]}>
           <h1 className={styles["title"]}>Quizzes</h1>
-        <QuizQuestion questions={questions}/>
+        <QuizQuestion questions={questions} updateScore={updateScore}/>
       </div>
     )
   }
