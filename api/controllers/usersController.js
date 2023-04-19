@@ -94,4 +94,4 @@ const update = async (req, res) => {
     }
 }
 
-module.exports = {register, login, logout, getUsername, getUsernameFromToken, show, update}
+module.exports = {register, login, logout, getUsername, getUserFromToken, show, update}

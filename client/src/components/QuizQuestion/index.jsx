@@ -1,7 +1,7 @@
 import styles from './index.module.css'
 import React, { useEffect, useState, useRef } from 'react'
 
-export default function QuizQuestion({questions}) {
+export default function QuizQuestion({questions, updateScore}) {
     const [answers, setAnswers] = useState([])
     const [question, setQuestion] = useState([])
     const [count, setCount] = useState(0)
@@ -21,8 +21,9 @@ export default function QuizQuestion({questions}) {
             o.style.background = "white"
         }
         } else {
-            alert("Quiz finished")
-            const response = await fetch(`127.0.0.1:8080/users/${id}`)
+            setToggle(true)
+            const id = localStorage.getItem("user_id")
+            updateScore(id, score, questions.length)
         }
         
     }
@@ -32,7 +33,6 @@ export default function QuizQuestion({questions}) {
     }, [])
 
     const handleCheck = (e) => {
-        setToggle(true)
         const options = optionsRef.current.children
         for (const o of options) {
             console.log(o.className)
@@ -57,12 +57,20 @@ export default function QuizQuestion({questions}) {
     }
 
     return(
-        <div className={styles["container"]}>
-            <p>Score: {score}</p>
-            <h2>{question.question}</h2>
-            <div className={styles['options-container']} ref={optionsRef}>{answers.map((answer) => 
-                <button className={`${styles[answer === question.answer ? 'correct' : 'incorrect']} ${styles[toggle ? 'answered' : '']}`}  onClick={handleCheck}>{answer}</button>
-            )}</div>
+        <div>
+            <div className={styles["container"]}>
+                <p className={styles['score']}>Score: {score}</p>
+                <h2>Question {count} :</h2>
+                <h3>{question.question}</h3>
+                <div className={styles['options-container']} ref={optionsRef}>{answers.map((answer) => 
+                    <button className={`${styles[answer === question.answer ? 'correct' : 'incorrect']}`}  onClick={handleCheck}>{answer}</button>
+                )}</div>
+            </div>
+            <div className={`${styles[toggle ? 'quiz-complete' : 'quiz-incomplete']}`}>
+                <h2>Quiz Complete!</h2>
+                <p>You scored {score} / {questions.length}</p>
+            </div>
         </div>
+
     )
 }
