@@ -22,13 +22,18 @@ export default function Dashboard() {
   const getUser = async () => {
     const response = await fetch(`http://localhost:8080/users/username/${localStorage.getItem("user_id")}`)
 
-    setUsername(await response.json())
+    setUsername(await response.text())
   }
 
   const getFavoritedCards = async () => {
     const response = await fetch(`http://localhost:8080/flashcards/favorite/user/${localStorage.getItem("user_id")}`)
 
-    setFlashcards(await response.json())
+    const data = await response.json()
+
+    if (!data) {
+      setFlashcards(data)
+    }
+
   }
 
   useEffect(() => {
@@ -56,15 +61,14 @@ export default function Dashboard() {
                     }}
                   >
                     
+                    <button className={styles["favoriteBtn"]} onClick={(e) => handleFavorites(e, f.card_id)}>★</button>
                     <div className={styles["front"]}>
                       <h2 className={styles["flashcard-question"]}>
                         {f.question}
                       </h2>
-                      <button className={styles["favoriteBtn"]} onClick={() => handleFavorites(f.card_id)}>Favorite</button>
                     </div>
                     <div className={styles["back"]}>
                       <h2 className={styles["flashcard-answer"]}>{f.fact}</h2>
-                      <button className={styles["favoriteBtn"]} onClick={() => handleFavorites(f.card_id)}>Favorite</button>
                     </div>
                   </div>
                 );
