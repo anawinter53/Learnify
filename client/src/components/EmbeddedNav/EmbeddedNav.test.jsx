@@ -38,6 +38,22 @@ describe('EmbeddedNav Component', () => {
         expect(window.location.href).toContain('/login');
     })
 
+    // it('Shows logout when user is logged in', async () => {
+    //     expect(window.location.href).not.toContain('/logout');
+    //     const login = screen.getByText('Login');
+    //     await userEvent.click(login)
+
+
+
+    // })
+
+    // select button from dom
+    // simulate click on button with userevent (await)
+    // check the h2 has changed
+
+
+
+    
     // it('Logs you out when logout is clicked', async() => {
     //     expect(window.location.href).not.toContain('/login');
 
