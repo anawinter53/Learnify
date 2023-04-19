@@ -26,7 +26,7 @@ class User {
         return new User(response.rows[0])
     }
 
-    static async getUsername(id) {
+    static async getUser(id) {
         const response = await db.query("SELECT username FROM users WHERE user_id = $1;", [id]);
         if (response.rows.length != 1) {
             throw new Error("Unable to locate user.")

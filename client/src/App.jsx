@@ -10,7 +10,7 @@ import {
   Quizzes,
   Flashcards,
   FlashcardsList,
-  Friends,
+  UserProfile,
   Logout,
   QuestionsPage
 } from "./pages";
@@ -86,7 +86,7 @@ export default function App() {
             <Route path="/dashboard/quizzes/:subject" element={<QuestionsPage />} />
             <Route path="/dashboard/flashcards" element={<Flashcards />} />
             <Route path="/dashboard/flashcards/:category" element={<FlashcardsList />} />
-            <Route path="/dashboard/friends" element={<Friends />} />
+            <Route path="/dashboard/userprofile" element={<UserProfile />} />
           </Route>
         </Route>
       </Routes>
