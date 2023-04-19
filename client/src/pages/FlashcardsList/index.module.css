@@ -64,6 +64,7 @@
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  padding: 30px;
 }
 
 .front {
@@ -91,14 +92,18 @@
   padding-bottom: 20px;
 }
 
-.options {
+.options, .create-back {
   display: flex;
   justify-content: right;
+  justify-content: space-between;
   height: 80px;
-  gap: 40px;
+  gap: 20px;
 }
 
 .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 15px;
   border: none;
   background: var(--nav-colour);
@@ -118,4 +123,12 @@
 
 .btn:active {
   transform: scale(0.97);
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: red;
+  z-index: 999;
 }
