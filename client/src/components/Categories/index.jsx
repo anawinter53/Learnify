@@ -13,7 +13,7 @@ export default function Categories({level, setLevel}) {
       {category.map((c) => {
         return Object.entries(c).map((key, i) => {
           return (
-            <NavLink key={i} to={(location.pathname === "/dashboard/flashcards" ? `/dashboard/flashcards/${key[1].name}` : `/dashboard/quizzes/${key[1].name}%20${level}`)} className={styles["category-card"]}>
+            <NavLink key={i} to={(location.pathname === "/dashboard/flashcards" ? `/dashboard/flashcards/${key[1].name}` : `/dashboard/quizzes/${key[1].name}`)} className={styles["category-card"]}>
               <h1 className={styles["category-title"]}>{key[1].name}</h1>
               <div className={styles["category-background"]}></div>
               <img

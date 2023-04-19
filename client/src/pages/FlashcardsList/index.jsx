@@ -23,15 +23,16 @@ export default function FlashcardsList() {
         return "#74B72E";
       case "Physics":
         return "#3861A8";
-      case "Mathematics":
+      case "Maths":
         return "#7C4DFF";
-      case "English":
+      case "English Literature":
         return "#FF6293";
-      case "Sports":
+      case "Sports Science":
         return "#FF6F00";
       case "Religious Education":
         return "#8C7851";
       default:
+        console.log(category)
         break;
     }
   }
@@ -50,6 +51,8 @@ export default function FlashcardsList() {
     );
 
     const data = await response.json();
+
+    console.log(data)
 
     setFlashcards(data);
 
