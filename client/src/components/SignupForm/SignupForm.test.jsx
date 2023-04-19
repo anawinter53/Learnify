@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, useNavigate } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { screen, render, cleanup, waitFor } from '@testing-library/react';
+import UserEvent from '@testing-library/user-event'
 
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
@@ -50,9 +51,9 @@ describe("SignupForm Component", () => {
             </BrowserRouter>
         )
 
-        const submitButton = screen.getByText('Submit')
+        const submitButton = screen.getAllByText('Submit')
 
-        await waitFor(() => userEvent.click(submitButton))
+        await waitFor(() => UserEvent.click(submitButton[0]))
 
         expect(onInvalid).toHaveBeenCalledTimes(1)
         expect(onSubmit).toHaveBeenCalledTimes(0)
