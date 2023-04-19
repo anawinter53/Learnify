@@ -93,9 +93,6 @@ export default function FlashcardsList() {
                     }}
                   >
                     <div className={styles["front"]}>
-                      <h2 className={styles["flashcard-title"]}>
-                        {f.collection}
-                      </h2>
                       <h2 className={styles["flashcard-question"]}>
                         {f.question}
                       </h2>
