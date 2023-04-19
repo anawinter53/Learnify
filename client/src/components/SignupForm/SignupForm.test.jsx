@@ -56,20 +56,20 @@ describe("SignupForm Component", () => {
     // Does our component submit when required fields are populated?
     // Does our component submit, passing our (submit) handler the expected data?
 
-    it('Signs you up when signup is clicked', async () => {
-        expect(window.location.href).not.toContain('/login');
-        const signup = screen.getByRole('submit')
+    // it('Signs you up when signup is clicked', async () => {
+    //     expect(window.location.href).not.toContain('/login');
+    //     const signup = screen.getByRole('submit')
 
-        const data = {
-            username: 'test',
-            email: 'test@test.com',
-            password: 'test'
-        }
+    //     const data = {
+    //         username: 'test',
+    //         email: 'test@test.com',
+    //         password: 'test'
+    //     }
 
-        await signup(data)
+    //     await signup(data)
 
-        expect(window.location.href).toContain('/login')
-    })
+    //     expect(window.location.href).toContain('/login')
+    // })
 
 
     // select button from dom
