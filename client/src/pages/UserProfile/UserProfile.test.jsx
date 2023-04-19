@@ -27,4 +27,22 @@ describe("UserProfile Page", () => {
         expect(heading.textContent).toContain("Username:")
     })
 
+    it("Displays user details", async () => {
+        const email = await screen.findByRole('email')
+        waitFor(() => expect(email).toBeInTheDocument())
+        expect(email.textContent).toContain("Email:")
+
+        const highscore = await screen.findByRole('highscore')
+        waitFor(() => expect(highscore).toBeInTheDocument())
+        expect(highscore.textContent).toContain("High Score:")
+
+        const points = await screen.findByRole('points')
+        waitFor(() => expect(points).toBeInTheDocument())
+        expect(points.textContent).toContain("Points:")
+
+        const percentage = await screen.findByText('percentage')
+        waitFor(() => expect(percentage).toBeInTheDocument())
+        expect(percentage.textContent).toContain("Percentage:")
+    })
+
 })
