@@ -23,7 +23,6 @@
 
 .flashcard-card {
   background-color: #ccc;
-  border: 1px solid #999;
   padding: 30px;
   height: 300px;
   border-radius: 15px;
@@ -132,4 +131,3 @@
   background: red;
   z-index: 999;
 }
-

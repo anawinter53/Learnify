@@ -27,7 +27,7 @@ async function create(req, res) {
     const data = req.body;
     const user_id = req.user_id;
   
-    if (!data.question || !data.subject) {
+    if (!data.question || !data.collection) {
       res.status(400).json({ error: 'Flashcard creation failed: missing question or subject' });
     } else {
       try {
