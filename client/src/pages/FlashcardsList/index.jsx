@@ -50,6 +50,7 @@ export default function FlashcardsList() {
               )
             })}
           </div>
+          
         </div>
       </div>
     </div>
