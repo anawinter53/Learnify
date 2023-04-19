@@ -35,9 +35,9 @@ export default function QuizQuestion({questions, updateScore}) {
         const options = optionsRef.current.children
         for (const o of options) {
             if (o.className.includes("incorrect")) {
-                o.style.background = "red"
+                o.style.background = "rgb(243, 85, 85)"
             } else {
-                o.style.background = "green"
+                o.style.background = "rgb(84, 223, 79)"
             }
             o.setAttribute("disabled", true)
         }
