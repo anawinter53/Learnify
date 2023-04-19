@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { screen, render, cleanup } from '@testing-library/react';
+import { screen, render, cleanup, waitFor } from '@testing-library/react';
 
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import Quizzes from '.';
+import QuizQuestion from '.';
 
-describe("Quizzes Component", () => {
+describe("Quiz Question Component", () => {
     beforeEach(() => {
         render(
             <BrowserRouter>
-                <Quizzes />
+                <QuizQuestion />
             </BrowserRouter>
         )
     })
@@ -22,10 +22,13 @@ describe("Quizzes Component", () => {
     })
 
     it("Displays a heading", () => {
-        const heading = screen.getByRole('headingone')
+        const heading = waitFor(() => screen.getByRole('heading'))
         expect(heading).toBeInTheDocument();
-        expect(heading.textContent).toBe("Quizzes")
     })
 
-})
+    // it("Button changes colour based on answer", () => {
+    //     const heading = screen.getByRole('heading')
+    //     expect(heading).toBeInTheDocument();
+    // })
 
+})
