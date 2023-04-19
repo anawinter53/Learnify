@@ -6,13 +6,13 @@ import { screen, render, cleanup } from '@testing-library/react';
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import Friends from '.';
+import UserProfile from '.';
 
-describe("Friends Page", () => {
+describe("UserProfile Page", () => {
     beforeEach(() => {
         render(
             <BrowserRouter>
-                <Friends />
+                <UserProfile />
             </BrowserRouter>
         )
     })

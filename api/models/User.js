@@ -1,12 +1,13 @@
 const db = require("../config/postgresdb")
 
 class User {
-    constructor({ user_id, username, email, password, correct_answers, isAdmin }) {
+    constructor({ user_id, username, email, password, score, score_out_of, isAdmin }) {
         this.id = user_id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.correct_answers = correct_answers;
+        this.score = score;
+        this.score_out_of = score_out_of
         this.isAdmin = isAdmin;
     }
 
@@ -26,7 +27,7 @@ class User {
         return new User(response.rows[0])
     }
 
-    static async getUsername(id) {
+    static async getUser(id) {
         const response = await db.query("SELECT username FROM users WHERE user_id = $1;", [id]);
         if (response.rows.length != 1) {
             throw new Error("Unable to locate user.")
@@ -53,11 +54,22 @@ class User {
     }
 
     async destroy() {
-        const response = await db.query("DELETE FROM users WHERE username = $1;", [this.username])
+        const response = await db.query("DELETE FROM users WHERE user_id = $1;", [this.id]);
         if (response.rows.length != 1) {
-            throw new Error("Unable to locate user")
+            throw new Error("Unable to locate user");
         }
-        return response
+        return response;
+    }
+    
+
+    async update(data) {
+        const { score, score_out_of } = data
+        const response = await db.query("UPDATE users SET score = $1, score_out_of = $2 WHERE user_id = $3 RETURNING *;", [score, score_out_of, this.id])
+        console.log(response.rows)
+        if (response.rows.length != 1) {
+            throw new Error("Unable to update score")
+        }
+        return new User(response.rows[0])
     }
 }
 
