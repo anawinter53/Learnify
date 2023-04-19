@@ -52,7 +52,13 @@ export default function CreateFlashcardModal({ showModal, setShowModal }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    createFlashcard();
+    setIsFlipped(false);
+
+    if (question && subject && answer) {
+      createFlashcard();
+      setShowModal(false);
+      e.target.reset()
+    }
   };
 
   return (
@@ -63,7 +69,7 @@ export default function CreateFlashcardModal({ showModal, setShowModal }) {
       <form onSubmit={handleFormSubmit}>
         <div className={styles["create-flashcard"]} style={{ transform: isFlipped ? "rotateY(180deg)" : "none" }} onClick={handleFlip}>
           <div className={styles["front"]}>
-            <select value={subject} onChange={handleSubjectChange}onClick={handleInputClick} required>
+            <select value={subject} onChange={handleSubjectChange} onClick={handleInputClick} name="subjects">
               <option disabled value="">
                 Select a subject
               </option>
@@ -79,17 +85,17 @@ export default function CreateFlashcardModal({ showModal, setShowModal }) {
                 Religious Education
               </option>
             </select>
-            <input className={styles["flashcard-question"]} type="text" placeholder="Question" onChange={handleQuestionChange} onClick={handleInputClick} required/>
+            <input className={styles["flashcard-question"]} type="text" name="question" placeholder="Question" onChange={handleQuestionChange} onClick={handleInputClick}/>
             <div className={styles["options"]}>
               <button onClick={openCloseModal} className={styles["cancel"]}>Cancel</button>
-              <button type="submit" onClick={openCloseModal} className={styles["submit"]}>Submit</button>
+              <button type="submit" className={styles["submit"]}>Submit</button>
             </div>
           </div>
           <div className={styles["back"]}>
-            <input className={styles["flashcard-answer"]} type="text" placeholder="Answer" onChange={handleAnswerChange} onClick={handleInputClick} required/>
+            <input className={styles["flashcard-answer"]} type="text" name="answer" placeholder="Answer" onChange={handleAnswerChange} onClick={handleInputClick}/>
             <div className={styles["options"]}>
               <button onClick={openCloseModal} className={styles["cancel"]}>Cancel</button>
-              <button type="submit" onClick={openCloseModal} className={styles["submit"]}>Submit</button>
+              <button type="submit" className={styles["submit"]}>Submit</button>
             </div>
           </div>
         </div>
