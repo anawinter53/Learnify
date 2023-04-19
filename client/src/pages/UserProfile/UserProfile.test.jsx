@@ -6,13 +6,13 @@ import { screen, render, cleanup } from '@testing-library/react';
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import Quizzes from '.';
+import UserProfile from '.';
 
-describe("Quizzes Component", () => {
+describe("UserProfile Page", () => {
     beforeEach(() => {
         render(
             <BrowserRouter>
-                <Quizzes />
+                <UserProfile />
             </BrowserRouter>
         )
     })
@@ -24,8 +24,7 @@ describe("Quizzes Component", () => {
     it("Displays a heading", () => {
         const heading = screen.getByRole('headingone')
         expect(heading).toBeInTheDocument();
-        expect(heading.textContent).toBe("Quizzes")
+        expect(heading.textContent).toBe("Friends")
     })
 
 })
-

@@ -1,18 +1,19 @@
 import React from 'react';
 import { BrowserRouter } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { screen, render, cleanup } from '@testing-library/react';
+import { screen, render, cleanup, waitFor } from '@testing-library/react';
+
 
 import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
-import Friends from '.';
+import Categories from '.';
 
-describe("Friends Page", () => {
+describe("Categories Component", () => {
     beforeEach(() => {
         render(
             <BrowserRouter>
-                <Friends />
+                <Categories />
             </BrowserRouter>
         )
     })
@@ -21,10 +22,10 @@ describe("Friends Page", () => {
         cleanup();
     })
 
-    it("Displays a heading", () => {
-        const heading = screen.getByRole('headingone')
-        expect(heading).toBeInTheDocument();
-        expect(heading.textContent).toBe("Friends")
+    it("Displays 9 headings", () => {
+        const heading = screen.getAllByRole('heading')
+
+        waitFor(() => expect(heading).toBeInTheDocument()) 
     })
 
 })

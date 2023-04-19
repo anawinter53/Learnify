@@ -1,4 +1,4 @@
-const Flashcard = require("../models/flashcardModel.js");
+const Flashcard = require("../models/Flashcard.js");
 
 async function index (req, res) {
     try {
@@ -13,22 +13,33 @@ async function show(req, res) {
     try {
         const id = parseInt(req.params.id) 
         const flashcard = await Flashcard.getById(id);
+        if (!flashcard) {
+            throw new Error('Flashcard not found');
+        }
         res.status(200).json(flashcard);
     } catch (err) {
         res.status(404).json({ error: err.message });
     }
 }
 
+
 async function create(req, res) {
-    try {
-        const data = req.body;
-        const user_id = req.user_id;
+    const data = req.body;
+    const user_id = req.user_id;
+  
+    if (!data.question || !data.subject) {
+      res.status(400).json({ error: 'Flashcard creation failed: missing question or subject' });
+    } else {
+      try {
         const flashcard = await Flashcard.create(data, user_id);
         res.status(201).json(flashcard);
-    } catch (err) {
-        res.status(404).json({ error: err.message });
+      } catch (err) {
+        const errorMessage = `Flashcard creation failed: ${err.message}`;
+        res.status(404).json({ error: errorMessage });
+      }
     }
-}
+  }
+  
 
 async function destroy(req, res) {
     try {
@@ -53,12 +64,16 @@ async function getByUserId(req, res) {
 
 async function getBySubject(req, res) {
     try {
-        const subject = req.params.subject;
-        const flashcards = await Flashcard.getBySubject(subject);
-        res.status(200).json(flashcards);
+      const subject = req.params.subject;
+      const flashcards = await Flashcard.getBySubject(subject);
+      if (flashcards.length === 0) {
+        return res.status(404).json({ error: `No flashcards found with the subject: ${subject}` });
+      }
+      res.status(200).json(flashcards);
     } catch (err) {
-        res.status(404).json({ error: err.message });
+      res.status(404).json({ error: err.message });
     }
-}
+  }
+  
 
 module.exports = { index, show, create, destroy, getByUserId, getBySubject}
