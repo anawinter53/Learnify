@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import styles from "./index.module.css";
 
-export default function CreateFlashcardModal({ showModal, setShowModal }) {
+export default function CreateFlashcardModal({ showModal, setShowModal, getData }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [subject, setSubject] = useState("");
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
-  const [data, setData] = useState({});
 
   function handleFlip() {
     setIsFlipped(!isFlipped);
@@ -45,6 +44,10 @@ export default function CreateFlashcardModal({ showModal, setShowModal }) {
       
       if (res.ok) {
         console.log('created')
+        setAnswer("")
+        setSubject("")
+        setQuestion("")
+        getData()
       } else {
         console.log("Something failed, very sad! :(");
       }

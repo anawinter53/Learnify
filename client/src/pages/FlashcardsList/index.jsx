@@ -7,15 +7,11 @@ export default function FlashcardsList() {
   const { category } = useParams();
   const [flashcards, setFlashcards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
-  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [hasColours, setHasColours] = useState(false)
+  const navigate = useNavigate();
 
-  const colours = [
-    "#D47902",
-    "#F26E6E",
-    "#4CB731",
-    "#368DDD"
-  ]
+
 
   function handleFlip(cardId) {
     if (flippedCards.includes(cardId)) {
@@ -31,9 +27,11 @@ export default function FlashcardsList() {
     );
 
     const data = await response.json();
-    console.log(data);
 
     setFlashcards(data);
+
+    setHasColours(false)
+
   };
 
   useEffect(() => {
@@ -45,11 +43,27 @@ export default function FlashcardsList() {
     setShowModal(!showModal);
   };
 
+  const handleFavorites = async (cardId) => {
+    const userId = localStorage.getItem("user_id")
+  
+      const response = await fetch(`http://localhost:8080/flashcards/favorite/user/${userId}/card/${cardId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ cardId })
+  });
+  const data = await response.json();
+  console.log("Hello");
+  return data;
+    }
+
   return (
     <>
       <CreateFlashcardModal
         showModal={showModal}
         setShowModal={setShowModal}
+        getData={getData}
       />
       <div className={styles["flashcards"]}>
         <div className={styles["container"]}>
@@ -91,11 +105,10 @@ export default function FlashcardsList() {
                         ? "rotateY(180deg)"
                         : "none"
                     }}
+                    
                   >
+                    <button className={styles["favoriteBtn"]} onClick={() => handleFavorites(f.card_id)}>Favorite</button>
                     <div className={styles["front"]}>
-                      <h2 className={styles["flashcard-title"]}>
-                        {f.collection}
-                      </h2>
                       <h2 className={styles["flashcard-question"]}>
                         {f.question}
                       </h2>
