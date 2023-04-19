@@ -1,10 +1,6 @@
-.flashcards {
+.activity {
   margin-left: 200px;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 25px;
+  padding: 50px;
 }
 
 .container {
@@ -14,11 +10,6 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-}
-
-.title {
-  padding-left: 40px;
-  color: var(--font-colour);
 }
 
 .flashcard-card {
@@ -44,10 +35,6 @@
 
 .flashcard-title, .flashcard-question, .flashcard-answer {
   color: var(--font-colour-dark);
-}
-
-.flashcard-card:hover {
-  transform: scale(1.05);
 }
 
 .flashcard-answer {
@@ -84,23 +71,16 @@
   transform: rotateY(0deg);
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-gap: 30px;
-  padding-bottom: 20px;
-}
-
-.options, .create-back {
+.options {
   display: flex;
-  justify-content: right;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
   height: 80px;
   gap: 20px;
 }
 
-.btn {
+.option {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,26 +90,11 @@
   font-size: 20px;
   color: #d4d4d4;
   cursor: pointer;
-  transition: 0.25s;
   text-decoration: none;
   width: 150px;
   height: 50px;
 }
 
-.btn:hover {
+.option:hover {
   background: #2c1e55;
-  transform: scale(1.03);
 }
-
-.btn:active {
-  transform: scale(0.97);
-}
-
-.background {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  background: red;
-  z-index: 999;
-}
-
