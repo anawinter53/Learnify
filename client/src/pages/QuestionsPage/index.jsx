@@ -50,4 +50,4 @@ export default function QuestionsPage() {
   return loading ? <h2><em>loading...</em></h2> : displayQuestion();
 
 
-}
+} 
