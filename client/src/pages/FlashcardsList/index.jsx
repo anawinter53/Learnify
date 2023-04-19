@@ -7,8 +7,9 @@ export default function FlashcardsList() {
   const { category } = useParams();
   const [flashcards, setFlashcards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
-  const navigate = useNavigate();
+  const [create, setCreate] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const colours = [
     "#D47902",
@@ -31,14 +32,13 @@ export default function FlashcardsList() {
     );
 
     const data = await response.json();
-    console.log(data);
 
     setFlashcards(data);
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [<div className={styles["cards"]}></div>]);
 
   const openCloseModal = (e) => {
     e.stopPropagation();
@@ -50,6 +50,8 @@ export default function FlashcardsList() {
       <CreateFlashcardModal
         showModal={showModal}
         setShowModal={setShowModal}
+        create={create}
+        setCreate={setCreate}
       />
       <div className={styles["flashcards"]}>
         <div className={styles["container"]}>

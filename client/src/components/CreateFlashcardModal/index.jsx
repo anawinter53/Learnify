@@ -6,7 +6,6 @@ export default function CreateFlashcardModal({ showModal, setShowModal }) {
   const [subject, setSubject] = useState("");
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
-  const [data, setData] = useState({});
 
   function handleFlip() {
     setIsFlipped(!isFlipped);
@@ -58,6 +57,9 @@ export default function CreateFlashcardModal({ showModal, setShowModal }) {
       createFlashcard();
       setShowModal(false);
       e.target.reset()
+      setAnswer("")
+      setSubject("")
+      setQuestion("")
     }
   };
 
