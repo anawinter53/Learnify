@@ -14,23 +14,24 @@ export default function FlashcardsList() {
   const getColours = () => {
     switch (category) {
       case "Geography":
-        return "#60B49A";
+        
+        return {"primary": "#4CB731", "secondary": "#2C8715"};
       case "History":
-        return "#A36B27";
+        return {"primary": "#F26E6E", "secondary": "#CF4B4B"};
       case "Chemistry":
-        return "#FFD300 ";
+        return {"primary": "#368DDD", "secondary": "#1D6CB5"};
       case "Biology":
-        return "#74B72E";
+        return {"primary": "#D47902", "secondary": "#B16610"};
       case "Physics":
-        return "#3861A8";
+        return {"primary": "#F26E6E", "secondary": "#CF4B4B"};
       case "Maths":
-        return "#7C4DFF";
+        return {"primary": "#368DDD", "secondary": "#1D6CB5"};
       case "English Literature":
-        return "#FF6293";
+        return {"primary": "#D47902", "secondary": "#B16610"};
       case "Sports Science":
-        return "#FF6F00";
+        return {"primary": "#E5DF46", "secondary": "#D8B603"};
       case "Religious Education":
-        return "#8C7851";
+        return {"primary": "#4CB731", "secondary": "#2C8715"};
       default:
         console.log(category)
         break;
@@ -133,7 +134,8 @@ export default function FlashcardsList() {
                       transform: flippedCards.includes(f.card_id)
                         ? "rotateY(180deg)"
                         : "none",
-                      background: getColours()
+                      background: getColours().primary,
+                      border: `6.5px solid ${getColours().secondary}`
                     }}
                   >
                     <button className={styles["favoriteBtn"]} onClick={(e) => handleFavorites(e, f.card_id)}>★</button>
