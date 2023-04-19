@@ -9,8 +9,10 @@ export default function Quizzes() {
   const { subject } = useParams()
 
   async function getQuestions() {
-    const category = subject[0].toUpperCase() + subject.substring(1)
-    const response = await fetch(`http://localhost:8080/quiz/${category}%20GCSE`)
+    console.log(subject)
+    const category = subject.toLowerCase()
+    console.log(category)
+    const response = await fetch(`http://localhost:8080/quiz/${category}`)
     const data = await response.json()
  
     setQuestions(data.sort(() => Math.random() - 0.5).splice(0, 10))
