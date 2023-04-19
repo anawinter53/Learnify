@@ -47,7 +47,7 @@ const getUsername = async (req, res) => {
     try {
         const userId = req.params.id;
         if (!userId) throw new Error("Invalid ID")
-        const result = await User.getUsername(parseInt(userId))
+        const result = await User.getUser(parseInt(userId))
         res.status(200).send(result)
     } catch(err) {
         res.status(400).json({error: err.message})

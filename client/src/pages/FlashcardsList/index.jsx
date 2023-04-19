@@ -7,16 +7,9 @@ export default function FlashcardsList() {
   const { category } = useParams();
   const [flashcards, setFlashcards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
-  const [create, setCreate] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [hasColours, setHasColours] = useState(false)
   const navigate = useNavigate();
-
-  const colours = [
-    "#D47902",
-    "#F26E6E",
-    "#4CB731",
-    "#368DDD"
-  ]
 
   function handleFlip(cardId) {
     if (flippedCards.includes(cardId)) {
@@ -34,11 +27,14 @@ export default function FlashcardsList() {
     const data = await response.json();
 
     setFlashcards(data);
+
+    setHasColours(false)
+
   };
 
   useEffect(() => {
     getData();
-  }, [<div className={styles["cards"]}></div>]);
+  }, []);
 
   const openCloseModal = (e) => {
     e.stopPropagation();
@@ -50,8 +46,7 @@ export default function FlashcardsList() {
       <CreateFlashcardModal
         showModal={showModal}
         setShowModal={setShowModal}
-        create={create}
-        setCreate={setCreate}
+        getData={getData}
       />
       <div className={styles["flashcards"]}>
         <div className={styles["container"]}>
@@ -95,9 +90,6 @@ export default function FlashcardsList() {
                     }}
                   >
                     <div className={styles["front"]}>
-                      <h2 className={styles["flashcard-title"]}>
-                        {f.collection}
-                      </h2>
                       <h2 className={styles["flashcard-question"]}>
                         {f.question}
                       </h2>
