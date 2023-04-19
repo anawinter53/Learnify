@@ -25,10 +25,10 @@ export default function LoginForm() {
 
     const res = await fetch(`http://localhost:8080/users/login`, options);
 
-    const { token, authenticated } = await res.json();
-    
+    const { token, authenticated, user_id } = await res.json();
     if (res.ok) {
       localStorage.setItem("token", token)
+      localStorage.setItem("user_id", user_id)
       setAuth(authenticated)
       navigate("/dashboard")
     } else {
