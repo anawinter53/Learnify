@@ -87,6 +87,17 @@ class Flashcard {
           return false;
         }      
     }
+
+    async destroyFavorite(userId, cardId) {
+        try {
+          const query = 'DELETE FROM favorites WHERE user_id = $1 AND card_id = $2';
+          await db.query(query, [userId, cardId]);
+          return true;
+        } catch (err) {
+          console.error(err);
+          return false;
+        }
+      }
 }
 
 module.exports = Flashcard;
