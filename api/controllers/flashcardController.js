@@ -29,7 +29,7 @@ async function create(req, res) {
     const user_id = req.user_id;
   
     if (!data.question || !data.collection) {
-      res.status(400).json({ error: 'Flashcard creation failed: missing question or subject' });
+      res.status(400).json({ error: 'Flashcard creation failed: Failed to create flashcard' });
     } else {
       try {
         const flashcard = await Flashcard.create(data, user_id);
@@ -101,13 +101,14 @@ async function getBySubject(req, res) {
       const cardId = req.params.cardId;
       const user = await User.getOneById(userId);
       const flashcard = await Flashcard.getById(cardId);
-      console.log(flashcard)
+
       if (!flashcard) {
         return res.status(404).json({ error: 'Flashcard not found' });
       }
       
-      const success = await flashcard.destroyFavorite(userId, cardId);
-      
+
+      const success = await Flashcard.destroyFavorite(userId, cardId);
+
       if (success) {
         res.status(200).json({ message: 'Flashcard removed from favorites' });
       } else {
