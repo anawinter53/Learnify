@@ -69,7 +69,7 @@ export default function Dashboard() {
     );
 
     const data = await response.json();
-  
+
     if (Array.isArray(data) && data.length > 0) {
       const cardIds = data.map((d) => d.card_id);
       setFavourites(cardIds);
@@ -86,7 +86,7 @@ export default function Dashboard() {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-        }
+        },
       }
     );
 
@@ -106,7 +106,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     getFavoritedCards();
-  }, [favourites])
+  }, [favourites]);
 
   return (
     <div className={styles["dashboard"]}>
@@ -133,15 +133,10 @@ export default function Dashboard() {
                     }}
                   >
                     <button
-                      style={{
-                        color: favourites.includes(f.card_id)
-                          ? "#FFD700"
-                          : "black",
-                      }}
-                      className={styles["favoriteBtn"]}
+                      className={`${styles["favoriteBtn"]} ${styles[favourites.includes(f.card_id) ? "favourited" : ""]}`}
                       onClick={(e) => handleFavorites(e, f.card_id)}
                     >
-                      ★
+                      {favourites.includes(f.card_id) ? "★" : "☆"}
                     </button>
                     <div className={styles["front"]}>
                       <h1 className={styles["flashcard-title"]}>
@@ -158,7 +153,9 @@ export default function Dashboard() {
                 );
               })
             ) : (
-              <p className={styles["no-flash"]}>No favourited flashcards yet...</p>
+              <p className={styles["no-flash"]}>
+                No favourited flashcards yet...
+              </p>
             )}
           </div>
         </div>

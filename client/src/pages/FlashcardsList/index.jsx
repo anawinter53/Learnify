@@ -82,7 +82,7 @@ export default function FlashcardsList() {
 
     if (response.ok) {
       if (!favourites.includes(cardId)) {
-        e.target.style.color = "#FFD700";
+        e.target.style.color = "#3c2970";
         setFavourites([...favourites, cardId]);
       } else {
         e.target.style.color = "black";
@@ -164,15 +164,10 @@ export default function FlashcardsList() {
                     }}
                   >
                     <button
-                      style={{
-                        color: favourites.includes(f.card_id)
-                          ? "#FFD700"
-                          : "black",
-                      }}
-                      className={styles["favoriteBtn"]}
+                      className={`${styles["favoriteBtn"]} ${styles[favourites.includes(f.card_id) ? "favourited" : ""]}`}
                       onClick={(e) => handleFavorites(e, f.card_id)}
                     >
-                      ★
+                      {favourites.includes(f.card_id) ? "★" : "☆"}
                     </button>
                     <div className={styles["front"]}>
                       <h2 className={styles["flashcard-question"]}>
