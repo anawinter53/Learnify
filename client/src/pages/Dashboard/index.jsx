@@ -6,6 +6,7 @@ export default function Dashboard() {
   const [username, setUsername] = useState("");
   const [flashcards, setFlashcards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
+  const [favourites, setFavourites] = useState([]);
 
   const getColours = (category) => {
     switch (category) {
@@ -61,17 +62,58 @@ export default function Dashboard() {
     setFlashcards(data);
   };
 
+  const checkFavorites = async () => {
+    const userId = localStorage.getItem("user_id");
+    const response = await fetch(
+      `http://localhost:8080/flashcards/favorite/user/${userId}/`
+    );
+
+    const data = await response.json();
+
+    if (Array.isArray(data) && data.length > 0) {
+      const cardIds = data.map((d) => d.card_id);
+      setFavourites(cardIds);
+    }
+  };
+
+  const handleFavorites = async (e, cardId) => {
+    e.stopPropagation();
+    const userId = localStorage.getItem("user_id");
+
+    const response = await fetch(
+      `http://localhost:8080/flashcards/favorite/user/${userId}/card/${cardId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (response.ok) {
+      console.log(`Success!`);
+      e.target.style.color = "black";
+      setFavourites(favourites.filter((fav) => fav !== cardId));
+    } else {
+      console.log("Something failed, very sad! :(");
+    }
+  };
+
   useEffect(() => {
     getUser();
-    getFavoritedCards();
+    checkFavorites();
   }, []);
+
+  useEffect(() => {
+    getFavoritedCards();
+  }, [favourites]);
 
   return (
     <div className={styles["dashboard"]}>
       <div className={styles["container"]}>
         <h1 className={styles["title"]}>Welcome back {username}</h1>
         <div className={styles["content"]}>
-          <h1 className={styles["content-heading"]}>Favorited flashcards</h1>
+          <h1 className={styles["content-heading"]}>Favourited flashcards</h1>
           <div className={styles["cards"]}>
             {Array.isArray(flashcards) && flashcards.length > 0 ? (
               flashcards.map((f) => {
@@ -91,10 +133,10 @@ export default function Dashboard() {
                     }}
                   >
                     <button
-                      className={styles["favoriteBtn"]}
+                      className={`${styles["favoriteBtn"]} ${styles[favourites.includes(f.card_id) ? "favourited" : ""]}`}
                       onClick={(e) => handleFavorites(e, f.card_id)}
                     >
-                      ★
+                      {favourites.includes(f.card_id) ? "★" : "☆"}
                     </button>
                     <div className={styles["front"]}>
                       <h1 className={styles["flashcard-title"]}>
@@ -111,7 +153,9 @@ export default function Dashboard() {
                 );
               })
             ) : (
-              <p>No favorited flashcards yet</p>
+              <p className={styles["no-flash"]}>
+                No favourited flashcards yet...
+              </p>
             )}
           </div>
         </div>
