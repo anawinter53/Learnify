@@ -7,6 +7,7 @@ import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
 import UserProfile from '.';
+import userEvent from '@testing-library/user-event';
 
 describe("UserProfile Page", () => {
     beforeEach(() => {
@@ -22,7 +23,7 @@ describe("UserProfile Page", () => {
     })
 
     it("Displays a heading", async () => {
-        const heading = await screen.findByRole('heading')
+        const heading = await screen.findByRole('headingone')
         waitFor(() => expect(heading).toBeInTheDocument());
         expect(heading.textContent).toContain("Username:")
     })
@@ -32,17 +33,21 @@ describe("UserProfile Page", () => {
         waitFor(() => expect(email).toBeInTheDocument())
         expect(email.textContent).toContain("Email:")
 
-        const highscore = await screen.findByRole('highscore')
-        waitFor(() => expect(highscore).toBeInTheDocument())
-        expect(highscore.textContent).toContain("High Score:")
-
         const points = await screen.findByRole('points')
         waitFor(() => expect(points).toBeInTheDocument())
-        expect(points.textContent).toContain("Points:")
+        expect(points.textContent).toContain("Total XP:")
 
-        const percentage = await screen.findByText('percentage')
-        waitFor(() => expect(percentage).toBeInTheDocument())
-        expect(percentage.textContent).toContain("Percentage:")
+        const percentage = await screen.findByRole('percentage')
+        expect(percentage.childNodes[0].nodeValue).toStrictEqual("Percentage: ")
+    })
+
+    it("Toggles form on and off with click", async () => {
+        const button = await screen.findByRole('button')
+        userEvent.click(button)
+        const form = await screen.findAllByRole('update-details')
+        expect(form).toBeInTheDocument
+        userEvent.click(button)
+        expect(form).not.toBeInTheDocument
     })
 
 })

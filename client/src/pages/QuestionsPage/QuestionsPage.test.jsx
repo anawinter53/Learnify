@@ -11,13 +11,11 @@ import QuestionsPage from '.';
 
 
 describe("Questions page", () => {
-    const { subject } = useParams()
-
-    beforeEach(() => {
+    beforeEach( () => {
         render(
-                <BrowserRouter subject='subject'>
-                    <QuestionsPage/>
-                </BrowserRouter>
+            <BrowserRouter path='/:subject'>
+                <QuestionsPage />
+            </BrowserRouter>
         )
     })
     
@@ -29,6 +27,12 @@ describe("Questions page", () => {
         const heading =  screen.getByRole('heading')
         waitFor(() => expect(heading).toBeInTheDocument());
         waitFor(() => expect(heading.textContent).toBe("Quizzes"))
+    })
+
+    it("Renders quiz question", async () => {
+        const headingtwo = screen.getAllByRole('headingtwo')
+        await waitFor(() => expect(headingtwo).toBeInTheDocument())
+        await waitFor(() => expect(heading.textContent).toContain("Question"))
     })
 
 })

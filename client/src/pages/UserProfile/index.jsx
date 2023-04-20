@@ -34,13 +34,13 @@ export default function UserProfile() {
   return (
     <div className={styles["profile"]}>
       <div className={styles.userProfile}>
-        <h1 className={styles.username}>Username: {user?.username}</h1>
+        <h1 className={styles.username} role='headingone'>Username: {user?.username}</h1>
         <p className={styles.email} role='email'>Email: {user?.email}</p>
         <p className={styles.highscore} role='points'> Total XP: {user?.score}</p>
         <p className={styles.highscore} role='percentage'>Percentage: {user?.score_out_of == 0 ? 0 : Math.round((user?.score/user?.score_out_of) * 100)} %</p>
       </div>
       <button className={styles["form-btn"]} onClick={openForm}>Update your details</button>
-      <div className={`${styles["details-form"]} ${styles[toggle ? 'open' : 'closed']}`}>
+      <div className={`${styles["details-form"]} ${styles[toggle ? 'open' : 'closed']}`} role='update-details'>
         <UpdateDetailsForm user={user} />
       </div>
       
