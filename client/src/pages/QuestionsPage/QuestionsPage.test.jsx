@@ -11,7 +11,7 @@ import QuestionsPage from '.';
 
 
 describe("Questions page", () => {
-    beforeEach(() => {
+    beforeEach( () => {
         render(
             <BrowserRouter path='/:subject'>
                 <QuestionsPage />
@@ -32,7 +32,7 @@ describe("Questions page", () => {
     it("Renders quiz question", async () => {
         const headingtwo = screen.getAllByRole('headingtwo')
         await waitFor(() => expect(headingtwo).toBeInTheDocument())
-        waitFor(() => expect(heading.textContent).toContain("Question"))
+        await waitFor(() => expect(heading.textContent).toContain("Question"))
     })
 
 })
