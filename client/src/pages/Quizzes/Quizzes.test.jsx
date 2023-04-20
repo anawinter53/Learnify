@@ -8,7 +8,7 @@ expect.extend(matchers);
 
 import Quizzes from '.';
 
-describe("Quizzes Component", () => {
+describe("Quizzes Page", () => {
     beforeEach(() => {
         render(
             <BrowserRouter>
