@@ -32,8 +32,8 @@ describe("Questions page", () => {
 
     it("Renders quiz question", async () => {
         const headingtwo = await waitFor(() => screen.getAllByRole('headingtwo'))
-        await waitFor(() => expect(headingtwo).toBeInTheDocument())
-        await waitFor(() => expect(heading.textContent).toContain("Question"))
+        await waitFor(() => expect(headingtwo[0]).toBeInTheDocument())
+        await waitFor(() => expect(headingtwo[0].textContent).toContain("Question"))
     })
 
 })

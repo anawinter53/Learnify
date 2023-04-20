@@ -10,15 +10,6 @@ expect.extend(matchers);
 import UpdateDetailsForm from '.';
 import { AuthProvider, setAuth } from '../../context/AuthContext';
 
-// const mockedUsedNavigate = vi.fn();
-// const mockedUsedLocation = vi.fn();
-// vi.mock('react-router-dom', async () => ({
-//     ...(await vi.importActual('react-router-dom')),
-//     useLocation: () => mockedUsedLocation,
-//     useNavigate: () => mockedUsedNavigate,
-// }));
-
-
 describe("UpdateDetailsForm Component", () => {
     // const [username, setUsername] = useState(user.username)
 

@@ -107,11 +107,12 @@ export default function QuizQuestion({questions, updateScore}) {
             <h2 role='headingtwo'> Question {count} :</h2>
           </div>
           <h1 className={styles['question']}>{question.question}</h1>
-          <div className={styles['options-container']} ref={optionsRef}>
+          <div className={styles['options-container']} ref={optionsRef} role='options'>
           {answers.map((answer, i) => 
             <button 
               key={i} 
               className={`${styles["option"]} ${styles[answer === question.answer ? 'correct' : 'incorrect']}`} 
+              role={`${styles[answer === question.answer ? 'correct' : 'incorrect']}`}
               style={{background: getColours()[Object.keys(getColours())[i]].primary, 
                       border: `6.5px solid ${getColours()[Object.keys(getColours())[i]].secondary}`}} 
               onClick={handleCheck}>
