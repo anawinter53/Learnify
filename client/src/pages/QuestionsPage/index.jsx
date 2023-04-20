@@ -13,7 +13,10 @@ export default function QuestionsPage() {
     const response = await fetch(`http://localhost:8080/quiz/${category}`)
     const data = await response.json()
  
-    setQuestions(data.sort(() => Math.random() - 0.5).splice(0, 10))
+    if (Array.isArray(data) && data.length > 0) {
+      setQuestions(data.sort(() => Math.random() - 0.5).splice(0, 10))
+    }
+
     setLoading(false)
   }
 
