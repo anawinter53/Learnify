@@ -24,9 +24,10 @@ describe("Questions page", () => {
     })
 
     it("Displays a heading", async () => {
-        const heading =  screen.getByRole('heading')
-        waitFor(() => expect(heading).toBeInTheDocument());
-        waitFor(() => expect(heading.textContent).toBe("Quizzes"))
+        const heading =  waitFor(() => screen.findByRole('heading'))
+        console.log(heading)
+        await waitFor(() => expect(heading).toBeInTheDocument());
+        await waitFor(() => expect(heading.textContent).toBe("Quizzes"))
     })
 
     // it("Renders quiz question", async () => {
