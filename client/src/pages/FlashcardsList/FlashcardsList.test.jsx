@@ -34,8 +34,7 @@ describe("Flashcards List Page", () => {
     it("Displays flashcard categories", () => {
         const flashcards = screen.getByRole('flashcards')
         expect(flashcards).toBeInTheDocument();
-        console.log(flashcards.childNodes[1].textContent)
-        // expect(flashcards.childNodes.length).toBe(9)
+        expect(flashcards.childNodes[1].textContent).toBe('CreateBack')
     })
 
 })
