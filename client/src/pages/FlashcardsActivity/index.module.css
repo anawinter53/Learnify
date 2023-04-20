@@ -153,6 +153,19 @@
   transform: scale(1.03);
 }
 
+.Link {
+  text-decoration: none;
+  color: #d4d4d4;
+}
+
+.no-more-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
 .option:active {
   transform: scale(0.97);
 }
+

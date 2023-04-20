@@ -63,9 +63,7 @@ export default function FlashcardsActivity() {
   function prev() {
     if (i > 0) setI(i - 1);
   }
-  const exit = () => {
-    <Link to="/dashboard/flashcards/:category" />;
-  };
+  
   function CurrentFlashcard() {
     return (
       <div className={styles["container"]}>
@@ -126,8 +124,16 @@ export default function FlashcardsActivity() {
   } else {
     return (
       <div className={styles["activity"]}>
-        <div className="no-more-cards">
+        <div className={styles["no-more-cards"]}>
           <h2>Flashcards finished! Woohoo 🥳</h2>
+        </div>
+        <div className={styles["options"]}>
+          <button className={styles["option"]} onClick={prev}>
+            prev
+          </button>
+          <button className={styles["option"]}>
+            <Link className={styles["Link"]} to='/dashboard/flashcards'>exit</Link>
+          </button>
         </div>
       </div>
     );
