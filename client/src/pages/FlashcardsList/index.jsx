@@ -53,8 +53,6 @@ export default function FlashcardsList() {
 
     const data = await response.json();
 
-    console.log(data)
-
     setFlashcards(data);
 
     setHasColours(false);
