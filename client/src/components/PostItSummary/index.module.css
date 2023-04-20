@@ -35,6 +35,9 @@
   top: 0;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
 }
 
 /* orange card */
@@ -128,4 +131,17 @@
   .blue > .card {
     transform:  rotateZ(0) translateX(0) translateY(0);
   }
+}
+
+.card-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  font-size: 7rem;
+  color: var(--font-colour-dark);
 }
