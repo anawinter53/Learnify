@@ -1,18 +1,69 @@
 import { useEffect, useState } from "react";
 import styles from "./index.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
 
   const [username, setUsername] = useState("")
+  const [flashcards, setFlashcards] = useState([])
+  const [flippedCards, setFlippedCards] = useState([]);
+
+  const getColours = (category) => {
+    switch (category) {
+      case "Geography":
+        
+        return {"primary": "#4CB731", "secondary": "#2C8715"};
+      case "History":
+        return {"primary": "#F26E6E", "secondary": "#CF4B4B"};
+      case "Chemistry":
+        return {"primary": "#368DDD", "secondary": "#1D6CB5"};
+      case "Biology":
+        return {"primary": "#D47902", "secondary": "#B16610"};
+      case "Physics":
+        return {"primary": "#F26E6E", "secondary": "#CF4B4B"};
+      case "Maths":
+        return {"primary": "#368DDD", "secondary": "#1D6CB5"};
+      case "English Literature":
+        return {"primary": "#D47902", "secondary": "#B16610"};
+      case "Sports Science":
+        return {"primary": "#E5DF46", "secondary": "#D8B603"};
+      case "Religious Education":
+        return {"primary": "#4CB731", "secondary": "#2C8715"};
+      default:
+        console.log(category)
+        break;
+    }
+  }
+
+  function handleFlip(cardId) {
+    if (flippedCards.includes(cardId)) {
+      setFlippedCards(flippedCards.filter((id) => id !== cardId));
+    } else {
+      setFlippedCards([...flippedCards, cardId]);
+    }
+  }
+
 
   const getUser = async () => {
     const response = await fetch(`http://localhost:8080/users/username/${localStorage.getItem("user_id")}`)
 
-    setUsername(await response.json())
+    setUsername(await response.text())
+  }
+
+  const getFavoritedCards = async () => {
+    const response = await fetch(`http://localhost:8080/flashcards/favorite/user/${localStorage.getItem("user_id")}`)
+
+    const data = await response.json()
+
+    if (data) {
+      setFlashcards(data)
+    }
+
   }
 
   useEffect(() => {
     getUser()
+    getFavoritedCards()
   }, [])
 
   return (
@@ -20,25 +71,36 @@ export default function Dashboard() {
       <div className={styles["container"]}>
         <h1 className={styles["title"]}>Welcome back {username}</h1>
         <div className={styles["content"]}>
-          <h1 className={styles["content-heading"]}>Most popular quizzes</h1>
-          <div className={styles["top7-quizzes"]}>
-            <div className={styles["quiz-card"]}></div>
-            <div className={styles["quiz-card"]}></div>
-            <div className={styles["quiz-card"]}></div>
-            <div className={styles["quiz-card"]}></div>
-            <div className={styles["quiz-card"]}></div>
-            <div className={styles["quiz-card"]}></div>
-            <div className={styles["quiz-card"]}></div>
-          </div>
-          <h1 className={styles["content-heading"]}>Most popular flashcards</h1>
-          <div className={styles["top7-flashcards"]}>
-            <div className={styles["quiz-card"]}></div>
-            <div className={styles["quiz-card"]}></div>
-            <div className={styles["quiz-card"]}></div>
-            <div className={styles["quiz-card"]}></div>
-            <div className={styles["quiz-card"]}></div>
-            <div className={styles["quiz-card"]}></div>
-            <div className={styles["quiz-card"]}></div>
+          <h1 className={styles["content-heading"]}>Favorited flashcards</h1>
+          <div className={styles["cards"]}>
+          {flashcards.map((f) => {
+                return (
+                  <div
+                    key={f.card_id}
+                    onClick={() => handleFlip(f.card_id)}
+                    className={styles["flashcard-card"]}
+                    style={{
+                      transform: flippedCards.includes(f.card_id)
+                        ? "rotateY(180deg)"
+                        : "none",
+                      background: getColours(f.collection).primary,
+                      border: `6.5px solid ${getColours(f.collection).secondary}`
+                    }}
+                  >
+                    
+                    <button className={styles["favoriteBtn"]} onClick={(e) => handleFavorites(e, f.card_id)}>★</button>
+                    <div className={styles["front"]}>
+                      <h1 className={styles["flashcard-title"]}>{f.collection}</h1>
+                      <h2 className={styles["flashcard-question"]}>
+                        {f.question}
+                      </h2>
+                    </div>
+                    <div className={styles["back"]}>
+                      <h2 className={styles["flashcard-answer"]}>{f.fact}</h2>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
