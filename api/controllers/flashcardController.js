@@ -107,7 +107,7 @@ async function getBySubject(req, res) {
       }
       
 
-      const success = await Flashcard.destroyFavorite(userId, cardId);
+      const success = await flashcard.destroyFavorite(userId, cardId);
 
       if (success) {
         res.status(200).json({ message: 'Flashcard removed from favorites' });
