@@ -15,9 +15,9 @@ describe("Questions page", () => {
 
     beforeEach(() => {
         render(
-                <BrowserRouter subject='subject'>
-                    <QuestionsPage/>
-                </BrowserRouter>
+            <BrowserRouter subject='subject'>
+                <QuestionsPage />
+            </BrowserRouter>
         )
     })
     
