@@ -1,6 +1,16 @@
 .activity {
   margin-left: 200px;
-  padding: 50px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.title {
+  padding-left: 40px;
+  color: var(--font-colour);
 }
 
 .container {
@@ -12,11 +22,49 @@
   gap: 40px;
 }
 
+.control-options {
+  display: flex;
+  justify-content: right;
+  flex-direction: row;
+  height: 80px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  border: none;
+  background: var(--nav-colour);
+  font-size: 20px;
+  color: #d4d4d4;
+  cursor: pointer;
+  transition: 0.25s;
+  text-decoration: none;
+  width: 150px;
+  height: 50px;
+}
+
+.btn:hover {
+  background: #2c1e55;
+  transform: scale(1.03);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
 .flashcard-card {
   background-color: #ccc;
   border: 1px solid #999;
   padding: 30px;
-  height: 300px;
+  height: 500px;
+  width: 900px;
   border-radius: 15px;
   transition: 0.25s;
   display: flex;
@@ -27,6 +75,7 @@
   transform-style: preserve-3d;
   transition: transform 0.5s;
   transform-origin: center;
+  align-self: center;
 }
 
 .flashcard-question {
@@ -35,10 +84,11 @@
 
 .flashcard-title, .flashcard-question, .flashcard-answer {
   color: var(--font-colour-dark);
+  font-size: 2rem
 }
 
 .flashcard-answer {
-  font-size: 2rem
+  font-size: 3rem
 }
 
 .front, .back {
@@ -74,10 +124,12 @@
 .options {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   height: 80px;
-  gap: 20px;
+  gap: 40px;
+  width: 700px;
+  align-self: center;
 }
 
 .option {
@@ -93,8 +145,14 @@
   text-decoration: none;
   width: 150px;
   height: 50px;
+  transition: 0.25s;
 }
 
 .option:hover {
   background: #2c1e55;
+  transform: scale(1.03);
+}
+
+.option:active {
+  transform: scale(0.97);
 }

@@ -85,6 +85,7 @@ button {
   text-decoration: none;
   width: 150px;
   height: 50px;
+  transition: 0.25s;
 }
 
 .form-btn:hover, .password-form-btn:hover {
@@ -96,4 +97,14 @@ button {
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+
+.btn:hover {
+  background: #2c1e55;
+  transform: scale(1.03);
+}
+
+.btn:active {
+  transform: scale(0.97);
 }
