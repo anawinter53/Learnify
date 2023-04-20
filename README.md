@@ -25,29 +25,29 @@ Quiz/flashcards website for project week 3.
 
 | Route | Method | Response |
 |-------|--------|----------|
-| "/users/register" | POST | Creates a new user account, redirects to ______ |
-| "/users/login" | POST | Logs user into their account, redirects to ______ |
+| "/users/register" | POST | Creates a new user account, redirects to login page |
+| "/users/login" | POST | Logs user into their account, redirects to dashboard |
 | "/users/logout" | POST | Logs user out of their account, redirects to landing page |
 | "/users/username/:id" | GET | Finds user profile by their id |
-| "/users/username/token/:id" | GET |    |
-| "/users/username/single/:id" | GET |    |
-| "/users/score/:id" | PATCH |    |
-| "/users/:id" | PATCH |    |
-| "/users/password/:id" | PATCH |    |
+| "/users/username/token/:id" | GET | Gets a user by their tokenId   |
+| "/users/username/single/:id" | GET | Gets a user by their userId   |
+| "/users/score/:id" | PATCH | Updates the user score after a test   |
+| "/users/:id" | PATCH | Updates the users information   |
+| "/users/password/:id" | PATCH | Updates the user's password   |
 |-------|--------|----------|
 | "/quiz" | GET | Shows all quizzes |
 | "/quiz/:subject" | GET | Finds quiz by subject |
-| "/quiz/single/:id" | GET |    |
+| "/quiz/single/:id" | GET | Gets a single quiz question by questionId   |
 |-------|--------|----------|
 | "/flashcards" | GET | Creates a new item that is added to the database |
-| "/flashcards/:subject" | GET |    |
-| "/flashcards/single/:id" | GET |    |
-| "/flashcards/user/:id" | GET |    |
-| "/flashcards" | POST |    |
-| "/flashcards/:id" | DELETE |    |
-| "/flashcards/favorite/user/:userId/card/:cardId" | POST |    |
-| "/flashcards/favorite/user/:id" | GET |    |
-| "/favorite/user/:userId/card/:cardId" | DELETE |    |
+| "/flashcards/:subject" | GET | Gets all flashcards for a specific subject   |
+| "/flashcards/single/:id" | GET | Gets a single flashcard based on the cardID   |
+| "/flashcards/user/:id" | GET | Gets all the flashcards by UserId   |
+| "/flashcards" | POST | Creates a new flashcard   |
+| "/flashcards/:id" | DELETE | Deletes a flashcard based on the cardId   |
+| "/flashcards/favorite/user/:userId/card/:cardId" | POST | Adds a flashcard to the user's favourites   |
+| "/flashcards/favorite/user/:id" | GET | Retrieves the user's favourite flashcards   |
+| "/favorite/user/:userId/card/:cardId" | DELETE | Deletes a user's favourite flashcard   |
 
 
 ## Required software & accounts
