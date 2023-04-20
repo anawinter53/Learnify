@@ -8,6 +8,20 @@ Learnify is an all-in-one website that allows users to learn and revise a range 
 
 The team followed an Agile methodology for the development of Learnify, using wireframing and Kanban boards. 
 
+We streamlined our development process using our Kanban board on Trello. This allowed us to prioritise the demands of the projects whilst ensuring we weren't all working on the same files, helping us avoid Git merge conflicts as much as possible.
+
+<p align="center">
+<img src="https://github.com/anawinter53/give-us-a-br/blob/dev/documentation/Wireframes.png" width=75% height=75%>
+</p>
+<br>
+
+Using Figma we were able to plan out the design for our website before coding it, helping with a more consistent design look across all the team's work. Figma enabled us to conceptualise possible features in a way that allowed for joint planning and more discussions on any new design ideas. 
+
+<p align="center">
+<img src="https://github.com/anawinter53/give-us-a-br/blob/dev/documentation/Trello-board.png" width=75% height=75%>
+</p>
+<br>
+
 ## Site directory
 
 ### Client-side
@@ -87,8 +101,21 @@ Make sure there are no spaces between the content on each line and ensure you do
 
 ## Usage
 
-### Homepage:
+### Landing page:
 
-### Login/Register page:
+### Login/Sign Up page:
+
+### Dashboard:
+
+### Quizzes Category page:
+
+### Quiz Questions page:
+
+### Flashcard Category page:
+
+### Flashcards page:
+
+### Profile page:
+
 
 
