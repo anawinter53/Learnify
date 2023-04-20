@@ -10,6 +10,7 @@ export default function SignupForm() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [conPassword, setConPassword] = useState("")
+  const [errorMessage, setErrorMessage] = useState("")
 
   const signup = async (e) => {
     e.preventDefault()
@@ -29,7 +30,7 @@ export default function SignupForm() {
     if (res.ok) {
       navigate("/login")
     } else {
-      console.log("Something failed, very sad! :(");
+      setErrorMessage("Username is not available");
     }
   }
 
@@ -55,6 +56,8 @@ export default function SignupForm() {
           <input type="password" id="conPassword" value={conPassword} onChange={(e) => setConPassword(e.target.value)} required />
           <span>Confirm Password</span>
         </div>
+      {errorMessage && <p className={styles["error-message"]}>{errorMessage}</p>}
+
         <div className={styles["input"]}>
           <button className={styles["btn"]} type="submit" role='submit'>Submit</button>
         </div>

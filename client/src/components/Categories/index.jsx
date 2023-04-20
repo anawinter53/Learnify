@@ -6,7 +6,6 @@ import { useCategory } from "../../context/CategoryContext";
 export default function Categories({level, setLevel}) {
   const location = useLocation();
   const { category } = useCategory();
-  console.log(level)
 
   return (
     <>
