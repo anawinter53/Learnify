@@ -31,7 +31,7 @@ export default function QuestionsPage() {
         score_out_of: score_out_of
       })
     }
-    const response = await fetch(`http://localhost:8080/users/${id}`, options)
+    const response = await fetch(`http://localhost:8080/users/score/${id}`, options)
     await response.json()
   }
 
