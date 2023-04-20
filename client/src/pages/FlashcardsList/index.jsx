@@ -86,7 +86,7 @@ export default function FlashcardsList() {
         e.target.style.color = "black";
         setFavourites(favourites.filter((fav) => fav !== cardId));
       }
-      console.log(`Success!`);
+      console.log(`Success`);
     } else {
       console.log("Something failed, very sad! :(");
     }
