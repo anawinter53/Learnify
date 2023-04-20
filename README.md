@@ -11,12 +11,43 @@ Quiz/flashcards website for project week 3.
 
 | Page | Description|
 |------|------------|
+| Landing | Homepage that allows users to view main features of site, to login/sign up and to access dashboard. |
+| Login/Sign Up | Dynamic interactive page allows users to either create an account or login with an existing account. |
+| Dashboard | Shows users any flashcards they may have favourited, for ease of use. |
+| Quizzes Categories | Users are able to select by either 'GCSE' or 'A Level' grade of questions and select from 9 different categories. |
+| Quiz Questions | Users are presented with questions and are able to chose between 4 options. |
+| Flashcard Categories | Users are able to select from 9 different categories for flashcards. |
+| Flashcards | Users are shown flashcards and are able to reveal the answer, favourite flashcards and create new flashcards. |
+| Profile | Users are shown their username, email, current XP and overall percentage. They are also able to update their username, email and password. |
 
 
 ### Server-side
 
 | Route | Method | Response |
 |-------|--------|----------|
+| "/users/register" | POST | Creates a new user account, redirects to ______ |
+| "/users/login" | POST | Logs user into their account, redirects to ______ |
+| "/users/logout" | POST | Logs user out of their account, redirects to landing page |
+| "/users/username/:id" | GET | Finds user profile by their id |
+| "/users/username/token/:id" | GET |    |
+| "/users/username/single/:id" | GET |    |
+| "/users/score/:id" | PATCH |    |
+| "/users/:id" | PATCH |    |
+| "/users/password/:id" | PATCH |    |
+|-------|--------|----------|
+| "/quiz" | GET | Shows all quizzes |
+| "/quiz/:subject" | GET | Finds quiz by subject |
+| "/quiz/single/:id" | GET |    |
+|-------|--------|----------|
+| "/flashcards" | GET | Creates a new item that is added to the database |
+| "/flashcards/:subject" | GET |    |
+| "/flashcards/single/:id" | GET |    |
+| "/flashcards/user/:id" | GET |    |
+| "/flashcards" | POST |    |
+| "/flashcards/:id" | DELETE |    |
+| "/flashcards/favorite/user/:userId/card/:cardId" | POST |    |
+| "/flashcards/favorite/user/:id" | GET |    |
+| "/favorite/user/:userId/card/:cardId" | DELETE |    |
 
 
 ## Required software & accounts
