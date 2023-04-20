@@ -98,3 +98,8 @@
 .option:hover {
   background: #2c1e55;
 }
+
+.Link {
+  text-decoration: none;
+  color: #d4d4d4;
+}

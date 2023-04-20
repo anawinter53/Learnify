@@ -39,9 +39,7 @@ export default function FlashcardsActivity() {
   function prev() {
     setI(i - 1);
   }
-  const exit = () => {
-    <Link to="/dashboard/flashcards/:category" />;
-  };
+  
   function CurrentFlashcard() {
     return (
       <div className={styles["container"]}>
@@ -107,8 +105,8 @@ export default function FlashcardsActivity() {
           <button className={styles["option"]} onClick={prev}>
             prev
           </button>
-          <button className={styles["option"]} onClick={exit}>
-            exit
+          <button className={styles["option"]}>
+            <Link className={styles["Link"]} to='/dashboard/flashcards'>exit</Link>
           </button>
         </div>
       </div>
