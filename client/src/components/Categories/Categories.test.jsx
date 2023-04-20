@@ -12,8 +12,6 @@ import { CategoryProvider, useCategory, category, setCategory } from "../../cont
 
 describe("Categories Component", () => {
     beforeEach(() => {
-        // const { category } = useCategory();
-
         render(
             <CategoryProvider category='category'>
                 <BrowserRouter>
@@ -41,7 +39,7 @@ describe("Categories Component", () => {
     it('Returns the first card as Geography', async () => {
         const cards = waitFor(() => screen.findAllByRole('card'))
         console.log(cards[0])
-        // waitFor(() => expect(cards[0]).toBeInTheDocument())
-        // waitFor(() => expect(cards).toHaveLength(9))
+        waitFor(() => expect(cards[0]).toBeInTheDocument())
+        waitFor(() => expect(cards).toHaveLength(9))
     })
 })
