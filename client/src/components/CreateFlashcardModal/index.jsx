@@ -6,6 +6,8 @@ export default function CreateFlashcardModal({ showModal, setShowModal, getData 
   const [subject, setSubject] = useState("");
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const [error, setError] = useState("");
+
 
   function handleFlip() {
     setIsFlipped(!isFlipped);
@@ -43,7 +45,6 @@ export default function CreateFlashcardModal({ showModal, setShowModal, getData 
       const res = await fetch(`http://localhost:8080/flashcards/`, options);
       
       if (res.ok) {
-        console.log('created')
         setAnswer("")
         setSubject("")
         setQuestion("")
@@ -56,11 +57,14 @@ export default function CreateFlashcardModal({ showModal, setShowModal, getData 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setIsFlipped(false);
-
+    
     if (question && subject && answer) {
       createFlashcard();
       setShowModal(false);
       e.target.reset()
+    } else {
+      
+      setError("Can't leave field(s) blank");
     }
   };
 
@@ -93,6 +97,8 @@ export default function CreateFlashcardModal({ showModal, setShowModal, getData 
               <button onClick={openCloseModal} className={styles["cancel"]}>Cancel</button>
               <button type="submit" className={styles["submit"]}>Submit</button>
             </div>
+            {error && <p className={styles["error-message"]}>{error}</p>}
+
           </div>
           <div className={styles["back"]}>
             <input className={styles["flashcard-answer"]} type="text" name="answer" placeholder="Answer" onChange={handleAnswerChange} onClick={handleInputClick}/>
