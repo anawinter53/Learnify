@@ -162,11 +162,11 @@ export default function FlashcardsList() {
                     }}
                   >
                     <button
-                      style={{color: favourites.includes(f.card_id) ? getColours(f.collection).secondary : ""}}
-                      className={`${styles["favoriteBtn"]} ${styles[favourites.includes(f.card_id) ? "favourited" : ""]}`}
+                      style={{color: favourites.includes(f.card_id) ? getColours(f.collection).secondary : getColours(f.collection).primary}}
+                      className={`${styles["favoriteBtn"]}`}
                       onClick={(e) => handleFavorites(e, f.card_id)}
                     >
-                      {favourites.includes(f.card_id) ? "★" : "☆"}
+                      ★
                     </button>
                     <div className={styles["front"]}>
                       <h2 className={styles["flashcard-question"]}>
