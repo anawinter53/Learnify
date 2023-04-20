@@ -76,7 +76,7 @@ export default function CreateFlashcardModal({ showModal, setShowModal, getData 
       <form onSubmit={handleFormSubmit} role='form'>
         <div className={styles["create-flashcard"]} style={{ transform: isFlipped ? "rotateY(180deg)" : "none" }} onClick={handleFlip}>
           <div className={styles["front"]}>
-            <select value={subject} onChange={handleSubjectChange} onClick={handleInputClick} name="subjects">
+            <select value={subject} onChange={handleSubjectChange} onClick={handleInputClick} name="subjects" role='subject'>
               <option disabled value="">
                 Select a subject
               </option>
@@ -88,14 +88,12 @@ export default function CreateFlashcardModal({ showModal, setShowModal, getData 
               <option value="Mathematics">Mathematics</option>
               <option value="English">English</option>
               <option value="Sports">Sports</option>
-              <option value="Religious-Education">
-                Religious Education
-              </option>
+              <option value="Religious-Education">Religious Education</option>
             </select>
             <input className={styles["flashcard-question"]} type="text" name="question" placeholder="Question" onChange={handleQuestionChange} onClick={handleInputClick}/>
             <div className={styles["options"]}>
               <button onClick={openCloseModal} className={styles["cancel"]}>Cancel</button>
-              <button type="submit" className={styles["submit"]}>Submit</button>
+              <button type="submit" className={styles["submit"]} role='submit'>Submit</button>
             </div>
             {error && <p className={styles["error-message"]}>{error}</p>}
 
