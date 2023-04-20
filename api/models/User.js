@@ -70,6 +70,15 @@ class User {
         }
         return new User(response.rows[0])
     }
+
+    async updateDetails(data) {
+        const { username, email, password } = data
+        const response = await db.query("UPDATE users SET username = $1, email = $2, password = $3 WHERE user_id = $4 RETURNING *;", [username, email, password, this.id])
+        if (response.rows.length != 1) {
+            throw new Error("Unable to update user details")
+        }
+        return new User(response.rows[0])
+    }
 }
 
 module.exports = User

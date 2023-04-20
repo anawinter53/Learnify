@@ -9,9 +9,7 @@ export default function QuestionsPage() {
   const { subject } = useParams()
 
   async function getQuestions() {
-    console.log(subject)
     const category = subject.toLowerCase()
-    console.log(category)
     const response = await fetch(`http://localhost:8080/quiz/${category}`)
     const data = await response.json()
  
@@ -33,16 +31,18 @@ export default function QuestionsPage() {
         score_out_of: score_out_of
       })
     }
-    const response = await fetch(`http://localhost:8080/users/${id}`, options)
+    const response = await fetch(`http://localhost:8080/users/score/${id}`, options)
     await response.json()
   }
 
 
   function displayQuestion() {
     return (
-      <div className={styles["container"]}>
-          <h1 className={styles["title"]}>Quizzes</h1>
-        <QuizQuestion questions={questions} updateScore={updateScore}/>
+      <div className={styles["quiz-questions"]}>
+        <div className={styles["container"]}>
+            <h1 className={styles["title"]}>Quizzes</h1>
+            <QuizQuestion questions={questions} updateScore={updateScore}/>
+        </div>
       </div>
     )
   }
