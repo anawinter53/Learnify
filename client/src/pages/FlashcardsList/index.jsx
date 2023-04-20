@@ -162,6 +162,7 @@ export default function FlashcardsList() {
                     }}
                   >
                     <button
+                      style={{color: favourites.includes(f.card_id) ? getColours(f.collection).secondary : ""}}
                       className={`${styles["favoriteBtn"]} ${styles[favourites.includes(f.card_id) ? "favourited" : ""]}`}
                       onClick={(e) => handleFavorites(e, f.card_id)}
                     >
