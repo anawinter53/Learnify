@@ -9,7 +9,7 @@ export default function QuestionsPage() {
   const { subject } = useParams()
 
   async function getQuestions() {
-    const category = subject.toLowerCase()
+    const category = subject ? subject.toLowerCase() : undefined
     const response = await fetch(`http://localhost:8080/quiz/${category}`)
     const data = await response.json()
  

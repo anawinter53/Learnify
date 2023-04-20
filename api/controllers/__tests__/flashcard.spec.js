@@ -1,7 +1,8 @@
-const { index, show, create, destroy, getByUserId, getBySubject } = require('../flashcardController');
+const { index, show, create, destroy, getByUserId, getBySubject, getFavoritesByUserId } = require('../flashcardController');
 const Flashcard = require('../../models/Flashcard');
 
 const mockFlashcards = [  { id: 1, question: 'What is JavaScript?', answer: 'JavaScript is a programming language' },  { id: 2, question: 'What is Node.js?', answer: 'Node.js is a JavaScript runtime environment' },];
+const mockFavorites = [ { id: 1, userId: 1, cardId: 1 } ]
 
 jest.mock('../../models/Flashcard', () => ({
     getAll: jest.fn(() => Promise.resolve(mockFlashcards)),
@@ -10,6 +11,7 @@ jest.mock('../../models/Flashcard', () => ({
     destroy: jest.fn(() => Promise.resolve()),
     getByUserId: jest.fn(userId => Promise.resolve(mockFlashcards.filter(f => f.userId === userId))),
     getBySubject: jest.fn(subject => Promise.resolve(mockFlashcards.filter(f => f.subject === subject))),
+    getFavoritesByUserId: jest.fn(userId => Promise.resolve(mockFavorites.filter(f => f.userId === userId))),
   }));
 
   describe('flashcardController', () => {
@@ -65,7 +67,7 @@ jest.mock('../../models/Flashcard', () => ({
 
         describe('create', () => {
           it('should return a 201 status code and the created flashcard if all required data is provided', async () => {
-            const req = { body: { question: 'What is the capital of France?', answer: 'Paris', subject: 'Geography' }, user_id: 1 };
+            const req = { body: { question: 'What is the capital of France?', answer: 'Paris', collection: 'Geography' }, user_id: 1 };
             const res = {
               status: jest.fn().mockReturnThis(),
               json: jest.fn(),
@@ -84,10 +86,10 @@ jest.mock('../../models/Flashcard', () => ({
             };
             await create(req, res);
             expect(res.status).toHaveBeenCalledWith(400);
-            expect(res.json).toHaveBeenCalledWith({ error: 'Flashcard creation failed: missing question or subject' });
+            expect(res.json).toHaveBeenCalledWith({ error: 'Flashcard creation failed: Failed to create flashcard' });
           });
         
-          it('should return a 404 status code with an error message if there was an error creating the flashcard', async () => {
+          it('should return a 400 status code with an error message if there was an error creating the flashcard', async () => {
             const req = { body: { question: 'What is the capital of France?', answer: 'Paris', subject: 'Geography' }, user_id: 1 };
             const res = {
               status: jest.fn().mockReturnThis(),
@@ -95,7 +97,7 @@ jest.mock('../../models/Flashcard', () => ({
             };
             Flashcard.create.mockImplementationOnce(() => Promise.reject(new Error('Failed to create flashcard')));
             await create(req, res);
-            expect(res.status).toHaveBeenCalledWith(404);
+            expect(res.status).toHaveBeenCalledWith(400);
             expect(res.json).toHaveBeenCalledWith({ error: 'Flashcard creation failed: Failed to create flashcard' });
           });
         });    
@@ -230,6 +232,105 @@ jest.mock('../../models/Flashcard', () => ({
             expect(res.json).toHaveBeenCalledWith({ error: errorMsg });
           });
         });
+        
+        describe('getFavoritesByUserId', () => {
+          it('should return an error if no user id is provided', async () => {
+            const req = {
+              params: {},
+            };
+            const res = {
+              status: jest.fn().mockReturnThis(),
+              json: jest.fn(),
+            };
+        
+            await getFavoritesByUserId(req, res);
+        
+            expect(res.status).toHaveBeenCalledWith(500);
+            expect(res.json).toHaveBeenCalledWith({ error: 'User id must be provided' });
+          });
+        
+          it('should return an error if an invalid user id is provided', async () => {
+            const req = {
+              params: {
+                id: 'invalid',
+              },
+            };
+            const res = {
+              status: jest.fn().mockReturnThis(),
+              json: jest.fn(),
+            };
+        
+            await getFavoritesByUserId(req, res);
+        
+            expect(res.status).toHaveBeenCalledWith(500);
+            expect(res.json).toHaveBeenCalledWith({ error: 'Invalid user id' });
+          });
+        
+          it('should return an error if no favorites are found for the user', async () => {
+            const req = {
+              params: {
+                id: 1,
+              },
+            };
+            const res = {
+              status: jest.fn().mockReturnThis(),
+              json: jest.fn(),
+            };
+        
+            Flashcard.getFavoritesByUserId = jest.fn().mockResolvedValue([]);
+        
+            await getFavoritesByUserId(req, res);
+        
+            expect(Flashcard.getFavoritesByUserId).toHaveBeenCalledWith(1);
+            expect(res.status).toHaveBeenCalledWith(404);
+            expect(res.json).toHaveBeenCalledWith({ error: 'No favorites found for this user' });
+          });
+        
+          it('should return the user favorites if they exist', async () => {
+            const req = {
+              params: {
+                id: 1,
+              },
+            };
+            const res = {
+              status: jest.fn().mockReturnThis(),
+              json: jest.fn(),
+            };
+        
+            const favorites = [{ id: 1, card_id: 1, user_id: 1 }];
+        
+            Flashcard.getFavoritesByUserId = jest.fn().mockResolvedValue(favorites);
+        
+            await getFavoritesByUserId(req, res);
+        
+            expect(Flashcard.getFavoritesByUserId).toHaveBeenCalledWith(1);
+            expect(res.status).toHaveBeenCalledWith(200);
+            expect(res.json).toHaveBeenCalledWith(favorites);
+          });
+        
+          it('should return a 500 error if an error occurs while fetching the favorites', async () => {
+            const req = {
+              params: {
+                id: 1,
+              },
+            };
+            const res = {
+              status: jest.fn().mockReturnThis(),
+              json: jest.fn(),
+            };
+        
+            const errorMessage = 'An error occurred';
+        
+            Flashcard.getFavoritesByUserId = jest.fn().mockRejectedValue(new Error(errorMessage));
+        
+            await getFavoritesByUserId(req, res);
+        
+            expect(Flashcard.getFavoritesByUserId).toHaveBeenCalledWith(1);
+            expect(res.status).toHaveBeenCalledWith(500);
+            expect(res.json).toHaveBeenCalledWith({ error: errorMessage });
+          });
+        });
+        
         
         
         

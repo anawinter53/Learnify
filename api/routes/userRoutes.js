@@ -12,5 +12,6 @@ userRouter.get("/username/token/:id", userController.getUserFromToken)
 userRouter.get("/username/single/:id", userController.show)
 userRouter.patch("/score/:id", userController.update)
 userRouter.patch("/:id", userController.updateDetails)
+userRouter.patch("/password/:id", userController.updatePassword)
 
 module.exports = userRouter

@@ -10,3 +10,4 @@ export {default as QuizQuestion} from "./QuizQuestion"
 export {default as CreateFlashcardModal} from "./CreateFlashcardModal"
 export {default as UpdateDetailsForm} from "./UpdateDetailsForm"
 export {default as ProfileImg} from './ProfileImg'
+export {default as UpdatePasswordForm} from "./UpdatePasswordForm"
