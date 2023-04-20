@@ -25,10 +25,10 @@ export default function Landing() {
           
         </div>
         <div className={styles["post-it-summary"]}>  
-          <PostItSummary ref={card0Ref} colour="orange" reverse={false} />
-          <PostItSummary ref={card1Ref} colour="red" reverse={true} />
-          <PostItSummary ref={card2Ref} colour="green" reverse={false} />
-          <PostItSummary ref={card3Ref} colour="blue" reverse={true} />
+          <PostItSummary ref={card0Ref} colour="orange" reverse={false} message={"View your favourite flashcards"} />
+          <PostItSummary ref={card1Ref} colour="red" reverse={true} message={"Play quizzes to practice topics"} />
+          <PostItSummary ref={card2Ref} colour="green" reverse={false} message={"Find and create flashcards"} />
+          <PostItSummary ref={card3Ref} colour="blue" reverse={true} message={"View your profile"} />
         </div>
       </div>
     </div>
