@@ -39,7 +39,7 @@ export default function CreateFlashcardModal({ showModal, setShowModal, getData 
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ collection: subject, question: question, fact: answer })
+      body: JSON.stringify({ collection: subject, question: question, fact: answer, user_id: localStorage.getItem("user_id") })
       };
     
       const res = await fetch(`http://localhost:8080/flashcards/`, options);

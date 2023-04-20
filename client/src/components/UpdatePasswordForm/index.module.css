@@ -90,3 +90,8 @@
     cursor: pointer;
     transition: 0.25s;
   }
+
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+  }
