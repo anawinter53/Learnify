@@ -3,37 +3,35 @@ import styles from "./index.module.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
-
-  const [username, setUsername] = useState("")
-  const [flashcards, setFlashcards] = useState([])
+  const [username, setUsername] = useState("");
+  const [flashcards, setFlashcards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
 
   const getColours = (category) => {
     switch (category) {
       case "Geography":
-        
-        return {"primary": "#4CB731", "secondary": "#2C8715"};
+        return { primary: "#4CB731", secondary: "#2C8715" };
       case "History":
-        return {"primary": "#F26E6E", "secondary": "#CF4B4B"};
+        return { primary: "#F26E6E", secondary: "#CF4B4B" };
       case "Chemistry":
-        return {"primary": "#368DDD", "secondary": "#1D6CB5"};
+        return { primary: "#368DDD", secondary: "#1D6CB5" };
       case "Biology":
-        return {"primary": "#D47902", "secondary": "#B16610"};
+        return { primary: "#D47902", secondary: "#B16610" };
       case "Physics":
-        return {"primary": "#F26E6E", "secondary": "#CF4B4B"};
+        return { primary: "#F26E6E", secondary: "#CF4B4B" };
       case "Maths":
-        return {"primary": "#368DDD", "secondary": "#1D6CB5"};
+        return { primary: "#368DDD", secondary: "#1D6CB5" };
       case "English Literature":
-        return {"primary": "#D47902", "secondary": "#B16610"};
+        return { primary: "#D47902", secondary: "#B16610" };
       case "Sports Science":
-        return {"primary": "#E5DF46", "secondary": "#D8B603"};
+        return { primary: "#E5DF46", secondary: "#D8B603" };
       case "Religious Education":
-        return {"primary": "#4CB731", "secondary": "#2C8715"};
+        return { primary: "#4CB731", secondary: "#2C8715" };
       default:
-        console.log(category)
+        console.log(category);
         break;
     }
-  }
+  };
 
   function handleFlip(cardId) {
     if (flippedCards.includes(cardId)) {
@@ -43,28 +41,30 @@ export default function Dashboard() {
     }
   }
 
-
   const getUser = async () => {
-    const response = await fetch(`http://localhost:8080/users/username/${localStorage.getItem("user_id")}`)
+    const response = await fetch(
+      `http://localhost:8080/users/username/${localStorage.getItem("user_id")}`
+    );
 
-    setUsername(await response.text())
-  }
+    setUsername(await response.text());
+  };
 
   const getFavoritedCards = async () => {
-    const response = await fetch(`http://localhost:8080/flashcards/favorite/user/${localStorage.getItem("user_id")}`)
+    const response = await fetch(
+      `http://localhost:8080/flashcards/favorite/user/${localStorage.getItem(
+        "user_id"
+      )}`
+    );
 
-    const data = await response.json()
+    const data = await response.json();
 
-    if (data) {
-      setFlashcards(data)
-    }
-
-  }
+    setFlashcards(data);
+  };
 
   useEffect(() => {
-    getUser()
-    getFavoritedCards()
-  }, [])
+    getUser();
+    getFavoritedCards();
+  }, []);
 
   return (
     <div className={styles["dashboard"]}>
@@ -73,7 +73,8 @@ export default function Dashboard() {
         <div className={styles["content"]}>
           <h1 className={styles["content-heading"]}>Favorited flashcards</h1>
           <div className={styles["cards"]}>
-          {flashcards.map((f) => {
+            {Array.isArray(flashcards) && flashcards.length > 0 ? (
+              flashcards.map((f) => {
                 return (
                   <div
                     key={f.card_id}
@@ -84,13 +85,21 @@ export default function Dashboard() {
                         ? "rotateY(180deg)"
                         : "none",
                       background: getColours(f.collection).primary,
-                      border: `6.5px solid ${getColours(f.collection).secondary}`
+                      border: `6.5px solid ${
+                        getColours(f.collection).secondary
+                      }`,
                     }}
                   >
-                    
-                    <button className={styles["favoriteBtn"]} onClick={(e) => handleFavorites(e, f.card_id)}>★</button>
+                    <button
+                      className={styles["favoriteBtn"]}
+                      onClick={(e) => handleFavorites(e, f.card_id)}
+                    >
+                      ★
+                    </button>
                     <div className={styles["front"]}>
-                      <h1 className={styles["flashcard-title"]}>{f.collection}</h1>
+                      <h1 className={styles["flashcard-title"]}>
+                        {f.collection}
+                      </h1>
                       <h2 className={styles["flashcard-question"]}>
                         {f.question}
                       </h2>
@@ -100,10 +109,13 @@ export default function Dashboard() {
                     </div>
                   </div>
                 );
-              })}
+              })
+            ) : (
+              <p>No favorited flashcards yet</p>
+            )}
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

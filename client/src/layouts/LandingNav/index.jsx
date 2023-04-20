@@ -40,7 +40,7 @@ export default function LandingNav() {
           <NavLink to="/dashboard" className={styles["btn"]}>Dashboard</NavLink>
           <NavLink to="/dashboard/quizzes" className={styles["btn"]}>Quizzes</NavLink>
           <NavLink to="/dashboard/flashcards" className={styles["btn"]}>Flashcards</NavLink>
-          <NavLink to="/dashboard/friends" className={styles["btn"]}>Friends</NavLink>
+          <NavLink to="/dashboard/userprofile" className={styles["btn"]}>User Profile</NavLink>
         </div>
         <div>
         {!auth ? (
