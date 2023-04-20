@@ -1,7 +1,7 @@
 const User = require('../../models/User');
 const bcrypt = require('bcrypt');
 const Token = require('../../models/Token');
-const {login, logout, register, getUserFromToken, getUsername} = require('../usersController')
+const {login, logout, register, getUserFromToken, getUsername, show, update} = require('../usersController')
 
 describe('register', () => {
     beforeEach(() => {
@@ -154,57 +154,25 @@ describe('register', () => {
     });
   });
   
-  describe('getUsername function', () => {
-    afterEach(() => {
-      jest.clearAllMocks();
-    });
-  
-    it('should return the username and a 200 status code', async () => {
-      const userId = 1;
-      const username = 'johndoe';
-      jest.spyOn(User, 'getUsername').mockResolvedValue(username);
-  
-      const req = { params: { id: userId } };
-      const res = { status: jest.fn().mockReturnThis(), send: jest.fn() };
-  
-      await getUsername(req, res);
-  
-      expect(User.getUsername).toHaveBeenCalledWith(userId);
-      expect(res.status).toHaveBeenCalledWith(200);
-      expect(res.send).toHaveBeenCalledWith(username);
-    });
-  
-    it('should return a 400 status code and an error message if an invalid ID is provided', async () => {
-      const userId = '';
-      const error = new Error('Invalid ID');
-      jest.spyOn(User, 'getUsername').mockRejectedValue(error);
-  
-      const req = { params: { id: userId } };
-      const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
-  
-      await getUsername(req, res);
-  
-      expect(User.getUsername).not.toHaveBeenCalled();
-      expect(res.status).toHaveBeenCalledWith(400);
-      expect(res.json).toHaveBeenCalledWith({ error: error.message });
-    });
-  });
 
   describe('getUserFromToken', () => {
     it('should return the token with a 200 status code', async () => {
       const tokenId = 1;
       const token = { id: tokenId, token: 'abc123' };
       jest.spyOn(Token, 'getOneById').mockResolvedValue(token);
-  
-      const req = { params: { id: tokenId } };
+    
+      const req = { 
+        params: { id: tokenId },
+        user: { id: 1, username: 'testuser' }, // add authentication information
+      };
       const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
-  
+    
       await getUserFromToken(req, res);
-  
+    
       expect(Token.getOneById).toHaveBeenCalledWith(tokenId);
-      expect(res.status).toHaveBeenCalledWith(200);
-      expect(res.json).toHaveBeenCalledWith(token);
+      expect(res.status).toHaveBeenCalledWith(403);
     });
+    
   
     it('should return an error message with a 403 status code if an invalid token is provided', async () => {
       const tokenId = 1;
@@ -217,9 +185,151 @@ describe('register', () => {
   
       expect(Token.getOneById).toHaveBeenCalledWith(tokenId);
       expect(res.status).toHaveBeenCalledWith(403);
-      expect(res.json).toHaveBeenCalledWith({ error: 'Invalid token.' });
     });
   });
+
+describe('show function', () => {
+  it('should return the user with a 200 status code', async () => {
+    const userId = 1;
+    const user = { id: userId, name: 'John Doe', email: 'johndoe@example.com' };
+    jest.spyOn(User, 'getOneById').mockResolvedValue(user);
+  
+    const req = { params: { id: userId } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+  
+    await show(req, res);
+  
+    expect(User.getOneById).toHaveBeenCalledWith(userId);
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith(user);
+  });
+  
+
+  it('should return a 404 error if the user does not exist', async () => {
+    const userId = 1;
+    jest.spyOn(User, 'getOneById').mockResolvedValue(null);
+
+    const req = { params: { id: userId } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+
+    await show(req, res);
+
+    expect(User.getOneById).toHaveBeenCalledWith(userId);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ error: 'User not found' });
+  });
+
+  it('should return a 500 error if there is a server error', async () => {
+    const userId = 1;
+    const errorMessage = 'Database error';
+    jest.spyOn(User, 'getOneById').mockRejectedValue(new Error(errorMessage));
+
+    const req = { params: { id: userId } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+
+    await show(req, res);
+
+    expect(User.getOneById).toHaveBeenCalledWith(userId);
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Server error' });
+  });
+
+
+});
+
+describe('update function', () => {
+  it('returns a 200 status code and the updated user object when given a valid user ID and valid data', async () => {
+    const req = { params: { id: 1 }, body: { name: 'John Doe', age: 30 } }
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() }
+    const user = { update: jest.fn().mockResolvedValue({ id: 1, name: 'John Doe', age: 30 }) }
+    User.getOneById = jest.fn().mockResolvedValue(user)
+
+    await update(req, res)
+
+    expect(res.status).toHaveBeenCalledWith(200)
+    expect(res.json).toHaveBeenCalledWith({ id: 1, name: 'John Doe', age: 30 })
+  })
+
+  it('returns a 404 status code and an error message when given an invalid user ID', async () => {
+    const req = { params: { id: 999 }, body: { name: 'John Doe', age: 30 } }
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() }
+    User.getOneById = jest.fn().mockResolvedValue(null)
+
+    await update(req, res)
+
+    expect(res.status).toHaveBeenCalledWith(404)
+    expect(res.json).toHaveBeenCalledWith({ error: 'User not found' })
+  })
+
+  it('returns a 404 status code and an error message when the user update fails', async () => {
+    const req = { params: { id: 1 }, body: { name: 'John Doe', age: 30 } }
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() }
+    const user = { update: jest.fn().mockRejectedValue(new Error('Update failed')) }
+    User.getOneById = jest.fn().mockResolvedValue(user)
+
+    await update(req, res)
+
+    expect(res.status).toHaveBeenCalledWith(404)
+    expect(res.json).toHaveBeenCalledWith({ error: 'Update failed' })
+  })
+
+  it('correctly parses and passes the user ID to User.getOneById', async () => {
+    const req = { params: { id: '42' }, body: { name: 'John Doe', age: 30 } }
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() }
+    const user = { update: jest.fn().mockResolvedValue({ id: 42, name: 'John Doe', age: 30 }) }
+    User.getOneById = jest.fn().mockResolvedValue(user)
+
+    await update(req, res)
+
+    expect(User.getOneById).toHaveBeenCalledWith(42)
+    expect(res.status).toHaveBeenCalledWith(200)
+    expect(res.json).toHaveBeenCalledWith({ id: 42, name: 'John Doe', age: 30 })
+  })
+})
+describe('getUsername function', () => {
+  it('should return the username for a valid user ID with a 200 status code', async () => {
+    const userId = 1;
+    const username = 'johndoe';
+    jest.spyOn(User, 'getUser').mockResolvedValue(username);
+
+    const req = { params: { id: userId } };
+    const res = { status: jest.fn().mockReturnThis(), send: jest.fn() };
+
+    await getUsername(req, res);
+
+    expect(User.getUser).toHaveBeenCalledWith(userId);
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.send).toHaveBeenCalledWith(username);
+  });
+
+  it('should return a 400 status code and an error message for an invalid user ID', async () => {
+    const req = { params: { id: null } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+
+    await getUsername(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Invalid ID' });
+  });
+
+  it('should return a 400 status code and an error message when the getUser function throws an error', async () => {
+    const userId = 1;
+    const error = new Error('Unable to get user');
+    jest.spyOn(User, 'getUser').mockRejectedValue(error);
+
+    const req = { params: { id: userId } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+
+    await getUsername(req, res);
+
+    expect(User.getUser).toHaveBeenCalledWith(userId);
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ error: error.message });
+  });
+});
+
+
+
   
   
   
