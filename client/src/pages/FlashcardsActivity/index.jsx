@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./index.module.css";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 export default function FlashcardsActivity() {
   const [flashcards, setFlashcards] = useState([]);
@@ -8,13 +8,37 @@ export default function FlashcardsActivity() {
   const [i, setI] = useState(0);
   const { category } = useParams();
   const [loaded, setLoaded] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const navigate = useNavigate()
 
-  function handleFlip(cardId) {
-    if (flippedCards.includes(cardId)) {
-      setFlippedCards(flippedCards.filter((id) => id !== cardId));
-    } else {
-      setFlippedCards([...flippedCards, cardId]);
+  const getColours = () => {
+    switch (category) {
+      case "Geography":
+        return { primary: "#4CB731", secondary: "#2C8715" };
+      case "History":
+        return { primary: "#F26E6E", secondary: "#CF4B4B" };
+      case "Chemistry":
+        return { primary: "#368DDD", secondary: "#1D6CB5" };
+      case "Biology":
+        return { primary: "#D47902", secondary: "#B16610" };
+      case "Physics":
+        return { primary: "#F26E6E", secondary: "#CF4B4B" };
+      case "Maths":
+        return { primary: "#368DDD", secondary: "#1D6CB5" };
+      case "English Literature":
+        return { primary: "#D47902", secondary: "#B16610" };
+      case "Sports Science":
+        return { primary: "#E5DF46", secondary: "#D8B603" };
+      case "Religious Education":
+        return { primary: "#4CB731", secondary: "#2C8715" };
+      default:
+        console.log(category);
+        break;
     }
+  };
+
+  function handleFlip() {
+    setIsFlipped(!isFlipped)
   }
 
   const getData = async () => {
@@ -37,32 +61,48 @@ export default function FlashcardsActivity() {
     setI(i + 1);
   }
   function prev() {
-    setI(i - 1);
+    if (i > 0) setI(i - 1);
   }
   
   function CurrentFlashcard() {
     return (
       <div className={styles["container"]}>
-        <div
-          key={flashcards[i].card_id}
-          onClick={() => handleFlip(flashcards[i].card_id)}
-          className={styles["flashcard-card"]}
-          style={{
-            transform: flippedCards.includes(flashcards[i].card_id)
-              ? "rotateY(180deg)"
-              : "none",
-          }}
-        >
-          <div className={styles["front"]}>
-            <h2 className={styles["flashcard-title"]}>
-              {flashcards[i].collection}
-            </h2>
-            <h2 className={styles["flashcard-question"]}>
-              {flashcards[i].question}
-            </h2>
+        <h1 className={styles["title"]} role='headingone'>{category} Activiy</h1>
+        <div className={styles["content"]}>
+          <div className={styles["control-options"]}>
+            <button onClick={() => navigate(-1)} className={`${styles["flashcard-back"]} ${styles["btn"]}`}>Back</button>
           </div>
-          <div className={styles["back"]}>
-            <h2 className={styles["flashcard-answer"]}>{flashcards[i].fact}</h2>
+          <div
+            key={flashcards[i].card_id}
+            onClick={() => handleFlip()}
+            className={styles["flashcard-card"]}
+            style={{
+              transform: isFlipped
+                ? "rotateY(180deg)"
+                : "rotateY(0deg)",
+              background: getColours().primary,
+              border: `10px solid ${getColours().secondary}`,
+            }}
+          >
+            <div className={styles["front"]}>
+              <h2 className={styles["flashcard-title"]}>
+                {flashcards[i].collection}
+              </h2>
+              <h2 className={styles["flashcard-question"]}>
+                {flashcards[i].question}
+              </h2>
+            </div>
+            <div className={styles["back"]}>
+              <h2 className={styles["flashcard-answer"]}>{flashcards[i].fact}</h2>
+            </div>
+          </div>
+          <div className={styles["options"]}>
+            <button className={styles["option"]} onClick={prev}>
+              prev
+            </button>
+            <button className={styles["option"]} onClick={next}>
+              next
+            </button>
           </div>
         </div>
       </div>
@@ -73,26 +113,12 @@ export default function FlashcardsActivity() {
     return (
       <div className={styles["activity"]}>
         {loaded ? <CurrentFlashcard /> : <h1>loading</h1>}
-        <div className={styles["options"]}>
-          <button className={styles["option"]}>prev</button>
-          <button className={styles["option"]} onClick={next}>
-            next
-          </button>
-        </div>
       </div>
     );
   } else if (flashcards[i]) {
     return (
       <div className={styles["activity"]}>
         {loaded ? <CurrentFlashcard /> : <h1>loading</h1>}
-        <div className={styles["options"]}>
-          <button className={styles["option"]} onClick={prev}>
-            prev
-          </button>
-          <button className={styles["option"]} onClick={next}>
-            next
-          </button>
-        </div>
       </div>
     );
   } else {

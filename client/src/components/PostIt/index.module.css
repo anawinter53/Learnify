@@ -25,6 +25,13 @@
   border-top-right-radius: 15px;
 }
 
+.card-body {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .card-0 {
   transform: rotateZ(15deg) translateX(13px) translateY(30px);
   background: #d47902;

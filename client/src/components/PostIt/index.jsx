@@ -18,15 +18,19 @@ export default function PostIt({card0, card1, card2, card3}) {
     <div className={styles["card-container"]}>
       <div onClick={() => scroll(card0.current)} className={`${styles["card"]} ${styles["card-0"]}`} role='card'>
         <div className={styles["card-heading"]}></div>
+        <div className={styles["card-body"]}>Dashboard</div>
       </div>
       <div onClick={() => scroll(card1.current)} className={`${styles["card"]} ${styles["card-1"]}`} role='card'>
         <div className={styles["card-heading"]}></div>
+        <div className={styles["card-body"]}>Quizzes</div>
       </div>
       <div onClick={() => scroll(card2.current)} className={`${styles["card"]} ${styles["card-2"]}`} role='card'>
         <div className={styles["card-heading"]}></div>
+        <div className={styles["card-body"]}>Flashcards</div>
       </div>
       <div onClick={() => scroll(card3.current)} className={`${styles["card"]} ${styles["card-3"]}`} role='card'>
         <div className={styles["card-heading"]}></div>
+        <div className={styles["card-body"]}>Profile</div>
       </div>
     </div>
   );
