@@ -3,13 +3,13 @@
     align-items: center;
     flex-direction: column;
     position: relative;
-    width: 500px;
+    width: 300px;
     height: max-content;
     padding-bottom: 40px;
     background: #5e37c9;
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    gap: 40px;
+    /* gap: 40px; */
   }
   
   .form-heading {
@@ -52,14 +52,14 @@
   .form form .input input {
     padding: 20px;
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
     color: #202020;
   }
   
   .form form .input span {
     position: absolute;
     padding: 20px;
-    font-size: 20px;
+    font-size: 16px;
     color: #20202079;
     left: 0;
     top: 0;
@@ -85,8 +85,17 @@
     border-radius: 15px;
     border: none;
     background: var(--nav-colour);
-    font-size: 20px;
+    font-size: 16px;
     color: var(--font-colour);
     cursor: pointer;
     transition: 0.25s;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
   }

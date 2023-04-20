@@ -120,13 +120,11 @@ const updatePassword = async (req, res) => {
     try {
         const id = parseInt(req.params.id)
         const data = req.body
-        console.log(data)
         const user = await User.getOneById(id)
         const authenticated = await bcrypt.compare(
             data.oldPassword,
             user["password"]
         );
-        console.log(authenticated)
         if (!authenticated) throw new Error("Incorrect credentials.")
         const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS))
         data["newPassword"] = await bcrypt.hash(data["newPassword"], salt);
