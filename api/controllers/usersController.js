@@ -99,8 +99,7 @@ const updateDetails = async (req, res) => {
     try{
         const id = parseInt(req.params.id)
         const data = req.body
-        const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS))
-        data["password"] = await bcrypt.hash(data["password"], salt);
+        
         const user = await User.getOneById(id)
         const result = await user.updateDetails(data)
         res.status(200).json(result)
@@ -109,4 +108,25 @@ const updateDetails = async (req, res) => {
     }
 }
 
-module.exports = {register, login, logout, getUsername, getUserFromToken, show, update, updateDetails}
+const updatePassword = async (req, res) => {
+    try {
+        const id = parseInt(req.params.id)
+        const data = req.body
+        console.log(data)
+        const user = await User.getOneById(id)
+        const authenticated = await bcrypt.compare(
+            data.oldPassword,
+            user["password"]
+        );
+        console.log(authenticated)
+        if (!authenticated) throw new Error("Incorrect credentials.")
+        const salt = await bcrypt.genSalt(parseInt(process.env.SALT_ROUNDS))
+        data["newPassword"] = await bcrypt.hash(data["newPassword"], salt);
+        const result = await user.updatePassword(data["newPassword"])
+        res.status(200).json(result)
+    } catch(err) {
+        res.status(404).json({error: err.message})
+    }
+}
+
+module.exports = {register, login, logout, getUsername, getUserFromToken, show, update, updateDetails, updatePassword}
