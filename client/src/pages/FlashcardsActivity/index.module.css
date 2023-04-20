@@ -103,3 +103,10 @@
   text-decoration: none;
   color: #d4d4d4;
 }
+
+.no-more-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}

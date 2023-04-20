@@ -98,7 +98,7 @@ export default function FlashcardsActivity() {
   } else {
     return (
       <div className={styles["activity"]}>
-        <div className="no-more-cards">
+        <div className={styles["no-more-cards"]}>
           <h2>Flashcards finished! Woohoo 🥳</h2>
         </div>
         <div className={styles["options"]}>
