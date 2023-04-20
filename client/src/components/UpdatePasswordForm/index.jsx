@@ -6,13 +6,19 @@ export default function UpdateDetailsForm({user}) {
     const [oldPassword, setOldPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [conNewPassword, setConNewPassword] = useState("")
+    const [errorMessage, setErrorMessage] = useState("")
+
 
     const update = async (e) => {
         e.preventDefault()
     
         const data = { oldPassword, newPassword };
     
-        if (newPassword !== conNewPassword) return;
+        if (newPassword !== conNewPassword) {
+            console.log("passwords do not match")
+            setErrorMessage("New passwords do not match")
+            return
+        }
     
         const options = {
           method: "PATCH",
@@ -21,13 +27,16 @@ export default function UpdateDetailsForm({user}) {
         };
     
         const res = await fetch(`http://localhost:8080/users/password/${user.id}`, options);
+        const data2 = await res.json()
 
             
         if (res.ok) {
-            console.log("password updated")
             window.location.reload(false)
+        } else if (data2.error == "Incorrect credentials.") {
+            setErrorMessage("Current password is incorrect")
         } else {
             console.log("Something failed, very sad! :(");
+
         }
     }
 
@@ -39,7 +48,7 @@ export default function UpdateDetailsForm({user}) {
         <form role='form' onSubmit={update}>
         <div className={styles["input"]}>
           <input type="password" id="oldPassword" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} required />
-          <span>Old Password</span>
+          <span>Current Password</span>
         </div>
           <div className={styles["input"]}>
             <input type="password" id="newPassword" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
@@ -49,6 +58,7 @@ export default function UpdateDetailsForm({user}) {
             <input type="password" id="conNewPassword" value={conNewPassword} onChange={(e) => setConNewPassword(e.target.value)} required />
             <span>Confirm New Password</span>
           </div>
+          {errorMessage && <p className={styles["error-message"]}>{errorMessage}</p>}
           <div className={styles["input"]}>
             <button className={styles["btn"]} type="submit" role='submit'>Submit</button>
           </div>
