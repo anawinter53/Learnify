@@ -60,25 +60,28 @@ export default function QuizQuestion({questions, updateScore}) {
     }, [])
 
     const handleCheck = (e) => {
-        const options = optionsRef.current.children
-        for (const o of options) {
-            if (o.className.includes("incorrect")) {
-                o.style.background = "rgb(243, 85, 85)"
-                o.style.border = "6.5px solid rgb(243, 85, 85)"
-            } else {
-                o.style.background = "rgb(84, 223, 79)"
-                o.style.border = "6.5px solid rgb(84, 223, 79)"
-            }
-            o.setAttribute("disabled", true)
+      
+      const options = optionsRef.current.children
+      for (const o of options) {
+        if (o.className.includes("incorrect")) {
+          o.style.background = "rgb(243, 85, 85)"
+          o.style.border = "6.5px solid rgb(243, 85, 85)"
+        } else {
+          o.style.background = "rgb(84, 223, 79)"
+          o.style.border = "6.5px solid rgb(84, 223, 79)"
         }
-        
-        if (e.target.textContent == question.answer) {
-            setScore(score + 1)
-        }
-        
-        const timer = setTimeout(() => {
-            updateQuestion()
-        }, 2000)
+        o.setAttribute("disabled", true)
+      }
+      
+      e.target.style.border = `6.5px solid ${getColours()[Object.keys(getColours())[2]].secondary}`
+
+      if (e.target.textContent == question.answer) {
+          setScore(score + 1)
+      }
+      
+      const timer = setTimeout(() => {
+          updateQuestion()
+      }, 2000)
         
     }
 
