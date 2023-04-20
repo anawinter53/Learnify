@@ -42,11 +42,11 @@ describe("UserProfile Page", () => {
     })
 
     it("Toggles form on and off with click", async () => {
-        const button = await screen.findByRole('button')
-        userEvent.click(button)
+        const button = await screen.findAllByRole('button')
+        userEvent.click(button[0])
         const form = await screen.findAllByRole('update-details')
         expect(form).toBeInTheDocument
-        userEvent.click(button)
+        userEvent.click(button[0])
         expect(form).not.toBeInTheDocument
     })
 

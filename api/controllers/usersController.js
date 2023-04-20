@@ -73,27 +73,35 @@ const show = async (req, res) => {
 
         if (!user)  {
             return res.status(404).json({ error: 'User not found' });
+
+          }
+          return res.status(200).json(user);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ error: 'Server error' });
+          }
+
+    }
+
+
+    const update = async (req, res) => {
+        try {
+          const id = parseInt(req.params.id)
+          const data = req.body
+          const user = await User.getOneById(id)
+      
+          if (!user) {
+            res.status(404).json({ error: 'User not found' })
+            return
+          }
+      
+          const result = await user.update(data)
+          res.status(200).json(result)
+        } catch(err) {
+          res.status(404).json({ error: err.message })
         }
-
-        return res.json(user);
-
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: 'Server error' });
-    }
-}
-
-const update = async (req, res) => {
-    try {
-        const id = parseInt(req.params.id)
-        const data = req.body
-        const user = await User.getOneById(id)
-        const result = await user.update(data)
-        res.status(200).json(result)
-    } catch(err) {
-        res.status(404).json({error: err.message})
-    }
-}
+      }
+      
 
 const updateDetails = async (req, res) => {
     try{

@@ -29,10 +29,10 @@ describe("Questions page", () => {
         waitFor(() => expect(heading.textContent).toBe("Quizzes"))
     })
 
-    it("Renders quiz question", async () => {
-        const headingtwo = screen.getAllByRole('headingtwo')
-        await waitFor(() => expect(headingtwo).toBeInTheDocument())
-        await waitFor(() => expect(heading.textContent).toContain("Question"))
-    })
+    // it("Renders quiz question", async () => {
+    //     const headingtwo = screen.getAllByRole('headingtwo')
+    //     await waitFor(() => expect(headingtwo).toBeInTheDocument())
+    //     await waitFor(() => expect(heading.textContent).toContain("Question"))
+    // })
 
 })

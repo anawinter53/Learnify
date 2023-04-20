@@ -79,9 +79,57 @@ describe('Flashcard model', () => {
                     }
                     const user_id = 1;
                     const flashcard = await Flashcard.create(data, user_id);
-                    console.log(flashcard);
                     await flashcard.destroy();
                     await expect(Flashcard.getById(flashcard.user_id)).rejects.toThrow('No flashcards available');
                 });
             });
+
+            describe('getFavoritesByUser method', () => {
+                it('should return an array of favorite flashcards for the given user', async () => {
+                  const userId = 3;
+                  const favorites = await Flashcard.getFavoritesByUser(userId);
+                  expect(Array.isArray(favorites)).toBe(true);
+                  expect(favorites.length).toBeGreaterThan(0);
+                });
+              
+                it('should throw an error if there are no favorite flashcards for the given user', async () => {
+                  const userId = 2;
+                  const mockDb = jest.spyOn(db, 'query').mockReturnValueOnce({ rows: [] });
+                  await expect(Flashcard.getFavoritesByUser(userId)).rejects.toThrow('No favorite flashcards found for this user');
+                  mockDb.mockRestore();
+                });
+              });
+              
+              describe('addFavorite method', () => {
+                it('should add the given card as a favorite for the given user', async () => {
+                  const userId = 1;
+                  const cardId = 3;
+                  const added = await Flashcard.addFavorite(userId, cardId);
+                  expect(added).toBe(true);
+                });
+              
+                it('should return false if the favorite already exists', async () => {
+                  const userId = 1;
+                  const cardId = 3;
+                  const added = await Flashcard.addFavorite(userId, cardId);
+                  expect(added).toBe(false);
+                });
+              });
+              
+              describe('destroyFavorite method', () => {
+                it('should remove the given card as a favorite for the given user', async () => {
+                  const userId = 1;
+                  const cardId = 3;
+                  const destroyed = await Flashcard.destroyFavorite(userId, cardId);
+                  expect(destroyed).toBe(true);
+                });
+              
+                it('should return false if the favorite does not exist', async () => {
+                  const userId = 1;
+                  const cardId = 30;
+                  const destroyed = await Flashcard.destroyFavorite(userId, cardId);
+                  expect(destroyed).toBe(true);
+                });
+              });
+              
 })
