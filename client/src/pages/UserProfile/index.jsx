@@ -50,8 +50,10 @@ export default function UserProfile() {
           <p className={styles.highscore} role='points'> Total XP: {user?.score}</p>
           <p className={styles.highscore} role='percentage'>Percentage: {user?.score_out_of == 0 ? 0 : Math.round((user?.score/user?.score_out_of) * 100)} %</p>
         </div>
+        <div className={styles["options"]}>
         <button className={styles["form-btn"]} onClick={openDetailsForm}>Update your details</button>
         <button className={styles["password-form-btn"]} onClick={openPasswordForm}>Update your password</button>
+        </div>
         <div className={`${styles["details-form"]} ${styles[toggleDetailsForm ? 'open' : 'closed']}`} role='update-details'>
           <UpdateDetailsForm user={user} />
         </div>
