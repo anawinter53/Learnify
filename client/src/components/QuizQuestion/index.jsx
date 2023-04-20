@@ -67,7 +67,7 @@ export default function QuizQuestion({questions, updateScore}) {
         <div>
             <div className={styles["container"]}>
                 <p className={styles['score']}>Score: {score}</p>
-                <h2>Question {count} :</h2>
+                <h2 role='headingtwo'>Question {count} :</h2>
                 <h3>{question.question}</h3>
                 <div className={styles['options-container']} ref={optionsRef}>{answers.map((answer, i) => 
                     <button key={i} className={`${styles[answer === question.answer ? 'correct' : 'incorrect']}`}  onClick={handleCheck}>{answer}</button>

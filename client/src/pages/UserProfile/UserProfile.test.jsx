@@ -40,9 +40,8 @@ describe("UserProfile Page", () => {
         waitFor(() => expect(points).toBeInTheDocument())
         expect(points.textContent).toContain("Points:")
 
-        const percentage = await screen.findByText('percentage')
-        waitFor(() => expect(percentage).toBeInTheDocument())
-        expect(percentage.textContent).toContain("Percentage:")
+        const percentage = await screen.findByRole('percentage')
+        expect(percentage.childNodes[0].nodeValue).toStrictEqual("Percentage: ")
     })
 
 })

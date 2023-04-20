@@ -31,4 +31,10 @@ describe("Questions page", () => {
         waitFor(() => expect(heading.textContent).toBe("Quizzes"))
     })
 
+    it("Renders quiz question", () => {
+        const headingtwo = screen.getAllByRole('headingtwo')
+        waitFor(() => expect(headingtwo).toBeInTheDocument())
+        waitFor(() => expect(heading.textContent).toContain("Question"))
+    })
+
 })

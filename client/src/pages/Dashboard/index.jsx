@@ -11,7 +11,6 @@ export default function Dashboard() {
   const getColours = (category) => {
     switch (category) {
       case "Geography":
-        
         return {"primary": "#4CB731", "secondary": "#2C8715"};
       case "History":
         return {"primary": "#F26E6E", "secondary": "#CF4B4B"};
