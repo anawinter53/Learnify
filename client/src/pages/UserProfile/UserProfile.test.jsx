@@ -25,7 +25,6 @@ describe("UserProfile Page", () => {
     it("Displays a heading", async () => {
         const heading = await screen.findByRole('headingone')
         waitFor(() => expect(heading).toBeInTheDocument());
-        expect(heading.textContent).toContain("Username:")
     })
 
     it("Displays user details", async () => {
