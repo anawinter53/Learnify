@@ -70,7 +70,8 @@ button:disabled {
 
 .options {
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
+  flex-direction: row;
   height: 80px;
 }
 

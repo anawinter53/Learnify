@@ -43,6 +43,7 @@ export default function QuizQuestion({questions, updateScore}) {
         let i = 0;
         for (const o of optionsRef.current.children) {
           o.style.background = getColours()[Object.keys(getColours())[i]].primary;
+          o.style.border = `6.5px solid ${getColours()[Object.keys(getColours())[i]].secondary}`;
           o.removeAttribute("disabled");
           i++;
         }
@@ -63,8 +64,10 @@ export default function QuizQuestion({questions, updateScore}) {
         for (const o of options) {
             if (o.className.includes("incorrect")) {
                 o.style.background = "rgb(243, 85, 85)"
+                o.style.border = "6.5px solid rgb(243, 85, 85)"
             } else {
                 o.style.background = "rgb(84, 223, 79)"
+                o.style.border = "6.5px solid rgb(84, 223, 79)"
             }
             o.setAttribute("disabled", true)
         }
@@ -93,13 +96,11 @@ export default function QuizQuestion({questions, updateScore}) {
     return(
       <div className={styles["parent"]}>
         <div className={styles["options"]}>
-          <div>
-            <button onClick={() => navigate(-1)} className={`${styles["flashcard-back"]} ${styles["btn"]}`}>Back</button>
-          </div>
+          <p className={`${styles['score']} ${styles['btn']}`}>Score: {score}</p>
+          <button onClick={() => navigate(-1)} className={`${styles["flashcard-back"]} ${styles["btn"]}`}>Back</button>
         </div>
         <div className={styles['content']}>  
           <div className={styles['question-info']}>  
-            <p className={styles['score']}>Score: {score}</p>
             <h2>Question {count} :</h2>
           </div>
           <h1 className={styles['question']}>{question.question}</h1>
