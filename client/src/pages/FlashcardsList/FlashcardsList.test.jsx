@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useParams } from "react-router-dom";
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { screen, render, cleanup } from '@testing-library/react';
 
@@ -8,10 +8,14 @@ expect.extend(matchers);
 
 import FlashcardsList from '.';
 
+
+
 describe("Flashcards List Page", () => {
+
     beforeEach(() => {
+        
         render(
-            <BrowserRouter>
+            <BrowserRouter path='/:category'>
                 <FlashcardsList />
             </BrowserRouter>
         )

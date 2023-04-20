@@ -11,11 +11,9 @@ import QuestionsPage from '.';
 
 
 describe("Questions page", () => {
-    const { subject } = useParams()
-
     beforeEach(() => {
         render(
-            <BrowserRouter subject='subject'>
+            <BrowserRouter path='/:subject'>
                 <QuestionsPage />
             </BrowserRouter>
         )
