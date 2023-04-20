@@ -95,3 +95,7 @@
   text-decoration: none;
   color: var(--font-colour);
 }
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
