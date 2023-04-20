@@ -104,7 +104,7 @@ export default function QuizQuestion({questions, updateScore}) {
         </div>
         <div className={styles['content']}>  
           <div className={styles['question-info']}>  
-            <h2>Question {count} :</h2>
+            <h2 role='headingtwo'> Question {count} :</h2>
           </div>
           <h1 className={styles['question']}>{question.question}</h1>
           <div className={styles['options-container']} ref={optionsRef}>

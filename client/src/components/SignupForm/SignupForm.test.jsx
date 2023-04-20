@@ -55,8 +55,8 @@ describe("SignupForm Component", () => {
 
         await waitFor(() => UserEvent.click(submitButton[0]))
 
-        expect(onInvalid).toHaveBeenCalledTimes(1)
-        expect(onSubmit).toHaveBeenCalledTimes(0)
+        waitFor(() => expect(onInvalid).toHaveBeenCalledTimes(1))
+        waitFor(() => expect(onSubmit).toHaveBeenCalledTimes(0))
     })
 
     // it('triggers invalid when required fields are empty', async () => {

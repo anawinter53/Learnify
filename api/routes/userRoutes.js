@@ -10,6 +10,8 @@ userRouter.post("/logout", userController.logout)
 userRouter.get("/username/:id", userController.getUsername)
 userRouter.get("/username/token/:id", userController.getUserFromToken)
 userRouter.get("/username/single/:id", userController.show)
-userRouter.patch("/:id", userController.update)
+userRouter.patch("/score/:id", userController.update)
+userRouter.patch("/:id", userController.updateDetails)
+userRouter.patch("/password/:id", userController.updatePassword)
 
 module.exports = userRouter

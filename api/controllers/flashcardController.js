@@ -101,12 +101,14 @@ async function getBySubject(req, res) {
       const cardId = req.params.cardId;
       const user = await User.getOneById(userId);
       const flashcard = await Flashcard.getById(cardId);
-      console.log("hello")
+
       if (!flashcard) {
         return res.status(404).json({ error: 'Flashcard not found' });
       }
       
+
       const success = await Flashcard.destroyFavorite(userId, cardId);
+
       if (success) {
         res.status(200).json({ message: 'Flashcard removed from favorites' });
       } else {

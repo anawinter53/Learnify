@@ -58,11 +58,9 @@ describe("Quiz Question Component", () => {
         //   }, [])
 
         render(
-            <CategoryContext.CategoryProvider category="category">
-                <BrowserRouter>
+                <BrowserRouter path='/:category'>
                     <QuizQuestion questions='questions'/>
                 </BrowserRouter>
-            </CategoryContext.CategoryProvider>
                 
         )
     })
@@ -72,8 +70,8 @@ describe("Quiz Question Component", () => {
     })
 
     it("Displays a heading", () => {
-        const heading = waitFor(() => screen.findByRole('heading'))
-        expect(heading).toBeInTheDocument();
+        const heading = screen.findByRole('heading')
+        waitFor(() => expect(heading).toBeInTheDocument());
     })
 
     // it("Button changes colour based on answer", () => {

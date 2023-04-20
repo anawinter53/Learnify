@@ -1,3 +1,14 @@
+.profile {
+    margin-left: 200px;
+    /* height: 100vh; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px; */
+    
+}
+
+
 .userProfile {
   display: flex;
   flex-direction: column;
@@ -32,4 +43,20 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+button {
+  width: auto;
+}
+
+.closed {
+  display: none;
+}
+
+.open {
+  display: unset;
+}
+
+.form-btn {
+  align-items: center;
 }
