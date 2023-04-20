@@ -7,13 +7,16 @@ import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
 import Quizzes from '.';
+import { CategoryProvider, useCategory, category, setCategory } from "../../context/CategoryContext"
 
-describe("Quizzes Component", () => {
+describe("Quizzes Page", () => {
     beforeEach(() => {
         render(
-            <BrowserRouter>
-                <Quizzes />
-            </BrowserRouter>
+            <CategoryProvider category='category'>
+                <BrowserRouter>
+                    <Quizzes />
+                </BrowserRouter>
+            </CategoryProvider>
         )
     })
     

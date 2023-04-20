@@ -53,8 +53,6 @@ export default function FlashcardsList() {
 
     const data = await response.json();
 
-    console.log(data);
-
     setFlashcards(data);
 
     setHasColours(false);
@@ -124,7 +122,7 @@ export default function FlashcardsList() {
         <div className={styles["container"]}>
           <h1 className={styles["title"]}>{`${category} Flashcards`}</h1>
           <div className={styles["content"]}>
-            <div className={styles["options"]}>
+            <div className={styles["options"]} role='flashcards'>
               <div>
                 <NavLink
                   to={`/dashboard/flashcards/${category}/activity`}
