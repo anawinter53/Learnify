@@ -32,7 +32,7 @@ async function create(req, res) {
       res.status(400).json({ error: 'Flashcard creation failed: Failed to create flashcard' });
     } else {
       try {
-        const flashcard = await Flashcard.create(data, user_id);
+        const flashcard = await Flashcard.create(data);
         res.status(201).json(flashcard);
       } catch (err) {
         const errorMessage = `Flashcard creation failed: ${err.message}`;

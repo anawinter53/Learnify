@@ -110,7 +110,7 @@
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
   grid-gap: 30px;
   padding-bottom: 20px;
 }
@@ -171,7 +171,7 @@
 }
 
 .no-flash {
-  width: 100%;
+  width: max-content;
   color: var(--font-colour);
   font-size: 2rem;
 }
