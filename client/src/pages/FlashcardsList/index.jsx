@@ -113,10 +113,6 @@ export default function FlashcardsList() {
     checkFavorites();
   }, []);
 
-  useEffect(() => {
-    checkFavorites();
-  }, []);
-
   return (
     <>
       <CreateFlashcardModal
