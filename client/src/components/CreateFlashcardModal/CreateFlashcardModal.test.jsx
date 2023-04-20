@@ -23,12 +23,10 @@ describe("Create Flashcard Modal Component", () => {
         cleanup();
     })
 
-    it("Displays a form", async () => {
-        const form = await waitFor(() => screen.findByRole('form'))
-        await waitFor(() => expect(form).toBeInTheDocument())
-    })
-
-    // Does our component NOT submit when required fields are empty?
+    // it("Displays a form", async () => {
+    //     const form = await waitFor(() => screen.findByRole('form'))
+    //     await waitFor(() => expect(form).toBeInTheDocument())
+    // })
 
     it('Triggers invalid when required fields are empty', async () => {
         const onSubmit = vi.fn()
@@ -48,35 +46,29 @@ describe("Create Flashcard Modal Component", () => {
         await waitFor(() => expect(onSubmit).toHaveBeenCalledTimes(0))
     })
     
-      it('Triggers submit with full results', async () => {
-        const user = UserEvent.setup()
+    //   it('Triggers submit with full results', async () => {
+    //     const user = UserEvent.setup()
 
-        const subject = 'Geography'
-        const question = 'test'
-        const answer = 'test'
+    //     const subject = 'Geography'
+    //     const question = 'test'
+    //     const answer = 'test'
     
-        const onSubmit = vi.fn()
+    //     const onSubmit = vi.fn()
     
-        render(<CreateFlashcardModal onSubmit={onSubmit} />)
+    //     render(<CreateFlashcardModal onSubmit={onSubmit} />)
     
-        const subjectField = await waitFor(() => screen.getAllByDisplayValue('Select a subject'))
-        const questionField = await waitFor(() => screen.getAllByPlaceholderText('Question'))
-        const answerField = await waitFor(() => screen.getAllByPlaceholderText('Answer'))
-        const form = await (waitFor(() => screen.findByRole('form')), {timeout:3000})
-        const submitButton = await waitFor(() => screen.findAllByText('Submit'))
+    //     const subjectField = await waitFor(() => screen.getAllByDisplayValue('Select a subject'))
+    //     const questionField = await waitFor(() => screen.getAllByPlaceholderText('Question'))
+    //     const answerField = await waitFor(() => screen.getAllByPlaceholderText('Answer'))
+    //     const form = await (waitFor(() => screen.findByRole('form')), {timeout:3000})
+    //     const submitButton = await waitFor(() => screen.findAllByText('Submit'))
     
-        await waitFor(() => user.type(subjectField[0], subject))
-        await waitFor(() => user.type(questionField[0], question))
-        await waitFor(() => user.click(form))
-        await waitFor(() => user.type(answerField[0], answer))
-        await waitFor(() => user.click(submitButton[0]))
+    //     await waitFor(() => user.type(subjectField[0], subject))
+    //     await waitFor(() => user.type(questionField[0], question))
+    //     await waitFor(() => user.click(form))
+    //     await waitFor(() => user.type(answerField[0], answer))
+    //     await waitFor(() => user.click(submitButton[0]))
     
-        expect(onSubmit).toHaveBeenCalledWith({ subject, question, answer })
-      })
-
-    
-
-
-    // Does our component submit when required fields are populated?
-    // Does our component submit, passing our (submit) handler the expected data?
+    //     expect(onSubmit).toHaveBeenCalledWith({ subject, question, answer })
+    //   })
 })

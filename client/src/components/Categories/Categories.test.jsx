@@ -37,4 +37,11 @@ describe("Categories Component", () => {
         waitFor(() => expect(cards[0]).toBeInTheDocument())
         waitFor(() => expect(cards).toHaveLength(9))
     })
+
+    it('Returns the first card as Geography', async () => {
+        const cards = screen.findAllByRole('card')
+        console.log(cards[0].textValue)
+        // waitFor(() => expect(cards[0]).toBeInTheDocument())
+        // waitFor(() => expect(cards).toHaveLength(9))
+    })
 })
