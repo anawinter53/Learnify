@@ -1,9 +1,12 @@
-# ____Website Name___
+# Learnify
 
 ## About
 
-Quiz/flashcards website for project week 3. 
+Learnify is an all-in-one website that allows users to learn and revise a range of subjects, both at GCSE and A-level standards. Learnify aims to make learning more enjoyable for users, with bright colours and engaging features such as the quiz and flashcard pages. On Learnify you have the choice between nine different subjects, ranging from Maths to Geography and even Sports Science! If quizzes aren't your thing, the flashcard page allows you to test your knowledge and even create custom flashcards. You'll be able to view all your custom and favourite flashcards on your Dashboard for ease of use. 
 
+## Development
+
+The team followed an Agile methodology for the development of Learnify, using wireframing and Kanban boards. 
 
 ## Site directory
 
@@ -23,31 +26,41 @@ Quiz/flashcards website for project week 3.
 
 ### Server-side
 
+#### User Routes
+
 | Route | Method | Response |
 |-------|--------|----------|
 | "/users/register" | POST | Creates a new user account, redirects to login page |
 | "/users/login" | POST | Logs user into their account, redirects to dashboard |
 | "/users/logout" | POST | Logs user out of their account, redirects to landing page |
 | "/users/username/:id" | GET | Finds user profile by their id |
-| "/users/username/token/:id" | GET | Gets a user by their tokenId   |
-| "/users/username/single/:id" | GET | Gets a user by their userId   |
-| "/users/score/:id" | PATCH | Updates the user score after a test   |
-| "/users/:id" | PATCH | Updates the users information   |
-| "/users/password/:id" | PATCH | Updates the user's password   |
+| "/users/username/token/:id" | GET | Gets a user by their tokenId |
+| "/users/username/single/:id" | GET | Gets a user by their userId |
+| "/users/score/:id" | PATCH | Updates the user score after a test |
+| "/users/:id" | PATCH | Updates the users information |
+| "/users/password/:id" | PATCH | Updates the user's password |
+
+#### Quiz Routes
+
+| Route | Method | Response |
 |-------|--------|----------|
 | "/quiz" | GET | Shows all quizzes |
 | "/quiz/:subject" | GET | Finds quiz by subject |
-| "/quiz/single/:id" | GET | Gets a single quiz question by questionId   |
+| "/quiz/single/:id" | GET | Gets a single quiz question by questionId |
+
+#### Flashcard Routes
+
+| Route | Method | Response |
 |-------|--------|----------|
 | "/flashcards" | GET | Creates a new item that is added to the database |
-| "/flashcards/:subject" | GET | Gets all flashcards for a specific subject   |
-| "/flashcards/single/:id" | GET | Gets a single flashcard based on the cardID   |
-| "/flashcards/user/:id" | GET | Gets all the flashcards by UserId   |
-| "/flashcards" | POST | Creates a new flashcard   |
-| "/flashcards/:id" | DELETE | Deletes a flashcard based on the cardId   |
-| "/flashcards/favorite/user/:userId/card/:cardId" | POST | Adds a flashcard to the user's favourites   |
-| "/flashcards/favorite/user/:id" | GET | Retrieves the user's favourite flashcards   |
-| "/favorite/user/:userId/card/:cardId" | DELETE | Deletes a user's favourite flashcard   |
+| "/flashcards/:subject" | GET | Gets all flashcards for a specific subject |
+| "/flashcards/single/:id" | GET | Gets a single flashcard based on the cardID |
+| "/flashcards/user/:id" | GET | Gets all the flashcards by UserId |
+| "/flashcards" | POST | Creates a new flashcard |
+| "/flashcards/:id" | DELETE | Deletes a flashcard based on the cardId |
+| "/flashcards/favorite/user/:userId/card/:cardId" | POST | Adds a flashcard to the user's favourites |
+| "/flashcards/favorite/user/:id" | GET | Retrieves the user's favourite flashcards |
+| "/favorite/user/:userId/card/:cardId" | DELETE | Deletes a user's favourite flashcard |
 
 
 ## Required software & accounts
@@ -71,26 +84,6 @@ Make sure there are no spaces between the content on each line and ensure you do
 
 7. Set up the database connection by running `npm run setup-db`
 8. To get the server running, run `npm run dev`
-
-### Libraries
-
-These are the necessary libraries used with this repository:
-
-#### Client-side
-
-- cors (cors allows cross-origin resource sharing which allows access to other domains, ports and schemes)
-- express (express offers built-in functions that make development much easier)
-- dotenv (dotenv processes environment variables in a .env file to make them accessible whilst allowing the contents of .env to remain secret)
-- pg (pg allows connection to a database using PostgreSQL)
-- nodemon (as a dev dependency, nodemon automatically restarts the server when changes are detected)
-
-#### Server-side
-
-- react (react allows us to implement functionality needed for React components)
-- react-dom (react-dom allows us to render to the virtual DOM with React)
-- react-router-dom (react-router-dom allows us to use router functionality through pages)
-- vite (as a dev dependency, vite bundles JavaScript files for faster build times)
-
 
 ## Usage
 
