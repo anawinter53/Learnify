@@ -48,8 +48,8 @@ class Flashcard {
         return response.rows.map((f) => new Flashcard(f));
     }
 
-    static async create(data, user_id) {
-        const {collection, question, fact} = data;
+    static async create(data) {
+        const {collection, question, fact, user_id} = data;
         const response = await db.query(
             "INSERT INTO flashcard (collection, question, fact, user_id) VALUES ($1, $2, $3, $4) RETURNING *;",
             [collection, question, fact, user_id]

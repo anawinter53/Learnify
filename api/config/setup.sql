@@ -510,7 +510,7 @@ CREATE TABLE favorites (
   user_id INTEGER NOT NULL,
   card_id INTEGER NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users("user_id"),
-  FOREIGN KEY (card_id) REFERENCES flashcard("card_id"),
+  FOREIGN KEY (card_id) REFERENCES flashcard("card_id") ON DELETE CASCADE,
   UNIQUE (user_id, card_id)
 
 );
