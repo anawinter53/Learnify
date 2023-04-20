@@ -14,7 +14,6 @@ export default function FlashcardsList() {
   const getColours = () => {
     switch (category) {
       case "Geography":
-        
         return {"primary": "#4CB731", "secondary": "#2C8715"};
       case "History":
         return {"primary": "#F26E6E", "secondary": "#CF4B4B"};
@@ -97,7 +96,7 @@ export default function FlashcardsList() {
         <div className={styles["container"]}>
           <h1 className={styles["title"]}>{`${category} Flashcards`}</h1>
           <div className={styles["content"]}>
-            <div className={styles["options"]}>
+            <div className={styles["options"]} role='flashcards'>
               <div>
                 <NavLink
                   to={`/dashboard/flashcards/${category}/activity`}
