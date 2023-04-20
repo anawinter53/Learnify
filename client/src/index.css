@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&family=David+Libre&family=Inter&family=Padauk&family=Poppins&family=Qwitcher+Grypen&family=Roboto&display=swap');
 
 * {
-  font-family: "Inter", sans-serif;
+  font-family: "Roboto", sans-serif;
   --font-colour: #D7C9DD;
   --font-colour-dark: #202020;
   --nav-colour: #3C2970;

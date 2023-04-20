@@ -13,7 +13,7 @@ export default function EmbeddedNav() {
     >
       <div>
         <NavLink to="/" className={styles["title"]}>
-          App Name
+          Learnify
         </NavLink>
       </div>
       <div>

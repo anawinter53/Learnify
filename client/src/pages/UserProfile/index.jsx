@@ -40,7 +40,7 @@ export default function UserProfile() {
 
   return (
     <div className={styles["profile"]}>
-      <div className={styles.userProfile}>
+      <div className={styles["userProfile"]}>
         <div className={styles["profile-details"]}>  
           <ProfileImg />
           <h1 className={styles.username} role='headingone'>{user?.username}</h1>
@@ -59,10 +59,11 @@ export default function UserProfile() {
         <div className={`${styles["details-form"]} ${styles[toggleDetailsForm ? 'open' : 'closed']}`} role='update-details'>
           <UpdateDetailsForm user={user} />
         </div>
+        <div className={`${styles["password-form"]} ${styles[togglePasswordForm ? 'open' : 'closed']}`}>
+          <UpdatePasswordForm user={user} />
+        </div>
       </div>
-      <div className={`${styles["password-form"]} ${styles[togglePasswordForm ? 'open' : 'closed']}`}>
-        <UpdatePasswordForm user={user} />
-      </div>
+
       
       
     </div>
