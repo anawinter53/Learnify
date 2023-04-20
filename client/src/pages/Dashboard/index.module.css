@@ -23,6 +23,7 @@
 .content-heading {
   padding: 20px 0;
   color: var(--font-colour);
+  font-weight: normal;
 }
 
 .top7-quizzes, .top7-flashcards {
@@ -167,16 +168,12 @@
   font-size: 3rem;
   cursor: pointer;
   z-index: 100;
+  text-shadow: 1px 0 #000000, -1px 0 #000000, 0 1px #000000, 0 -1px #000000,
+               1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000;
 }
 
 .no-flash {
   width: max-content;
   color: var(--font-colour);
-  font-size: 2rem;
-}
-
-.favourited {
-  color: var(--nav-colour);
-  text-shadow: 1px 0 #000000, -1px 0 #000000, 0 1px #000000, 0 -1px #000000,
-               1px 1px #000000, -1px -1px #000000, 1px -1px #000000, -1px 1px #000000;
+  font-size: 1.4rem;
 }
