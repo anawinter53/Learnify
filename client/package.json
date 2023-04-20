@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run --reporter verbose",
-    "coverage": "vitest run --coverage.enabled "
+    "coverage": "vitest run --coverage.enabled --coverage.reporter='text-summary'"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",

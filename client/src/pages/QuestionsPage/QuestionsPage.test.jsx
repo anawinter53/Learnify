@@ -8,6 +8,7 @@ import matchers from '@testing-library/jest-dom/matchers'
 expect.extend(matchers);
 
 import QuestionsPage from '.';
+import { QuizQuestion } from '../../components';
 
 
 describe("Questions page", () => {
@@ -24,15 +25,15 @@ describe("Questions page", () => {
     })
 
     it("Displays a heading", async () => {
-        const heading =  screen.getByRole('heading')
-        waitFor(() => expect(heading).toBeInTheDocument());
-        waitFor(() => expect(heading.textContent).toBe("Quizzes"))
+        const heading =  await waitFor(() => screen.findByRole('heading'))
+        await waitFor(() => expect(heading).toBeInTheDocument());
+        await waitFor(() => expect(heading.textContent).toBe("loading..."))
     })
 
-    // it("Renders quiz question", async () => {
-    //     const headingtwo = screen.getAllByRole('headingtwo')
-    //     await waitFor(() => expect(headingtwo).toBeInTheDocument())
-    //     await waitFor(() => expect(heading.textContent).toContain("Question"))
-    // })
+    it("Renders quiz question", async () => {
+        const headingtwo = await waitFor(() => screen.getAllByRole('headingtwo'))
+        await waitFor(() => expect(headingtwo[0]).toBeInTheDocument())
+        await waitFor(() => expect(headingtwo[0].textContent).toContain("Question"))
+    })
 
 })

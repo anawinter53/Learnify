@@ -41,11 +41,4 @@ describe("Landing page", () => {
         expect(window.location.href).toContain('/signup');
     })
 
-    // it('Changes location when a navlink is clicked', async () => {
-    //     expect(window.location.href).not.toContain('/quizzes');
-    //     const quizzes = screen.getByText('Quizzes');
-    //     await userEvent.click(quizzes)
-    //     expect(window.location.href).toContain('/quizzes');
-    // })
-
 })
