@@ -37,4 +37,11 @@ describe("Flashcards List Page", () => {
         expect(flashcards.childNodes[1].textContent).toBe('CreateBack')
     })
 
+    it("Displays two buttons", () => {
+        const button = screen.getAllByRole('button')
+        expect(button[0]).toBeInTheDocument();
+        expect(button[0].textContent).toBe('Create')
+        expect(button[1].textContent).toBe('Back')
+    })
+
 })
