@@ -77,7 +77,8 @@ class Flashcard {
         }
         return response.rows.map((f) => new Flashcard(f));
       }
-      static async addFavorite(userId, cardId) {
+
+       async addFavorite(userId, cardId) {
         try {
           const query = 'INSERT INTO favorites (user_id, card_id) VALUES ($1, $2)';
           await db.query(query, [userId, cardId]);
@@ -88,7 +89,7 @@ class Flashcard {
         }      
     }
 
-    static async destroyFavorite(userId, cardId) {
+     async destroyFavorite(userId, cardId) {
         try {
           const query = 'DELETE FROM favorites WHERE user_id = $1 AND card_id = $2';
           await db.query(query, [userId, cardId]);
