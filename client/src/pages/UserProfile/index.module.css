@@ -72,7 +72,7 @@ button {
   display: unset;
 }
 
-.form-btn {
+.form-btn, .password-form-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,6 +87,13 @@ button {
   height: 50px;
 }
 
-.form-btn:hover {
+.form-btn:hover, .password-form-btn:hover {
   background: #2c1e55;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }

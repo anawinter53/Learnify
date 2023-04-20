@@ -14,9 +14,6 @@ export default function ProfileImg() {
   const [profileImages, setProfileImages] = useState([black, green, lightblue, orange, pink, purple, red, white, yellow])
   
   return (
-    <>
     <img src={profileImages[Math.floor(Math.random(profileImages.length)*9)]} className={styles['image']} />
-    {console.log(Math.floor(Math.random(profileImages.length)*9))}
-    </>
   )
 }
