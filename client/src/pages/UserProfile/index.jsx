@@ -43,7 +43,7 @@ export default function UserProfile() {
       <div className={styles["userProfile"]}>
         <div className={styles["profile-details"]}>  
           <ProfileImg />
-          <h1 className={styles.username}>{user?.username}</h1>
+          <h1 className={styles.username} role='headingone'>{user?.username}</h1>
           <p className={styles.email} role='email'>Email: {user?.email}</p>
         </div>
         <div className={styles["profile-score"]}>

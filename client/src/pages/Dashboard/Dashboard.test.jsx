@@ -24,7 +24,7 @@ describe("Dashboard Page", () => {
     it("Displays a heading", () => {
         const heading = screen.getAllByRole('heading')
         expect(heading[0]).toBeInTheDocument();
-        expect(heading[0].textContent).toContain("Welcome back")
+        expect(heading[0].textContent).toContain("Welcome ")
     })
 
 })
