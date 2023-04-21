@@ -2,4 +2,5 @@
   height: 120px;
   width: 120px;
   margin-bottom: 20px;
+  color: var(--nav-colour);
 }
