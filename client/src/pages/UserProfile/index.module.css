@@ -1,0 +1,145 @@
+.profile {
+  margin-left: 200px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.profile-details {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile-score {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.userProfile {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  border-radius: 30px;
+  border: 10px solid var(--nav-colour);
+  background: #5e37c9;
+  width: 30rem;
+  z-index: 1;
+  color: var(--font-colour);
+}
+
+.username {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.email,
+.highscore {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+button {
+  width: auto;
+}
+
+.closed {
+  display: none;
+}
+
+.open {
+  padding-left: 200px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(43, 43, 43, 0.527);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-btn, .password-form-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  border: none;
+  background: var(--nav-colour);
+  font-size: 16px;
+  color: #d4d4d4;
+  cursor: pointer;
+  text-decoration: none;
+  width: 150px;
+  height: 50px;
+  transition: 0.25s;
+}
+
+.form-btn:hover, .password-form-btn:hover {
+  background: #2c1e55;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.btn:hover {
+  background: #2c1e55;
+  transform: scale(1.03);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.exit-btn:hover {
+  color: black;
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.exit-btn:active {
+  transform: scale(0.97);
+}
+
+.exit-btn {
+  color: grey;
+  border: 0;
+  background: transparent;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 32px;
+}
+
+.details-form, .password-form {
+  align-items: center;
+  position: fixed;
+  
+}

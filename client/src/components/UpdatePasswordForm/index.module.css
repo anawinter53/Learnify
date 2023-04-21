@@ -1,0 +1,101 @@
+.form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 360px;
+    height: max-content;
+    padding-bottom: 40px;
+    background: #5e37c9;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* gap: 40px; */
+  }
+  
+  .form-heading {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: var(--nav-colour);
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    padding: 30px 0;
+  }
+  
+  .form-heading > h1 {
+    text-align: center;
+    height: 100%;
+    color: #d4d4d4;
+  }
+  
+  .form form {
+    margin-top: 140px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    color: var(--font-colour);
+  }
+  
+  .form form .input {
+    width: 80%;
+    position: relative;
+  }
+  
+  .form form .input input:focus ~ span,
+  .form form .input input:valid ~ span {
+    top: -50px;
+    color: var(--font-colour);
+  }
+  
+  .form form .input input {
+    padding: 20px;
+    width: 100%;
+    font-size: 16px;
+    color: #202020;
+  }
+  
+  .form form .input span {
+    position: absolute;
+    padding: 20px;
+    font-size: 16px;
+    color: #20202079;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    transition: 0.3s;
+  }
+  
+  .form form .input button {
+    width: 100%;
+  }
+  
+  .form form .input button:hover {
+    background: #2c1e55;
+    transform: scale(1.03)
+  }
+  
+  .form form .input button:active {
+    transform: scale(0.97)
+  }
+  
+  .btn {
+    padding: 20px 30px;
+    border-radius: 15px;
+    border: none;
+    background: var(--nav-colour);
+    font-size: 16px;
+    color: var(--font-colour);
+    cursor: pointer;
+    transition: 0.25s;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+  }
