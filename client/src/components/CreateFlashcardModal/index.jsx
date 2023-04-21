@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./index.module.css";
 
-export default function CreateFlashcardModal({ showModal, setShowModal, getData }) {
+export default function CreateFlashcardModal({ showModal, setShowModal, getData, primary, secondary }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [subject, setSubject] = useState("");
   const [question, setQuestion] = useState("");
@@ -74,8 +74,9 @@ export default function CreateFlashcardModal({ showModal, setShowModal, getData 
       style={{ display: showModal ? "flex" : "none" }}
     >
       <form onSubmit={handleFormSubmit} role='form'>
-        <div className={styles["create-flashcard"]} style={{ transform: isFlipped ? "rotateY(180deg)" : "none" }} onClick={handleFlip}>
+        <div className={styles["create-flashcard"]} style={{ transform: isFlipped ? "rotateY(180deg)" : "none", background: primary, border: `7px solid ${secondary}`  }} onClick={handleFlip}>
           <div className={styles["front"]}>
+            <h1 className={styles["title"]}>Create flashcard</h1>
             <select value={subject} onChange={handleSubjectChange} onClick={handleInputClick} name="subjects" role='subject'>
               <option disabled value="">
                 Select a subject
