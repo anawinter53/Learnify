@@ -104,7 +104,7 @@ Make sure there are no spaces between the content on each line and ensure you do
 ### Landing page:
 
 
-https://user-images.githubusercontent.com/112402783/233735302-6e381442-bfd2-4322-b5d7-1f46e884d9a3.mp4
+https://user-images.githubusercontent.com/112402783/233736923-12e90207-0541-4a7a-9a36-c5aecf6298ed.mp4
 
 
 ### Login/Sign Up page:
