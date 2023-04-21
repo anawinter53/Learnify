@@ -19,7 +19,7 @@ export default function QuestionsPage() {
     const data = await response.json()
  
     if (Array.isArray(data) && data.length > 0) {
-      setQuestions(data.sort(() => Math.random() - 0.5).splice(0, 10))
+      setQuestions(data.sort(() => Math.random() - 0.5).splice(0, 5))
     }
 
     setLoading(false)
@@ -53,12 +53,13 @@ export default function QuestionsPage() {
               <h2>Quiz Complete!</h2>
               <p className={styles["score"]}>You scored {score} / {questions.length}</p>
               <div className={styles["incorrect"]}>
-                <h2>Incorrect answers</h2>
-                {incorrect.map((inc, i) => {
+                {incorrect.length > 0 ? <h2>Incorrect answers</h2> : ""}
+                
+                {incorrect.length ? incorrect.map((inc, i) => {
                   return (
                     <p key={i} className={styles["incorrect-answer"]} >{inc.question} - <span className={styles["inc-answer"]}>{inc.answer}</span></p>
                   )
-                })}
+                }) : ""}
               </div>
             </div>
             <div className={styles["options"]}>

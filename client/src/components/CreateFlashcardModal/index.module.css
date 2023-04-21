@@ -37,7 +37,7 @@
 
 .front, .back {
   position: absolute;
-  width: 100%;
+  width: 80%;
   height: 100%;
   backface-visibility: hidden;
   display: flex;
@@ -102,7 +102,7 @@
 }
 
 .submit:hover {
-  background: #4CB731;
+  background: #92ff77;
 }
 
 .options {
@@ -117,4 +117,12 @@
 .error-message {
   color: red;
   margin-bottom: 10px;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  color: var(--font-colour-dark);
+  position: absolute;
+  z-index: 50;
+  top: 70px;
 }
