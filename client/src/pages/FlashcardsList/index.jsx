@@ -117,6 +117,8 @@ export default function FlashcardsList() {
         showModal={showModal}
         setShowModal={setShowModal}
         getData={getData}
+        primary={getColours().primary}
+        secondary={getColours().secondary}
       />
       <div className={styles["flashcards"]}>
         <div className={styles["container"]}>
