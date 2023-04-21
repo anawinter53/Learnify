@@ -113,7 +113,27 @@ https://user-images.githubusercontent.com/112402783/233736923-12e90207-0541-4a7a
 https://user-images.githubusercontent.com/112402783/233735443-2a1a4f13-aed4-4d79-91b1-7d28c86daabb.mp4
 
 
-### Dashboard & Other Pages:
+### Dashboard:
+
+
+https://user-images.githubusercontent.com/112402783/233737379-ce420708-f544-450f-9e4b-a3d27ab171d2.mp4
+
+
+### Quizzes:
+
+
+https://user-images.githubusercontent.com/112402783/233737657-58219efb-b396-41f6-b6b8-e8dc3ce11ca5.mp4
+
+https://user-images.githubusercontent.com/112402783/233738007-392b1076-4506-4e23-b884-fb19abefd2ae.mp4
+
+
+
+### Flashcards:
+
+
+
+
+### Profile:
 
 
 
