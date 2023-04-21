@@ -10,7 +10,9 @@ The team followed an Agile methodology for the development of Learnify, using wi
 
 We streamlined our development process using our Kanban board on Trello. This allowed us to prioritise the demands of the projects whilst ensuring we weren't all working on the same files, helping us avoid Git merge conflicts as much as possible.
 
-<video src='https://github.com/anawinter53/give-us-a-br/blob/ana/documentation/Landing%20page.mp4' width=180/>
+<p align="center">
+<img src="https://github.com/anawinter53/give-us-a-br/blob/dev/documentation/Wireframes.png" width=75% height=75%>
+</p>
 <br>
 
 Using Figma we were able to plan out the design for our website before coding it, helping with a more consistent design look across all the team's work. Figma enabled us to conceptualise possible features in a way that allowed for joint planning and more discussions on any new design ideas. 
@@ -100,6 +102,8 @@ Make sure there are no spaces between the content on each line and ensure you do
 ## Usage
 
 ### Landing page:
+
+![Landing Page](https://github.com/Faizun-Faria/Thief-Robber-Landlord-Police/blob/main/Preview/gif_english.gif)
 
 ### Login/Sign Up page:
 
