@@ -31,7 +31,6 @@
   background: #5e37c9;
   width: 30rem;
   z-index: 1;
-  margin-top: auto;
 }
 
 .username {
@@ -70,7 +69,18 @@ button {
 }
 
 .open {
-  display: unset;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: space-around;
+  left: 0;
+  margin: 0 auto;
+  top: 0;
+  z-index: 2;
+  height: 100vh;
+  width: 100vw;
+  background:rgba(0, 0, 0, 0.5);
+  padding-left: 200px;
 }
 
 .form-btn, .password-form-btn {
@@ -110,6 +120,28 @@ button {
   transform: scale(0.97);
 }
 
+.exit-btn:hover {
+  color: black;
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.exit-btn:active {
+  transform: scale(0.97);
+}
+
+.exit-btn {
+  color: grey;
+  border: 0;
+  background: transparent;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 32px;
+}
+
 .details-form, .password-form {
-  margin-top: 40px;
+  align-items: center;
+  position: fixed;
+  
 }

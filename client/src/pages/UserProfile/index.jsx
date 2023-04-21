@@ -56,17 +56,15 @@ export default function UserProfile() {
         <button className={`${styles["form-btn"]} ${styles["btn"]}`} onClick={openDetailsForm}>Update your details</button>
         <button className={`${styles["password-form-btn"]} ${styles["btn"]}`} onClick={openPasswordForm}>Update your password</button>
         </div>
-        <div className={`${styles["details-form"]} ${styles[toggleDetailsForm ? 'open' : 'closed']}`} role='update-details'>
-          <UpdateDetailsForm user={user} />
-        </div>
-        <div className={`${styles["password-form"]} ${styles[togglePasswordForm ? 'open' : 'closed']}`}>
-          <UpdatePasswordForm user={user} />
-        </div>
+      </div>  
+      <div className={`${styles["details-form"]} ${styles[toggleDetailsForm ? 'open' : 'closed']}`} role='update-details'>
+        <button className={styles["exit-btn"]} onClick={openDetailsForm}>x</button>
+        <UpdateDetailsForm user={user} />
       </div>
-
-      
-      
+      <div className={`${styles["password-form"]} ${styles[togglePasswordForm ? 'open' : 'closed']}`}>
+        <button className={styles["exit-btn"]} onClick={openPasswordForm}>x</button>
+        <UpdatePasswordForm user={user} />
+      </div>
     </div>
-
   );
 }
