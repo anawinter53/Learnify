@@ -131,6 +131,11 @@ https://user-images.githubusercontent.com/112402783/233738007-392b1076-4506-4e23
 ### Flashcards:
 
 
+https://user-images.githubusercontent.com/112402783/233738597-bfa337aa-cb47-4a41-aa0a-a85352a48499.mp4
+
+https://user-images.githubusercontent.com/112402783/233738576-53450377-faf9-4348-809f-f748ef392ece.mp4
+
+https://user-images.githubusercontent.com/112402783/233738887-2802c240-2257-43f1-bf32-fd2f259918dd.mp4
 
 
 ### Profile:
