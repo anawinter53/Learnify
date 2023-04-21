@@ -54,7 +54,7 @@
 
 .front, .back {
   position: absolute;
-  width: 100%;
+  width: 80%;
   height: 100%;
   backface-visibility: hidden;
   display: flex;
