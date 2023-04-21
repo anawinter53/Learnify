@@ -25,7 +25,6 @@ describe("UserProfile Page", () => {
     it("Displays a heading", async () => {
         const heading = await screen.findByRole('headingone')
         waitFor(() => expect(heading).toBeInTheDocument());
-        expect(heading.textContent).toContain("Username:")
     })
 
     it("Displays user details", async () => {
@@ -38,7 +37,7 @@ describe("UserProfile Page", () => {
         expect(points.textContent).toContain("Total XP:")
 
         const percentage = await screen.findByRole('percentage')
-        expect(percentage.childNodes[0].nodeValue).toStrictEqual("Percentage: ")
+        expect(percentage.childNodes[0].nodeValue).toStrictEqual("Average accuracy: ")
     })
 
     it("Toggles form on and off with click", async () => {

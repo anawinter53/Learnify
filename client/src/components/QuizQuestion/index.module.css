@@ -1,7 +1,7 @@
 .content {
   text-align: center;
   background-color: #00000025;
-  padding: 20px;
+  padding: 50px;
   border-radius: 15px;
   transition: 0.25s;
   height: 100%;
@@ -15,11 +15,13 @@
   flex-direction: column;
   color: var(--font-colour);
   font-size: 20px;
+  gap: 50px;
 }
 
 .question {
   padding: 0 75px;
   color: var(--font-colour);
+  font-size: 3rem;
 }
 
 .option {
@@ -54,9 +56,16 @@ button {
   display: none;
 }
 
-.quiz-complete {
-  display: unset;
+.popup {
+  position: absolute;
   text-align: center;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  background: red;
+  width: 500px;
+  height: 400px;
+  border-radius: 15px;
 }
 
 .score {
@@ -101,5 +110,9 @@ button:disabled {
 }
 
 .parent {
-  height: 740px;
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+

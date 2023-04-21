@@ -29,22 +29,4 @@ describe("LoginForm Component", () => {
 
         expect(form).toBeInTheDocument();
     })
-
-    // it("Logs you in", async () => {
-    //     const username = screen.getByRole('username')
-    //     await username.setValue('admin');
-    //     expect(username.element)
-
-    // })
-
-
-    // ATTEMPT 0
-    // This is the preferred way according to https://v1.test-utils.vuejs.org/api/wrapper/setvalue.html but still does not work
-    // await selectFieldWrapper.setValue("item 2");
-    // expect(selectFieldWrapper.element.value).toBe("item 2");
-    // alternatively
-    // selectFieldWrapper.element.value = "item 2";
-    // selectFieldWrapper.trigger('change')
-    // expect(selectFieldWrapper.element.value).toBe("item 2");
-
 })
