@@ -9,11 +9,12 @@ import purple from './imgs/purple_profile_img.png';
 import red from './imgs/red_profile_img.png'
 import white from './imgs/white_profile_img.png';
 import yellow from './imgs/yellow_profile_img.png';
+import { FaUserCircle } from 'react-icons/fa';
 
 export default function ProfileImg() {
-  const [profileImages, setProfileImages] = useState([black, green, lightblue, orange, pink, purple, red, white, yellow])
+  const [profileImages, setProfileImages] = useState(white)
   
   return (
-    <img src={profileImages[Math.floor(Math.random(profileImages.length)*9)]} className={styles['image']} />
+    <FaUserCircle className={styles["image"]}/>
   )
 }
