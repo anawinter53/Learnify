@@ -103,21 +103,19 @@ Make sure there are no spaces between the content on each line and ensure you do
 
 ### Landing page:
 
-![Landing Page](https://github.com/Faizun-Faria/Thief-Robber-Landlord-Police/blob/main/Preview/gif_english.gif)
+
+https://user-images.githubusercontent.com/112402783/233735302-6e381442-bfd2-4322-b5d7-1f46e884d9a3.mp4
+
 
 ### Login/Sign Up page:
 
-### Dashboard:
 
-### Quizzes Category page:
+https://user-images.githubusercontent.com/112402783/233735443-2a1a4f13-aed4-4d79-91b1-7d28c86daabb.mp4
 
-### Quiz Questions page:
 
-### Flashcard Category page:
+### Dashboard & Other Pages:
 
-### Flashcards page:
 
-### Profile page:
 
 
 
