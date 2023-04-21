@@ -103,6 +103,8 @@ Make sure there are no spaces between the content on each line and ensure you do
 
 ### Landing page:
 
+![Landing Page](https://github.com/Faizun-Faria/Thief-Robber-Landlord-Police/blob/main/Preview/gif_english.gif)
+
 ### Login/Sign Up page:
 
 ### Dashboard:
