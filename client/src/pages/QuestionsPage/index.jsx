@@ -19,7 +19,7 @@ export default function QuestionsPage() {
     const data = await response.json()
  
     if (Array.isArray(data) && data.length > 0) {
-      setQuestions(data.sort(() => Math.random() - 0.5).splice(0, 5))
+      setQuestions(data.sort(() => Math.random() - 0.5).splice(0, 10))
     }
 
     setLoading(false)
